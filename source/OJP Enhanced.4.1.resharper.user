@@ -1,0 +1,88 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer>
+      <setting name="UsedSolutionBuilderID">0</setting>
+    </integer>
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_camera.c" caret="19006" scrollPosition="0|847" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_object.cpp" caret="7301" scrollPosition="0|229" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:q_shared.h" caret="46212" scrollPosition="0|1398" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:q_math.cpp" caret="16853" scrollPosition="0|589" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_combat.cpp" caret="160130" scrollPosition="0|5674" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_roff.cpp" caret="6286" scrollPosition="0|0" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_vehicles.cpp" caret="29869" scrollPosition="0|878" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:surfaceflags.h" caret="5764" scrollPosition="0|99" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_vehicleLoad.cpp" caret="19848" scrollPosition="0|509" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:cg_local.h" caret="489" scrollPosition="0|0" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:Squirrel.cpp" caret="855" scrollPosition="0|24" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_slidemove.cpp" caret="15400" scrollPosition="0|407" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_pmove.cpp" caret="23845" scrollPosition="0|910" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="16085" scrollPosition="0|511" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC.cpp" caret="5571" scrollPosition="0|146" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC_goal.cpp" caret="0" scrollPosition="0|0" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_draw.c" caret="56785" scrollPosition="0|2431" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_cmds.cpp" caret="109958" scrollPosition="0|0" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC_spawn.cpp" caret="135374" scrollPosition="0|4782" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC_stats.cpp" caret="48987" scrollPosition="0|1998" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:FP_Manipulate.cpp" caret="658" scrollPosition="0|3" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_syscalls.c" caret="11765" scrollPosition="0|345" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_main.cpp" caret="106404" scrollPosition="0|3759" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:FighterNPC.cpp" caret="32709" scrollPosition="0|977" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_event.c" caret="62020" scrollPosition="0|2317" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_main.c" caret="135088" scrollPosition="0|4279" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_syscalls.cpp" caret="4555" scrollPosition="0|141" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_predict.c" caret="15572" scrollPosition="0|563" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:g_items.cpp" caret="76280" scrollPosition="0|2853" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_misc.cpp" caret="63813" scrollPosition="0|2498" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="19300" scrollPosition="0|628" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="19925" scrollPosition="0|628" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="20019" scrollPosition="0|652" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="20094" scrollPosition="0|652" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="20950" scrollPosition="0|685" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="20955" scrollPosition="0|685" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="25270" scrollPosition="0|823" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="24766" scrollPosition="0|823" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="25556" scrollPosition="0|838" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="25808" scrollPosition="0|838" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_pmove.cpp" caret="150313" scrollPosition="0|5312" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_main.c" caret="125940" scrollPosition="0|3924" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_main.c" caret="134725" scrollPosition="0|4260" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:Squirrel.cpp" caret="1151" scrollPosition="0|49" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_pmove.cpp" caret="23481" scrollPosition="0|910" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_pmove.cpp" caret="23845" scrollPosition="0|910" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:SpeederNPC.cpp" caret="16085" scrollPosition="0|511" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC.cpp" caret="5571" scrollPosition="0|146" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_draw.c" caret="56965" scrollPosition="0|2431" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_draw.c" caret="56785" scrollPosition="0|2431" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC_spawn.cpp" caret="135374" scrollPosition="0|4782" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC_stats.cpp" caret="18944" scrollPosition="0|780" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:NPC_stats.cpp" caret="48698" scrollPosition="0|1998" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:FP_Manipulate.cpp" caret="4331" scrollPosition="0|126" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:FP_Manipulate.cpp" caret="629" scrollPosition="0|3" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:FighterNPC.cpp" caret="17158" scrollPosition="0|507" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:FighterNPC.cpp" caret="7408" scrollPosition="0|248" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:FighterNPC.cpp" caret="8254" scrollPosition="0|269" />
+      <File id="5B587283-8429-4F8B-AECA-C09BF364B617/f:bg_misc.cpp" caret="65154" scrollPosition="0|2546" />
+      <File id="4DC69D68-9DB8-4DEB-AC63-481153B1F41D/f:cg_predict.c" caret="15578" scrollPosition="0|554" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <CustomStartDirectory>
+    </CustomStartDirectory>
+    <UseShadowCopy>True</UseShadowCopy>
+    <UseCustomFolder>False</UseCustomFolder>
+    <EnableUnitTesting>True</EnableUnitTesting>
+    <Providers />
+  </UnitTestRunner>
+</Configuration>
