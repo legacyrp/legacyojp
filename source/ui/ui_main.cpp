@@ -10728,15 +10728,6 @@ void _UI_SetActiveMenu( uiMenuCommand_t menu ) {
 			Menus_ActivateByName("ingame_playerforce");
 			UpdateForceUsed();
 		  return;
-	    case UIMENU_LOGIN:
-		 // trap_Cvar_Set( "cl_paused", "1" );
-			trap_Key_SetCatcher( KEYCATCH_UI );
-			UI_BuildPlayerList();
-			Menus_CloseAll();
-			//ingame_player
-			Menus_ActivateByName("ingame_login");
-			UpdateForceUsed();
-		  return;
 	  case UIMENU_PLAYERFORCE:
 		 // trap_Cvar_Set( "cl_paused", "1" );
 			trap_Key_SetCatcher( KEYCATCH_UI );
@@ -10789,6 +10780,15 @@ void _UI_SetActiveMenu( uiMenuCommand_t menu ) {
 				Menus_ActivateByName(buf);
 			}
 			return;
+	    case UIMENU_LOGIN:
+		 // trap_Cvar_Set( "cl_paused", "1" );
+			trap_Key_SetCatcher( KEYCATCH_UI );
+			UI_BuildPlayerList();
+			Menus_CloseAll();
+			//ingame_player
+			Menus_ActivateByName("ingame_login");
+			UpdateForceUsed();
+		  return;
 		//[/CoOp]
 		//[Commander]
 			/*

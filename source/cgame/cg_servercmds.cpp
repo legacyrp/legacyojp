@@ -1415,7 +1415,7 @@ static void CG_ServerCommand( void ) {
 	}
 	if ( !strcmp( cmd, "lui" ) )
 	{
-		trap_Cvar_Set("ui_myteam", "3");
+	//	trap_Cvar_Set("ui_myteam", "3");
 		trap_OpenUIMenu(UIMENU_LOGIN); //UIMENU_CLASSSEL
 		return;
 	}

@@ -3962,6 +3962,7 @@ void ClientCommand( int clientNum ) {
 		Cmd_CreateCharacter_F (ent);
 		return;
 	}
+	/*
 	if (Q_stricmp (cmd, "addFeat") == 0) {
 		Cmd_AddFeat_F (ent);
 		return;
@@ -3969,7 +3970,7 @@ void ClientCommand( int clientNum ) {
 	if (Q_stricmp (cmd, "feats") == 0) {
 		Cmd_ListFeats_F (ent);
 		return;
-	}
+	}*/
 	if (Q_stricmp (cmd, "aminfo") == 0) {
 		M_Cmd_ModInfo_f (ent);
 		return;
