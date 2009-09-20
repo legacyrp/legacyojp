@@ -89,6 +89,11 @@ void Cmd_AccountLogout_F(gentity_t * targetplayer)
 		trap_SendServerCommand( targetplayer->client->ps.clientNum, "print \"^1Error: Not logged in fool.\n\"");
 		return;
 	}
+
+	//Save the character
+	if(targetplayer->client->sess.characterChosen == qtrue)
+		SaveCharacter(targetplayer);
+
 	//Account
 	targetplayer->client->sess.loggedinAccount = qfalse;
 	targetplayer->client->sess.userID = NULL;
@@ -96,6 +101,11 @@ void Cmd_AccountLogout_F(gentity_t * targetplayer)
 	targetplayer->client->sess.characterChosen = qfalse;
 	targetplayer->client->sess.characterID = NULL;
 	trap_SendServerCommand( targetplayer->client->ps.clientNum, "print \"^1Success: ^7Your are now logged out\n\"");
+	//Remove all feats
+	for(int k = 0; k < NUM_FEATS-1; k++)
+	{
+		targetplayer->client->featLevel[k] = FORCE_LEVEL_0;
+	}
 	//Remove all character skills
 	for(int i = 0; i < NUM_SKILLS-1; i++)
 	{
@@ -178,6 +188,7 @@ Grants a level up in a skill
 
 =================
 */
+/*
 void Cmd_AddFeat_F(gentity_t * targetplayer)
 {
 	Database db(DATABASE_PATH);
@@ -232,7 +243,7 @@ void Cmd_AddFeat_F(gentity_t * targetplayer)
 	return;
 
 }
-
+*/
 /*
 =================
 
@@ -817,6 +828,7 @@ AddFeat
 Processes the feat into database and adds the approriate skills/levels
 =====
 */
+/*
 void AddFeat(int charID, int featID, int level)
 {
 	Database db(DATABASE_PATH);
@@ -1299,6 +1311,7 @@ void AddFeat(int charID, int featID, int level)
 	}
 	return;
 }
+*/
 /*
 =================
 
@@ -1370,6 +1383,54 @@ void UpdateFP(int charid, int forcepower, int level)
 /*
 =================
 
+HasForcePower
+
+Checks if the character has this forcepower
+=====
+*/
+qboolean HasForcePower(int charid, int power)
+{
+	Database db(DATABASE_PATH);
+	Query q(db);
+
+	q.get_result(va("SELECT * FROM forcepower WHERE charID='%i' AND forcepower='%i'",charid,power));
+	int forcepower = q.num_rows();
+	if(forcepower)
+	{
+		return qtrue;
+	}
+	else
+	{
+		return qfalse;
+	}
+}
+/*
+=================
+
+HasSkill
+
+Checks if the character has this skill
+=====
+*/
+qboolean HasSkill(int charid, int skill)
+{
+	Database db(DATABASE_PATH);
+	Query q(db);
+
+	q.get_result(va("SELECT * FROM skills WHERE charID='%i' AND skill='%i'",charid,skill));
+	int valid = q.num_rows();
+	if(valid)
+	{
+		return qtrue;
+	}
+	else
+	{
+		return qfalse;
+	}
+}
+/*
+=================
+
 HasFeat
 
 Checks if the character has this feat
@@ -1379,10 +1440,10 @@ qboolean HasFeat(int charid, int featID)
 {
 	Database db(DATABASE_PATH);
 	Query q(db);
-	if(featID == FT_NONE)
+	/*if(featID == FT_NONE)
 	{
 		return qtrue;
-	}
+	}*/
 	q.get_result(va("SELECT * FROM feats WHERE charID='%i' AND featID='%i'",charid,featID));
 	int feat = q.num_rows();
 	if(feat)
@@ -1419,6 +1480,7 @@ Lists all the feats available
 Ingame command: feats
 =====
 */
+/*
 void Cmd_ListFeats_F(gentity_t * targetplayer)
 {
 	
@@ -1443,7 +1505,7 @@ void Cmd_ListFeats_F(gentity_t * targetplayer)
 
 
 	return;
-}
+}*/
 /*
 =================
 
@@ -1511,5 +1573,76 @@ void LoadUser(gentity_t * targetplayer){
 	{//We are give them admin
 		targetplayer->client->sess.loggedinadmin = qtrue;
 	}
+	return;
+}
+
+
+/*
+=================
+
+SaveCharacter
+
+Saves the character information to the database
+
+=====
+*/
+void SaveCharacter(gentity_t * targetplayer) 
+{
+	Database db(DATABASE_PATH);
+	Query q(db);
+	
+
+	//Save feats
+	for(int i = 0; i < NUM_FEATS; i++)
+	{
+		if(targetplayer->client->featLevel[i])
+		{
+		//Has this feat already in the database
+		if(HasFeat(targetplayer->client->sess.characterID,i))
+		{
+			//Then update it in the database
+			q.execute(va("UPDATE feats set level='%i' WHERE charID='%i' AND featID='%i'",targetplayer->client->featLevel[i],targetplayer->client->sess.characterID,i));
+		}
+		else
+		{//We don't have the feat so we should add it
+			q.execute(va("INSERT INTO feats(charID,featID,level) VALUES('%i','%i','%i')",targetplayer->client->sess.characterID,i,targetplayer->client->featLevel[i]));
+		}
+		}
+		else if(HasFeat(targetplayer->client->sess.characterID,i) && targetplayer->client->featLevel[i])
+		{//Remove this feat, because they don't have this
+			q.execute(va("DELETE FROM feats WHERE charID='%i' AND featID='%i'",targetplayer->client->sess.characterID,i));
+		}
+	}
+	//Save skills
+	for(int j = 0; j < NUM_SKILLS; j++)
+	{
+		if(targetplayer->client->skillLevel[j])
+		{
+		if(HasSkill(targetplayer->client->sess.characterID,j))
+		{
+			q.execute(va("UPDATE skills set level='%i' WHERE charID='%i' AND skill='%i'",targetplayer->client->skillLevel[j],targetplayer->client->sess.characterID,j));
+		}
+		else
+		{
+			q.execute(va("INSERT INTO skills(charID,skill,level) VALUES('%i','%i','%i')",targetplayer->client->sess.characterID,j,targetplayer->client->skillLevel[j]));
+		}
+		}
+	}
+	//Save forcepowers
+	for(int k = 0; k < NUM_FORCE_POWERS; k++)
+	{
+		if(targetplayer->client->ps.fd.forcePowerLevel[k])
+		{
+		if(HasForcePower(targetplayer->client->sess.characterID,k))
+		{
+			q.execute(va("UPDATE forcepowers set level='%i' WHERE charID='%i' and forcepower='%i'",targetplayer->client->ps.fd.forcePowerLevel[k],targetplayer->client->sess.characterID,k));
+		}
+		else
+		{
+			q.execute(va("INSERT INTO forcepowers(charID,forcepower,level) VALUES('%i','%i','%i')",targetplayer->client->sess.characterID,k,targetplayer->client->ps.fd.forcePowerLevel[k]));
+		}
+		}
+	}
+
 	return;
 }

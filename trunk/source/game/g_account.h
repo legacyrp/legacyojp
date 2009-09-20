@@ -1,6 +1,14 @@
 //Declarations
 #define DATABASE_PATH "jke/data.db"
 //Functions
+
+//--Database Functions--
+void SaveCharacter(gentity_t * targetplayer);
+void LoadUser(gentity_t * targetplayer);
+void LoadCharacter(gentity_t * targetplayer);
+void LoadSkills(gentity_t * targetplayer);
+void LoadForcePowers(gentity_t * targetplayer);
+
 //--Ingame commands--
 void Cmd_AccountLogin_F(gentity_t * targetplayer);
 void Cmd_AccountLogout_F(gentity_t * targetplayer);
@@ -12,16 +20,12 @@ void Cmd_AddFeat_F(gentity_t * targetplayer);
 void Cmd_ListFeats_F(gentity_t * targetplayer);
 void Cmd_Grenade_F(gentity_t * targetplayer);
 void Cmd_CharacterInfo_F(gentity_t * targetplayer);
-//--Load functions--
-void LoadUser(gentity_t * targetplayer);
-void LoadCharacter(gentity_t * targetplayer);
-void LoadSkills(gentity_t * targetplayer);
-void LoadForcePowers(gentity_t * targetplayer);
-int GetForceLevel(int level);
 //--Feat Functions--
 void AddFeat(int charID, int featID, int level);
 void InsertFeat(int charID, int featID);
 qboolean HasFeat(int charid, int featID);
+qboolean HasForcePower(int charid, int power);
+qboolean HasSkill(int charid, int skill);
 //--Skill functions--
 void GrantSkill(int charID, int skill);
 void UpdateSkill(int charid, int skill, int level);
@@ -31,7 +35,9 @@ void UpdateFP(int charid, int forcepower, int level);
 //--Misc Functions--
 qboolean isLoggedIn(gentity_t* targetplayer);
 qboolean isInCharacter(gentity_t* targetplayer);
+int GetForceLevel(int level);
 
+/*
 #define NUM_FEATS 76
 //Feat Enumeration
 enum feats
@@ -115,7 +121,7 @@ enum feats
 	FT_GREENSTYLE,
 	FT_DUALSTYLE,
 	FT_STAFFSTYLE,
-};
+}; */
 
 //Hashtable for feats
 typedef struct{
@@ -126,7 +132,7 @@ typedef struct{
 	int	   skillLevel;
 }featTable_t;
 
-
+/*
 static featTable_t FeatTable[] = {
 	//Blasters
 	{FT_BLASTERS1, "Blasters Level 1 (Pistol/E11 Blaster)","blasters1",FT_NONE,1},
@@ -232,4 +238,4 @@ static featTable_t FeatTable[] = {
 	{FT_SABERTHROW1, "Saber Throw 1","throw1",FT_NONE,1},
 	{FT_SABERTHROW2, "Saber Throw 2","throw2",FT_SABERTHROW1,2},
 	{FT_SABERTHROW3, "Saber Throw 3","throw3",FT_SABERTHROW2,3},
-};
+};*/

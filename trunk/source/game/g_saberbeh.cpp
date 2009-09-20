@@ -73,7 +73,7 @@ qboolean SabBeh_RollBalance(gentity_t *self, sabmech_t *mechSelf, qboolean force
 
 
 //[WeapAccuracy]
-extern qboolean GAME_INLINE WalkCheck( gentity_t * self );
+qboolean GAME_INLINE WalkCheck( gentity_t * self );
 void G_AddMercBalance(gentity_t *self, int amount)
 {//mercs don't suffer mishaps, but they do lose/gain MP
 	if(!WalkCheck(self))

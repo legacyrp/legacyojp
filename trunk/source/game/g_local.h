@@ -310,7 +310,7 @@ extern	vmCvar_t	g_siegeTeamSwitch;
 extern	vmCvar_t	bg_fighterAltControl;
 
 #ifdef DEBUG_SABER_BOX
-extern	vmCvar_t	g_saberDebugBox;
+vmCvar_t	g_saberDebugBox;
 #endif
 
 //NPC nav debug

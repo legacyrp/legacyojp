@@ -154,7 +154,7 @@
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="..,./../game"
+				AdditionalIncludeDirectories="..,./../game;../Squirrel/include;../Squirrel/sqplus"
 				PreprocessorDefinitions="NDEBUG;_WINDOWS;WIN32;VS2005;CGAME;_JK2;FINAL_BUILD"
 				StringPooling="true"
 				RuntimeLibrary="0"
@@ -182,11 +182,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386"
+				AdditionalOptions="/NODEFAULTLIB:libcmt.lib /MACHINE:I386"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				OutputFile="../../jke/cgamex86.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="../Squirrel/lib"
 				ModuleDefinitionFile=".\JK2_cgame.def"
 				ProgramDatabaseFile=""
 				GenerateMapFile="true"

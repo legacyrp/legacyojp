@@ -6,7 +6,7 @@ ECHO To stop the restart cycle, just close this window.
 ECHO Starting Server...
 ECHO.
 cd ..
-call jamp.exe +set fs_game ojpenhanced +set dedicated 2 +exec OJPEnhancedServer.cfg
+call jamp.exe +set fs_game jke +set dedicated 2 +exec OJPEnhancedServer.cfg
 
 ECHO.
 ECHO Restarting Server...

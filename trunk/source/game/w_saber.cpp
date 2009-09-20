@@ -3359,7 +3359,7 @@ qboolean IsMoving(gentity_t*ent)
 
 	return qtrue;
 }
-qboolean GAME_INLINE WalkCheck( gentity_t * self );
+extern qboolean GAME_INLINE WalkCheck( gentity_t * self );
 qboolean G_BlockIsParry( gentity_t *self, gentity_t *attacker, vec3_t hitLoc );
 qboolean PM_RunningAnim( int anim );
 //cost for block
