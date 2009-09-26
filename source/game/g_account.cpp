@@ -433,222 +433,13 @@ void LoadSkills(gentity_t * targetplayer)
 		return;
 	}
 	Query q(db);
-	q.get_result(va("SELECT skill, level FROM skills WHERE charID='%i'",targetplayer->client->sess.characterID));
-	while(q.fetch_row())
+	std::string skills = q.get_string(va("SELECT skills FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
+	for(int i = 0; i < NUM_SKILLS; i++)
 	{
-	int skillID = q.getval();
-	int skLevel = q.getval();
-	
-	switch(skillID)
-	{
-	case SK_JETPACK:
-		{
-			if(skLevel > 1)
-			{
-				G_Printf(S_COLOR_RED "Illegal Skill Level %i ID: %i",skLevel,skillID);
-				return;
-			}
-			targetplayer->client->skillLevel[SK_JETPACK] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_JETPACK);
-			continue;
-		}
-	case SK_PISTOL:
-		{
-			targetplayer->client->skillLevel[SK_PISTOL] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_BRYAR_PISTOL );
-			continue;
-		}
-	case SK_BLASTER:
-		{
-			targetplayer->client->skillLevel[SK_BLASTER] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_BLASTER );
-			continue;
-		}
-	case SK_THERMAL:
-		{
-			targetplayer->client->skillLevel[SK_THERMAL] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_THERMAL );
-			continue;
-		}
-	case SK_ROCKET:
-		{
-			targetplayer->client->skillLevel[SK_ROCKET] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_ROCKET_LAUNCHER );
-			continue;
-		}
-	case SK_BACTA:
-		{
-			targetplayer->client->skillLevel[SK_BACTA] = GetForceLevel(skLevel);
-
-			if(skLevel == FORCE_LEVEL_2)
-			{
-				targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_MEDPAC_BIG);
-			}
-			else if(skLevel == FORCE_LEVEL_1)
-			{
-				targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_MEDPAC);
-			}
-			continue;
-		}
-	case SK_FLAMETHROWER:
-		{
-			targetplayer->client->skillLevel[SK_FLAMETHROWER] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_FLAMETHROWER);
-			continue;
-		}
-	case SK_BOWCASTER:
-		{
-			targetplayer->client->skillLevel[SK_BOWCASTER] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_BOWCASTER);
-			continue;
-		}
-	case SK_FORCEFIELD:
-		{
-			targetplayer->client->skillLevel[SK_FORCEFIELD] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_SHIELD);
-			continue;
-		}
-	case SK_CLOAK:
-		{
-			targetplayer->client->skillLevel[SK_CLOAK] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_CLOAK);
-			continue;
-		}
-	case SK_SEEKER:
-		{
-			targetplayer->client->skillLevel[SK_SEEKER] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_SEEKER);
-			continue;
-		}
-	case SK_SENTRY:
-		{
-			targetplayer->client->skillLevel[SK_SENTRY] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_HOLDABLE_ITEMS] |= (1 << HI_SENTRY_GUN);
-			continue;
-		}
-	case SK_DETPACK:
-		{
-			targetplayer->client->skillLevel[SK_DETPACK] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_DET_PACK);
-			continue;
-		}
-	case SK_REPEATER:
-		{
-			targetplayer->client->skillLevel[SK_REPEATER] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_REPEATER);
-			continue;
-		}
-	case SK_DISRUPTOR:
-		{
-			targetplayer->client->skillLevel[SK_DISRUPTOR] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_DISRUPTOR);
-			continue;
-		}
-	case SK_BLUESTYLE:
-		{
-			targetplayer->client->skillLevel[SK_BLUESTYLE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_REDSTYLE:
-		{
-			targetplayer->client->skillLevel[SK_REDSTYLE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_PURPLESTYLE:
-		{
-			targetplayer->client->skillLevel[SK_PURPLESTYLE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_GREENSTYLE:
-		{
-			targetplayer->client->skillLevel[SK_GREENSTYLE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_DUALSTYLE:
-		{
-			targetplayer->client->skillLevel[SK_DUALSTYLE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_STAFFSTYLE:
-		{
-			targetplayer->client->skillLevel[SK_STAFFSTYLE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_REPEATERUPGRADE:
-		{
-			targetplayer->client->skillLevel[SK_REPEATERUPGRADE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_FLECHETTE:
-		{
-			targetplayer->client->skillLevel[SK_FLECHETTE] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_FLECHETTE);
-			continue;
-		}
-	case SK_BLASTERRATEOFFIREUPGRADE:
-		{
-			targetplayer->client->skillLevel[SK_BLASTERRATEOFFIREUPGRADE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_TUSKEN_RIFLE:
-		{
-			targetplayer->client->skillLevel[SK_TUSKEN_RIFLE] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_TUSKEN_RIFLE);
-			continue;
-		}
-	case SK_SHIELD:
-		{
-			targetplayer->client->skillLevel[SK_SHIELD] = GetForceLevel(skLevel);
-			if(skLevel == FORCE_LEVEL_3)
-				targetplayer->client->ps.stats[STAT_ARMOR] = 100;
-			else if(skLevel == FORCE_LEVEL_2)
-				targetplayer->client->ps.stats[STAT_ARMOR] = 75;
-			else if(skLevel == FORCE_LEVEL_1)
-				targetplayer->client->ps.stats[STAT_ARMOR] = 50;
-			else
-				targetplayer->client->ps.stats[STAT_ARMOR] = 0;
-			continue;
-		}
-	case SK_MELEE:
-		{
-			targetplayer->client->skillLevel[SK_MELEE] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_MELEE);
-			continue;
-		}
-	case SK_GRENADE:
-		{
-			targetplayer->client->skillLevel[SK_GRENADE] = GetForceLevel(skLevel);
-			targetplayer->client->ps.stats[STAT_WEAPONS] |= (1 << WP_GRENADE);
-			continue;
-		}
-	case SK_SMOKEGRENADE:
-		{
-			targetplayer->client->skillLevel[SK_SMOKEGRENADE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_FLASHGRENADE:
-		{
-			targetplayer->client->skillLevel[SK_FLASHGRENADE] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_CRYOBAN:
-		{
-			targetplayer->client->skillLevel[SK_CRYOBAN] = GetForceLevel(skLevel);
-			continue;
-		}
-	case SK_EMP:
-		{
-			targetplayer->client->skillLevel[SK_FLASHGRENADE] = GetForceLevel(skLevel);
-			continue;
-		}
-	default:
-		{
-		G_Printf(S_COLOR_RED "Illegal Skill ID: %i",skillID);
-		continue;
-		}
+		char temp = skills[i];
+		int level = temp - '0';
+		targetplayer->client->skillLevel[i] = level;
 	}
-	}
-	q.free_result();
 	return;
 }
 
@@ -672,127 +463,17 @@ void LoadForcePowers(gentity_t * targetplayer)
 		return;
 	}
 	Query q(db);
-	q.get_result(va("SELECT forcepower, level FROM forcepowers WHERE charID='%i'",targetplayer->client->sess.characterID));
-	while(q.fetch_row())
+	std::string powers = q.get_string(va("SELECT force FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
+	for(int i = 0; i < NUM_FORCE_POWERS; i++)
 	{
-	int forcepower = q.getval();
-	int fplevel = q.getval();
-	
-	switch(forcepower)
-	{
-		case FP_HEAL:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_HEAL);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_HEAL] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_LEVITATION:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_LEVITATION);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_LEVITATION] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_SPEED:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_SPEED);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_SPEED] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_PUSH:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_PUSH);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_PUSH] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_PULL:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_PULL);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_PULL] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_MINDTRICK:
-			{	
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_MINDTRICK);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_MINDTRICK] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_GRIP:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_GRIP);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_GRIP] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_LIGHTNING:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_LIGHTNING);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_LIGHTNING] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_RAGE:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_RAGE);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_RAGE] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_MANIPULATE:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_MANIPULATE);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_MANIPULATE] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_ABSORB:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_ABSORB);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_ABSORB] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_TEAM_HEAL:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_TEAM_HEAL);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_TEAM_HEAL] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_LIFT:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_LIFT);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_LIFT] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_DRAIN:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_DRAIN);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_DRAIN] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_SEE:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_SEE);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_SEE] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_SABER_OFFENSE:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_SABER_OFFENSE);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_SABER_OFFENSE] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_SABER_DEFENSE:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_SABER_DEFENSE);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_SABER_DEFENSE] = GetForceLevel(fplevel);
-				continue;
-			}
-		case FP_SABERTHROW:
-			{
-				targetplayer->client->ps.fd.forcePowersKnown |= (1 << FP_SABERTHROW);
-				targetplayer->client->ps.fd.forcePowerLevel[FP_SABERTHROW] = GetForceLevel(fplevel);
-				continue;
-			}
-		default:
-			return;
+		char temp = powers[i];
+		int level = temp - '0';
+		targetplayer->client->ps.fd.forcePowerLevel[i] = level;
+		if(level > 0)
+			targetplayer->client->ps.fd.forcePowersKnown |= (1 << i);
 	}
-	}
-	q.free_result();
+	return;
+
 	return;
 }
 /*
@@ -1588,61 +1269,40 @@ Saves the character information to the database
 */
 void SaveCharacter(gentity_t * targetplayer) 
 {
-	Database db(DATABASE_PATH);
-	Query q(db);
-	
+        Database db(DATABASE_PATH);
+        Query q(db);
+		std::string featString;
+		std::string skillString;
+		std::string forceString;
 
-	//Save feats
-	for(int i = 0; i < NUM_FEATS; i++)
-	{
-		if(targetplayer->client->featLevel[i])
-		{
-		//Has this feat already in the database
-		if(HasFeat(targetplayer->client->sess.characterID,i))
-		{
-			//Then update it in the database
-			q.execute(va("UPDATE feats set level='%i' WHERE charID='%i' AND featID='%i'",targetplayer->client->featLevel[i],targetplayer->client->sess.characterID,i));
-		}
-		else
-		{//We don't have the feat so we should add it
-			q.execute(va("INSERT INTO feats(charID,featID,level) VALUES('%i','%i','%i')",targetplayer->client->sess.characterID,i,targetplayer->client->featLevel[i]));
-		}
-		}
-		else if(HasFeat(targetplayer->client->sess.characterID,i) && targetplayer->client->featLevel[i])
-		{//Remove this feat, because they don't have this
-			q.execute(va("DELETE FROM feats WHERE charID='%i' AND featID='%i'",targetplayer->client->sess.characterID,i));
-		}
-	}
-	//Save skills
-	for(int j = 0; j < NUM_SKILLS; j++)
-	{
-		if(targetplayer->client->skillLevel[j])
-		{
-		if(HasSkill(targetplayer->client->sess.characterID,j))
-		{
-			q.execute(va("UPDATE skills set level='%i' WHERE charID='%i' AND skill='%i'",targetplayer->client->skillLevel[j],targetplayer->client->sess.characterID,j));
-		}
-		else
-		{
-			q.execute(va("INSERT INTO skills(charID,skill,level) VALUES('%i','%i','%i')",targetplayer->client->sess.characterID,j,targetplayer->client->skillLevel[j]));
-		}
-		}
-	}
-	//Save forcepowers
-	for(int k = 0; k < NUM_FORCE_POWERS; k++)
-	{
-		if(targetplayer->client->ps.fd.forcePowerLevel[k])
-		{
-		if(HasForcePower(targetplayer->client->sess.characterID,k))
-		{
-			q.execute(va("UPDATE forcepowers set level='%i' WHERE charID='%i' and forcepower='%i'",targetplayer->client->ps.fd.forcePowerLevel[k],targetplayer->client->sess.characterID,k));
-		}
-		else
-		{
-			q.execute(va("INSERT INTO forcepowers(charID,forcepower,level) VALUES('%i','%i','%i')",targetplayer->client->sess.characterID,k,targetplayer->client->ps.fd.forcePowerLevel[k]));
-		}
-		}
-	}
+        //Create feat string
+        for(int i = 0; i < NUM_FEATS; i++)
+        {
+		 char tempFeat[2];
+		 itoa(targetplayer->client->featLevel[i],tempFeat,10);
+		 featString.append(tempFeat);
+        }
+        //Create skill string
+        for(int j = 0; j < NUM_SKILLS; j++)
+        {
+		 char tempSkill[2];
+         itoa(targetplayer->client->skillLevel[j],tempSkill,10);
+		 skillString.append(tempSkill);
+        }
+        //Create force string
+        for(int k = 0; k < NUM_FORCE_POWERS-1; k++)
+        {
+		 char tempForce[2];
+         itoa(targetplayer->client->ps.fd.forcePowerLevel[k],tempForce,10);
+		 forceString.append(tempForce);
+        }
+      
+      //Update feats in database
+		q.execute(va("UPDATE characters set feats='%s' WHERE ID='%i'",featString.c_str(),targetplayer->client->sess.characterID));
+      //Update skills in database
+      q.execute(va("UPDATE characters set skills='%s' WHERE ID='%i'",skillString.c_str(),targetplayer->client->sess.characterID));
+      //Update force in database
+      q.execute(va("UPDATE characters set force='%s' WHERE ID='%i'",forceString.c_str(),targetplayer->client->sess.characterID));
 
-	return;
+        return;
 }

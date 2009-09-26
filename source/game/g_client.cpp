@@ -3763,6 +3763,7 @@ void ClientSpawn(gentity_t *ent) {
 	int					savedSiegeIndex = 0;
 	//[ExpSys]
 	int					savedSkill[NUM_SKILLS];
+	int					savedFeat[NUM_FEATS];
 	//[/ExpSys]
 	//[DodgeSys]
 	int					savedDodgeMax;
@@ -4108,6 +4109,10 @@ void ClientSpawn(gentity_t *ent) {
 	{
 		savedSkill[i] = client->skillLevel[i];
 	}
+	for(i = 0; i < NUM_FEATS; i++)
+	{
+		savedFeat[i] = client->featLevel[i];
+	}
 	//[/ExpSys]
 
 	//[DodgeSys]
@@ -4199,6 +4204,10 @@ void ClientSpawn(gentity_t *ent) {
 	for(i = 0; i < NUM_SKILLS; i++)
 	{
 		client->skillLevel[i] = savedSkill[i];
+	}
+		for(i = 0; i < NUM_FEATS; i++)
+	{
+		client->featLevel[i] = savedFeat[i];
 	}
 	//[/ExpSys]
 

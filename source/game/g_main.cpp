@@ -558,6 +558,7 @@ vmCvar_t	g_autoKickTKSpammers;
 vmCvar_t	g_autoBanTKSpammers;
 //[/AdminCommands]
 
+
 #ifdef DEBUG_SABER_BOX
 vmCvar_t	g_saberDebugBox;
 #endif
