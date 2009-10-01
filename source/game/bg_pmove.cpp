@@ -2384,7 +2384,8 @@ int NumberOfWeapons(void)
 		return numWeaps;
 }
 
-int JumpHeightDeduction(void)
+//Commenting out to see if it helps the 'jump' issue. -Holmes
+/*int JumpHeightDeduction(void)
 {
 	int deduction=0,i;
 	if(!NumberOfWeapons())
@@ -2395,10 +2396,10 @@ int JumpHeightDeduction(void)
 		return 200;
 	for(i=0;i<NumberOfWeapons();i++)
 	{
-		deduction+=forceJumpHeight[pm->ps->fd.forcePowerLevel[FP_LEVITATION]]/10;
+		deduction+=forceJumpHeight[pm->ps->fd.forcePowerLevel[FP_LEVITATION]]/10; 
 	}
 	return deduction;
-}
+}*/
 
 /*
 =============
@@ -2588,7 +2589,7 @@ static qboolean PM_CheckJump( void )
 				//check for max force jump level and cap off & cut z vel
 				if ( ( curHeight<=forceJumpHeight[0] ||//still below minimum jump height
 						(pm->ps->fd.forcePower&&pm->cmd.upmove>=10) ) &&////still have force power available and still trying to jump up 
-						curHeight < forceJumpHeight[pm->ps->fd.forcePowerLevel[FP_LEVITATION]]-JumpHeightDeduction() &&//[Weight]
+						curHeight < forceJumpHeight[pm->ps->fd.forcePowerLevel[FP_LEVITATION]]/*-JumpHeightDeduction()*/ &&//[Weight] -Holmes edit, commented out JumpHeightDeduction temporarily to see if it fixes the compiler error.
 					pm->ps->fd.forceJumpZStart)//still below maximum jump height
 				{//can still go up
 					if ( curHeight > forceJumpHeight[0] )

@@ -1,8 +1,8 @@
 #include "g_weapons.h"
 
 const int ROCKET_VELOCITY = 1300; 
-const int ROCKET_DAMAGE = 800;
-const int ROCKET_SPLASH_DAMAGE = 250;
+const int ROCKET_DAMAGE = 300; //Original 800
+const int ROCKET_SPLASH_DAMAGE = 50; //Original 250
 const int ROCKET_SPLASH_RADIUS = 210;
 const int ROCKET_SIZE = 3;
 const int ROCKET_ALT_THINK_TIME = 100;

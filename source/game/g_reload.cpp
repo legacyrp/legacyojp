@@ -18,7 +18,7 @@ int ClipSize(int ammo,gentity_t *ent)
 				return 60;
 			if(tuskenLevel == FORCE_LEVEL_3)
 				return 70;*/
-			return 5; // Original: 10
+			return 10; // Original: 10
 		}
 	case AMMO_BLASTER:
 		return 51; //Original: 21
@@ -135,11 +135,11 @@ int ReloadTime(gentity_t *ent)
 	case WP_BOWCASTER:
 		return 5000; //Orig: 5000
 	case WP_BLASTER:
-		return 1000; //Orig: 3000
+		return 2000; //Orig: 3000
 	case WP_BRYAR_PISTOL:
 		return 500; //Orig: 3000
 	case WP_TUSKEN_RIFLE:
-		return 5000; //Orig: 10000
+		return 3000; //Orig: 10000
 	}
 	/*
 	if(ent->client->ps.weapon == WP_FLECHETTE)
