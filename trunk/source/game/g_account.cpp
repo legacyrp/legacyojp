@@ -411,9 +411,67 @@ void LoadCharacter(gentity_t * targetplayer)
 {
 	LoadSkills(targetplayer);
 	LoadForcePowers(targetplayer);
+	LoadFeats(targetplayer);
+
+	
+	//Create new power string
+	std::string newForceString;
+	newForceString.append(va("%i-%i-",FORCE_MASTERY_JEDI_KNIGHT,FORCE_LIGHTSIDE));
+	int i;
+	for(i = 0; i < NUM_FORCE_POWERS; i++)
+	{
+	char tempForce[2];
+    itoa(targetplayer->client->ps.fd.forcePowerLevel[i],tempForce,10);
+	newForceString.append(tempForce);
+	}
+	for(i = 0; i < NUM_SKILLS; i++)
+	{
+	char tempSkill[2];
+    itoa(targetplayer->client->skillLevel[i],tempSkill,10);
+	newForceString.append(tempSkill);
+	}
+	for(i = 0; i < NUM_FORCE_POWERS; i++)
+	{
+	char tempFeat[2];
+    itoa(targetplayer->client->featLevel[i],tempFeat,10);
+	newForceString.append(tempFeat);
+	}
+	trap_SendServerCommand( targetplayer->client->ps.clientNum, va("forcechanged x %s\n", newForceString.c_str()));
+	
 	DetermineDodgeMax(targetplayer);
 	return;
 }
+/*
+=================
+
+LoadFeats
+
+Loads the character feats
+
+=================
+*/
+void LoadFeats(gentity_t * targetplayer)
+{
+	Database db(DATABASE_PATH);
+
+	if (!db.Connected())
+	{
+		G_Printf("Database not connected, %s\n",DATABASE_PATH);
+		return;
+	}
+	Query q(db);
+	std::string feats = q.get_string(va("SELECT feats FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
+	int size = (feats.size() < NUM_FEATS) ? feats.size() : NUM_FEATS;
+	for(int i = 0; i < size; i++)
+	{
+		char temp = feats[i];
+		int level = temp - '0';
+		targetplayer->client->featLevel[i] = level;
+	}
+	return;
+}
+
+
 /*
 =================
 
@@ -434,7 +492,8 @@ void LoadSkills(gentity_t * targetplayer)
 	}
 	Query q(db);
 	std::string skills = q.get_string(va("SELECT skills FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
-	for(int i = 0; i < NUM_SKILLS; i++)
+	int size = (skills.size() < NUM_SKILLS) ? skills.size() : NUM_SKILLS;
+	for(int i = 0; i < size; i++)
 	{
 		char temp = skills[i];
 		int level = temp - '0';
@@ -464,7 +523,8 @@ void LoadForcePowers(gentity_t * targetplayer)
 	}
 	Query q(db);
 	std::string powers = q.get_string(va("SELECT force FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
-	for(int i = 0; i < NUM_FORCE_POWERS; i++)
+	int size = (powers.size() < NUM_FORCE_POWERS) ? powers.size() : NUM_FORCE_POWERS;
+	for(int i = 0; i < size; i++)
 	{
 		char temp = powers[i];
 		int level = temp - '0';
@@ -472,8 +532,6 @@ void LoadForcePowers(gentity_t * targetplayer)
 		if(level > 0)
 			targetplayer->client->ps.fd.forcePowersKnown |= (1 << i);
 	}
-	return;
-
 	return;
 }
 /*
