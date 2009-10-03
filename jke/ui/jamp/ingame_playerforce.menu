@@ -1379,10 +1379,10 @@
 			decoration
 		}
 	
-		// Force lift assign
+		// Force heal assign
 		itemDef 
 		{
-			name					setfp_lift
+			name					setfp_heal
 			group					lightpowers
 			style					0	
 			ownerdraw				UI_FORCE_RANK_HEAL
