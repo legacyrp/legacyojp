@@ -4235,7 +4235,7 @@ void ClientSpawn(gentity_t *ent) {
 
 	client->ps.duelIndex = ENTITYNUM_NONE;
 
-	//spawn with 100
+	//spawn with 10
 	client->ps.jetpackFuel = JETPACK_MAXFUEL;
 	client->ps.cloakFuel = 100;
 
@@ -4808,7 +4808,7 @@ void ClientSpawn(gentity_t *ent) {
 		//[DualPistols]
 		if(client->skillLevel[SK_PISTOL] >= FORCE_LEVEL_3 && ent->client->ps.weapon == WP_BRYAR_PISTOL)
 		{
-			//ent->client->ps.eFlags |= EF_DUAL_WEAPONS;
+			ent->client->ps.eFlags |= EF_DUAL_WEAPONS;
 		}
 		//[/DualPistols]
 	}

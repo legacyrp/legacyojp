@@ -844,7 +844,7 @@
 			forecolor				1 0.2 0.2 1
 			border					0
 			bordercolor				0 0 0 0
-			descText				"Menu desc about tusken, add mah to string file!"
+			descText				"Grants user an old powerful tusken rifle with a single shot clip"
 			visible					1 
 			action 
 			{ 
@@ -900,7 +900,7 @@
 			forecolor				1 0.2 0.2 1
 			border					0
 			bordercolor				0 0 0 0
-			descText				"Menu desc about grenade, add mah to string file!"
+			descText				"Allows user access to grenades"
 			visible					1 
 			action 
 			{ 
@@ -956,7 +956,7 @@
 			forecolor				1 0.2 0.2 1
 			border					0
 			bordercolor				0 0 0 0
-			descText				"Menu desc about emp grenade, add mah to string file!"
+			descText				"Gives user a grenade that causes an EMP to drain ammo"
 			visible					1 
 			action 
 			{ 
@@ -1012,7 +1012,7 @@
 			forecolor				1 0.2 0.2 1
 			border					0
 			bordercolor				0 0 0 0
-			descText				"Menu desc about smoke grenade, add mah to string file!"
+			descText				"Gives user a grenade that forms a smokescreen"
 			visible					1 
 			action 
 			{ 
@@ -1068,7 +1068,7 @@
 			forecolor				1 0.2 0.2 1
 			border					0
 			bordercolor				0 0 0 0
-			descText				"Menu desc about flash grenade, add mah to string file!"
+			descText				"Gives the user a grenade the blinds enemies"
 			visible					1 
 			action 
 			{ 
