@@ -3960,8 +3960,8 @@ void SetMoverState( gentity_t *ent, moverState_t moverState, int time );
 //[/AREAPORTALFIX]
 
 //[ExpSys]
-const int JETPACK_DEFUEL_RATE = 300; //approx. 30 seconds of idle use from a fully charged fuel amt
-const int JETPACK_REFUEL_RATE = 200;
+const int JETPACK_DEFUEL_RATE = 400; //approx. 30 seconds of idle use from a fully charged fuel amt issue 15 original 300
+const int JETPACK_REFUEL_RATE = 500; //issue 15 original 200
 //[/ExpSys]
 
 void G_RunFrame( int levelTime ) {
@@ -4368,7 +4368,7 @@ void G_RunFrame( int levelTime ) {
 					//[JetpackSys]
 					if (ent->client->pers.cmd.forwardmove || ent->client->pers.cmd.upmove || ent->client->pers.cmd.rightmove)
 					{ //only use fuel when actually boosting.
-						ent->client->ps.jetpackFuel -= 4;
+						ent->client->ps.jetpackFuel -= 2; //issue 15 Original 4
 					}
 					//[/JetpackSys]
 					

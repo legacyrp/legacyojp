@@ -1324,7 +1324,7 @@
 			decoration
 		}
 	
-		// Force Mind Trick assign
+		// Force lift assign
 		itemDef 
 		{
 			name					setfp_lift
@@ -1342,6 +1342,61 @@
 			border					0
 			bordercolor				0 0 0 0
 			descText				"Description of Force Lift"
+			visible					1 
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+			}
+
+			mouseenter 
+			{ 
+				setitemcolor	setfp_lift forecolor 0.75 0.75 1 1
+			}
+			mouseexit 
+			{ 
+				setitemcolor	setfp_lift forecolor  0.5 0.5 1 1
+			}
+		}
+		// Force force heal title
+		itemDef 
+		{
+			name					setfp_heal
+			group					lightpowers
+			style					0	
+			text					"Force Heal:"
+			rect					270 135 110 15
+			textalign				ITEM_ALIGN_LEFT
+			textalignx				0
+			textaligny				0
+			font					4
+			textscale				1
+			forecolor				0.5 0.5 1 1
+			outlinecolor			1 .5 .5 .5
+			backcolor				0 0 0 0
+			border					0
+			bordercolor				0 0 0 0
+			visible					1 
+			decoration
+		}
+	
+		// Force lift assign
+		itemDef 
+		{
+			name					setfp_lift
+			group					lightpowers
+			style					0	
+			ownerdraw				UI_FORCE_RANK_HEAL
+			rect					270 135 175 15
+			textalign				ITEM_ALIGN_LEFT		
+			textalignx				115
+			textaligny				-5
+			textscale				.9
+			outlinecolor			1 .5 .5 .5
+			backcolor				0 0 0 0
+			forecolor				0.5 0.5 1 1
+			border					0
+			bordercolor				0 0 0 0
+			descText				"Use the force to heal wounds"
 			visible					1 
 			action 
 			{ 

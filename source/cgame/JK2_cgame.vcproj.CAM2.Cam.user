@@ -37,7 +37,7 @@
 			Name="Final|Win32"
 			>
 			<DebugSettings
-				Command=""
+				Command="C:\Program Files\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData\jamp.exe"
 				WorkingDirectory=""
 				CommandArguments=""
 				Attach="false"
@@ -65,9 +65,9 @@
 			Name="Debug|Win32"
 			>
 			<DebugSettings
-				Command=""
-				WorkingDirectory=""
-				CommandArguments=""
+				Command="C:\Program Files\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData\jamp.exe"
+				WorkingDirectory="../.."
+				CommandArguments="+set fs_cdpath &quot;C:\Program Files\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData\&quot; +set fs_dirbeforepak 1 +set fs_game &quot;jke&quot;"
 				Attach="false"
 				DebuggerType="3"
 				Remote="1"
@@ -78,7 +78,7 @@
 				SQLDebugging=""
 				Environment=""
 				EnvironmentMerge="true"
-				DebuggerFlavor=""
+				DebuggerFlavor="0"
 				MPIRunCommand=""
 				MPIRunArguments=""
 				MPIRunWorkingDirectory=""

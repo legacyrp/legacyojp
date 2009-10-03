@@ -7192,7 +7192,7 @@ void CG_DrawFlagStatus()
 }
 
 //draw meter showing jetpack fuel when it's not full
-#define JPFUELBAR_H			JETPACK_MAXFUEL
+#define JPFUELBAR_H			60 //was JETPACK_MAXFUEL
 #define JPFUELBAR_W			20.0f
 #define JPFUELBAR_X			(SCREEN_WIDTH-JPFUELBAR_W-8.0f)
 //[NewHud]
@@ -7241,7 +7241,7 @@ void CG_DrawJetpackFuel(void)
 	CG_DrawRect(x, y, JPFUELBAR_W, JPFUELBAR_H, 1.0f, colorTable[CT_BLACK]);
 
 	//now draw the part to show how much health there is in the color specified
-	CG_FillRect(x+1.0f, y+1.0f+(JPFUELBAR_H-percent), JPFUELBAR_W-1.0f, JPFUELBAR_H-1.0f-(JPFUELBAR_H-percent), aColor);
+	CG_FillRect(x+1.0f, (y+1.0f+(JPFUELBAR_H-percent)), (JPFUELBAR_W-1.0f), (JPFUELBAR_H-1.0f-(JPFUELBAR_H-percent)), aColor);
 
 	//then draw the other part greyed out
 	CG_FillRect(x+1.0f, y+1.0f, JPFUELBAR_W-1.0f, JPFUELBAR_H-percent, cColor);
