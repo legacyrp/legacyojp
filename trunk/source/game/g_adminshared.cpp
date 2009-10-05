@@ -695,7 +695,6 @@ int M_HandlePassThroughFuncs(gentity_t * ent, char * cmd)
 			}
 
 			if (M_isAdmin(ent)){
-				if ( g_mAdminCommands.integer & (1 << passthroughfuncs[i].AllowedCommands)){
 					// Check if any paramaters have been give. If not then print the usage:
 					if( trap_Argc() < passthroughfuncs[i].NumOfArgs ){
 
@@ -707,13 +706,7 @@ int M_HandlePassThroughFuncs(gentity_t * ent, char * cmd)
 						trap_SendConsoleCommand( EXEC_APPEND, va("%s %s", passthroughfuncs[i].servercommand, ConcatArgs(1)) );
 						return 0;
 					}
-				}
-				else{
-					trap_SendServerCommand( ent->client->ps.clientNum, va("print \"Command: ^1%s^7, has been disabled by the server administrator.\n\"", passthroughfuncs[i].clientcommand ) );
-					return 0;			
-				}
 			}else if (M_isKnight(ent)){
-				if ( g_mKnightCommands.integer & (1 << passthroughfuncs[i].AllowedCommands)){
 					// Check if any paramaters have been give. If not then print the usage:
 					if( trap_Argc() < passthroughfuncs[i].NumOfArgs ){
 						trap_SendServerCommand( ent->client->ps.clientNum, va("print \"Usage: %s %s\n\"", passthroughfuncs[i].clientcommand, passthroughfuncs[i].usage) );
@@ -724,11 +717,6 @@ int M_HandlePassThroughFuncs(gentity_t * ent, char * cmd)
 						trap_SendConsoleCommand( EXEC_APPEND, va("%s %s", passthroughfuncs[i].servercommand, ConcatArgs(1)) );
 						return 0;
 					}
-				}
-				else{
-					trap_SendServerCommand( ent->client->ps.clientNum, va("print \"Command: ^1%s^7, has been disabled by the server administrator.\n\"", passthroughfuncs[i].clientcommand ) );
-					return 0;			
-				}
 			}
 		}
 	}
