@@ -3962,6 +3962,10 @@ void ClientCommand( int clientNum ) {
 		Cmd_CreateCharacter_F (ent);
 		return;
 	}
+	if (Q_stricmp (cmd, "grantAdmin") == 0) {
+		Cmd_GrantAdmin_F (ent);
+		return;
+	}
 	/*
 	if (Q_stricmp (cmd, "addFeat") == 0) {
 		Cmd_AddFeat_F (ent);
@@ -3991,12 +3995,7 @@ void ClientCommand( int clientNum ) {
 	}
 	// MJN - Status
 	if ( Q_stricmp (cmd, "amstatus") == 0 ){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_STATUS)){
-			M_Cmd_Status_f(ent);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_STATUS)){
-			M_Cmd_Status_f(ent);
-		}
+		M_Cmd_Status_f(ent);
 		return;
 	}
 	// MJN - Ignore
@@ -4004,6 +4003,7 @@ void ClientCommand( int clientNum ) {
 		M_Cmd_Ignore_f ( ent );
 		return;
 	}
+	/*
 	if (Q_stricmp (cmd, "amlogin") == 0 && g_mAllowAdminLogin.integer) {
 		M_Cmd_Login_f (ent);
 		return;
@@ -4012,283 +4012,164 @@ void ClientCommand( int clientNum ) {
 		M_Cmd_Logout_f (ent);
 		return;
 	}
+	*/
 	if (Q_stricmp (cmd, "sleepgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_SLEEP)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_SLEEP)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "wakegun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_SLEEP)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_SLEEP)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "empowergun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_EMPOWER)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_EMPOWER)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "unempowergun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_EMPOWER)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_EMPOWER)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "protectgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_PROTECT)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_PROTECT)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "unprotectgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_PROTECT)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_PROTECT)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "terminatorgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_TERMINATOR)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_TERMINATOR)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "unterminatorgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_TERMINATOR)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_TERMINATOR)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "slapgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_SLAP)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_SLAP)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "origingun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_ORIGIN)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_ORIGIN)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "allowvotegun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_ALLOWVOTE)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_ALLOWVOTE)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "denyvotegun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_ALLOWVOTE)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_ALLOWVOTE)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "statusgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_STATUS)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_STATUS)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "showmotdgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_SHOWMOTD)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_SHOWMOTD)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "npcgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_NPC)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_NPC)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "notargetgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_NOTARGET)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_NOTARGET)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "kickgun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_KICK)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_KICK)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "kickbangun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_KICKBAN)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_KICKBAN)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "warngun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_WARN)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_WARN)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if (Q_stricmp (cmd, "forgivegun") == 0){
-		if ( g_mAdminCommands.integer & (1 << ADMIN_WARN)){
 			M_Cmd_AdminGun_f(ent, cmd);
-		}
-		else if ( g_mKnightCommands.integer & (1 << ADMIN_WARN)){
-			M_Cmd_AdminGun_f(ent, cmd);
-		}
 		return;
 	}
 	if( Q_stricmp (cmd, "emsit") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SIT) )
 			G_SetTauntAnim( ent, 5);
 		return;
 	}
 	if( Q_stricmp (cmd, "emsit2") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SIT2) )
 			G_SetTauntAnim( ent, 6);
 		return;
 	}
 	if( Q_stricmp (cmd, "emsit3") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SIT3) )
 			G_SetTauntAnim( ent, 7);
 		return;
 	}
 	if( Q_stricmp (cmd, "emwait") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_WAIT) )
 			G_SetTauntAnim( ent, 8);
 		return;
 	}
 	if( Q_stricmp (cmd, "emsurrender") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SURRENDER) )
 			G_SetTauntAnim( ent, 9);
 		return;
 	}
 	if( Q_stricmp (cmd, "emsorrow") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SORROW) )
 			G_SetTauntAnim( ent, 10);
 		return;
 	}
 	if( Q_stricmp (cmd, "emhonor") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_HONOR) )
 			G_SetTauntAnim( ent, 11);
 		return;
 	}
 	if( Q_stricmp (cmd, "emnod") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_NOD) )
 			G_SetTauntAnim( ent, 12);
 		return;
 	}
 	if( Q_stricmp (cmd, "emshake") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SHAKE) )
 			G_SetTauntAnim( ent, 13);
 		return;
 	}
 	if( Q_stricmp (cmd, "empraise") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_PRAISE) )
 			G_SetTauntAnim( ent, 14);
 		return;
 	}
 	if( Q_stricmp (cmd, "emattenhut") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_HUT) )
 			G_SetTauntAnim( ent, 15);
 		return;
 	}
 	if( Q_stricmp (cmd, "emcrossarms") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_CROSSARMS) )
 			G_SetTauntAnim( ent, 16);
 		return;
 	}
 	if( Q_stricmp (cmd, "emalora") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_ALORA) )
 			G_SetTauntAnim( ent, 17);
 		return;
 	}
 	if( Q_stricmp (cmd, "emthrow") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_THROW) )
 			G_SetTauntAnim( ent, 18);
 		return;
 	}
 	if( Q_stricmp (cmd, "emtavion") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_TAVION) )
 			G_SetTauntAnim( ent, 19);
 		return;
 	}
 	if( Q_stricmp (cmd, "empoint") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_POINT) )
 			G_SetTauntAnim( ent, 20);
 		return;
 	}
 	if( Q_stricmp (cmd, "emcomeon") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_COMEON) )
 			G_SetTauntAnim( ent, 21);
 		return;
 	}
 	if( Q_stricmp (cmd, "emsit4") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SIT4) )
 			G_SetTauntAnim( ent, 22);
 		return;
 	}
 	if( Q_stricmp (cmd, "emsit5") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SIT5) )
 			G_SetTauntAnim( ent, 23);
 		return;
 	}
 	if( Q_stricmp (cmd, "emsit6") == 0) {
-		if( g_mEmotes.integer & (1 << EMOTE_SIT6) )
 			G_SetTauntAnim( ent, 24);
 		return;
 	}

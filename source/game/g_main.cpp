@@ -1110,23 +1110,22 @@ static cvarTable_t		gameCvarTable[] = {
 
 	//*************************MJN***********************************************************************
 	// Allow certain Admin Commands
-	{ &g_mAdminCommands, "g_mAdminCommands", "67108863", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
+	//{ &g_mAdminCommands, "g_mAdminCommands", "67108863", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	// Allow certain Knight Commands
-	{ &g_mKnightCommands, "g_mKnightCommands", "8523171", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
+	//{ &g_mKnightCommands, "g_mKnightCommands", "8523171", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	// Allow certain Emotes - Default is all enabled.
-	{ &g_mEmotes, "g_mEmotes", "1048575", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
-
+	//{ &g_mEmotes, "g_mEmotes", "1048575", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	// Duel Stats
 	{ &g_mDuelTimer, "g_mDuelTimer", "0", CVAR_ARCHIVE, 0, qtrue },
 	{ &g_mDuelTimerWait, "g_mDuelTimerWait", "10000", CVAR_ARCHIVE, 0, qtrue },
 	// Private Chat mode
 	{ &g_mPSayMode, "g_mPSayMode", "3", CVAR_ARCHIVE, 0, qtrue },
-	{ &g_mAllowAdminLogin, "g_mAllowAdminLogin", "1", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
-	{ &g_mAdminLoginControl, "g_mAdminLoginControl", "6", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
+	//{ &g_mAllowAdminLogin, "g_mAllowAdminLogin", "1", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
+	//{ &g_mAdminLoginControl, "g_mAdminLoginControl", "6", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	// Log in/Not Logged in Messages
-	{ &g_mLoggedInAdmin, "g_mLoggedInAdmin", "You are now logged in as an Admin.\n", CVAR_ARCHIVE, 0, qfalse },
-	{ &g_mNotLoggedInAdmin, "g_mNotLoggedInAdmin", "You are not logged in as an Admin!\n", CVAR_ARCHIVE, 0, qfalse },
-	{ &g_mLoggedInKnight, "g_mLoggedInKnight", "You are now logged in as a Knight.\n", CVAR_ARCHIVE, 0, qfalse },
+	//{ &g_mLoggedInAdmin, "g_mLoggedInAdmin", "You are now logged in as an Admin.\n", CVAR_ARCHIVE, 0, qfalse },
+	//{ &g_mNotLoggedInAdmin, "g_mNotLoggedInAdmin", "You are not logged in as an Admin!\n", CVAR_ARCHIVE, 0, qfalse },
+	//{ &g_mLoggedInKnight, "g_mLoggedInKnight", "You are now logged in as a Knight.\n", CVAR_ARCHIVE, 0, qfalse },
 	{ &g_mAllowEmotes, "g_mAllowEmotes", "4", CVAR_ARCHIVE, 0, qtrue },
 
 

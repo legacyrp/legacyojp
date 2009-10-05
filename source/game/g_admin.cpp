@@ -1000,17 +1000,13 @@ void M_Cmd_ModInfo_f (gentity_t * ent)
 		if( M_isAdmin(ent) ){
 			trap_SendServerCommand( ent->client->ps.clientNum, va( "print \"^4%s ^7by ^4%s\n\n ^4%s Access^7:\n\"", GAMEVERSION, AUTHOR, g_mRankName.string) );
 			for( i = 0; i < numPassThroughElements; i++ ){
-				if ( g_mAdminCommands.integer & (1 << passthroughfuncs[i].AllowedCommands)){
 					trap_SendServerCommand( ent->client->ps.clientNum, va("print \"%s \"\n\n", passthroughfuncs[i].clientcommand ) );
-				}
 			}
 		}
 		else if( M_isKnight(ent) ){
 			trap_SendServerCommand( ent->client->ps.clientNum, va( "print \"^4%s ^7by ^4%s\n\n ^4%s Access^7:\n\"", GAMEVERSION, AUTHOR, g_mRankName2.string ) );
 			for( j = 0; j < numPassThroughElements; j++ ){
-				if ( g_mKnightCommands.integer & (1 << passthroughfuncs[j].AllowedCommands)){
 					trap_SendServerCommand( ent->client->ps.clientNum, va("print \"%s \"\n\n", passthroughfuncs[j].clientcommand ) );
-				}
 			}
 		}
 
@@ -1025,9 +1021,7 @@ void M_Cmd_ModInfo_f (gentity_t * ent)
 		// Show allowed Emotes
 		trap_SendServerCommand( ent->client->ps.clientNum, va( "print \"^4Emote Access^7:\n\"" ) );
 		for( k = 0; k < numPassThroughEmotes; k++ ){
-			if ( g_mEmotes.integer & (1 << passthroughemotes[k].AllowedEmotes)){
 				trap_SendServerCommand( ent->client->ps.clientNum, va("print \"%s \"\n\n", passthroughemotes[k].emotecommand ) );
-			}
 		}
 	}
 	else{
@@ -1051,16 +1045,12 @@ void M_Cmd_ModHelp_f (gentity_t * ent)
 		if( M_isAdmin(ent) ){
 			trap_SendServerCommand( ent->client->ps.clientNum, va( "print \"^4%s ^7by ^4%s\n\n ^4%s Command Help^7:\n\"", GAMEVERSION, AUTHOR, g_mRankName.string ) );	
 				for( i = 0; i < numPassThroughElements; i++ ){
-					if ( g_mAdminCommands.integer & (1 << passthroughfuncs[i].AllowedCommands)){
 						trap_SendServerCommand( ent->client->ps.clientNum, va("print \"%s - %s\n\"", passthroughfuncs[i].clientcommand, passthroughfuncs[i].helpinfo ) );
-					}
 				}
 		}else if( M_isKnight(ent) ){
 			trap_SendServerCommand( ent->client->ps.clientNum, va( "print \"^4%s ^7by ^4%s\n\n ^4%s Command Help^7:\n\"", GAMEVERSION, AUTHOR, g_mRankName2.string ) );
 				for( j = 0; j < numPassThroughElements; j++ ){
-					if ( g_mKnightCommands.integer & (1 << passthroughfuncs[j].AllowedCommands)){
 						trap_SendServerCommand( ent->client->ps.clientNum, va("print \"%s - %s\n\"", passthroughfuncs[j].clientcommand, passthroughfuncs[j].helpinfo ) );
-					}
 				}
 		}
 		
@@ -1195,7 +1185,7 @@ M_Cmd_Login_f - MJN
 
 =================
 */
-
+/*
 void M_Cmd_Login_f (gentity_t * ent)
 {
 	
@@ -1330,6 +1320,7 @@ void M_Cmd_Login_f (gentity_t * ent)
 		}
 	}
 }
+*/
 /*
 =================
 
@@ -1337,6 +1328,7 @@ M_Cmd_Logout_f - MJN
 
 =================
 */
+/*
 void M_Cmd_Logout_f (gentity_t * ent)
 {
 	int clientid;
@@ -1362,7 +1354,7 @@ void M_Cmd_Logout_f (gentity_t * ent)
 		return;
 	}
 }
-
+*/
 /*
 =================
 

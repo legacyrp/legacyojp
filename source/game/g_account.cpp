@@ -1364,3 +1364,33 @@ void SaveCharacter(gentity_t * targetplayer)
 
         return;
 }
+
+void Cmd_GrantAdmin_F( gentity_t * ent )
+{
+	Database db(DATABASE_PATH);
+	Query q(db);
+	char accountName[MAX_TOKEN_CHARS];
+
+	if(ent->client->sess.loggedinadmin == qfalse)
+	{
+		trap_SendServerCommand( ent->client->ps.clientNum, "print \"You are not allowed to use this command.\n\"");
+		return;
+	}
+	if( trap_Argc() < 2 ){
+		trap_SendServerCommand( ent->client->ps.clientNum, "print \"Usage: amGrantAdmin <accountname>\n\"");
+		return;
+	}
+	trap_Argv( 1, accountName, MAX_STRING_CHARS );
+	
+	int valid = q.get_num(va("SELECT * FROM users WHERE name='%s'",accountName));
+	if(!valid)
+	{
+		trap_SendServerCommand( ent->client->ps.clientNum, "print \"This user does not exist\n\"");
+		return;
+	}
+
+	q.execute(va("UPDATE users set admin='1' WHERE name='%s'",accountName));
+
+	trap_SendServerCommand( ent->client->ps.clientNum, "print \"Admin granted\n\"");
+	return;
+}
