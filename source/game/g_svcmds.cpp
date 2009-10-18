@@ -6,6 +6,7 @@
 #include "g_local.h"
 #include "g_admin.h"
 #include "g_adminshared.h"
+#include "g_account.h"
 
 /*
 ==============================================================================
@@ -721,7 +722,10 @@ qboolean	ConsoleCommand( void ) {
 			targetString, broadcastString, everyoneString);
 		return qtrue;
 	}
-
+	if ( Q_stricmp (cmd, "grantAdmin") == 0 ) {
+		Cmd_SVGrantAdmin_F();
+		return qtrue;
+	}
 	if ( Q_stricmp (cmd, "entitylist") == 0 ) {
 		Svcmd_EntityList_f();
 		return qtrue;

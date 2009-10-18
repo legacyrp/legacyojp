@@ -1377,7 +1377,7 @@ void Cmd_GrantAdmin_F( gentity_t * ent )
 		return;
 	}
 	if( trap_Argc() < 2 ){
-		trap_SendServerCommand( ent->client->ps.clientNum, "print \"Usage: amGrantAdmin <accountname>\n\"");
+		trap_SendServerCommand( ent->client->ps.clientNum, "print \"Usage: GrantAdmin <accountname>\n\"");
 		return;
 	}
 	trap_Argv( 1, accountName, MAX_STRING_CHARS );
@@ -1392,5 +1392,30 @@ void Cmd_GrantAdmin_F( gentity_t * ent )
 	q.execute(va("UPDATE users set admin='1' WHERE name='%s'",accountName));
 
 	trap_SendServerCommand( ent->client->ps.clientNum, "print \"Admin granted\n\"");
+	return;
+}
+
+void Cmd_SVGrantAdmin_F()
+{
+	Database db(DATABASE_PATH);
+	Query q(db);
+	char accountName[MAX_TOKEN_CHARS];
+
+	if( trap_Argc() < 2 ){
+		G_Printf("Usage: GrantAdmin <accountname>\n");
+		return;
+	}
+	trap_Argv( 1, accountName, MAX_STRING_CHARS );
+	
+	int valid = q.get_num(va("SELECT * FROM users WHERE name='%s'",accountName));
+	if(!valid)
+	{
+		G_Printf("This user does not exist\n");
+		return;
+	}
+
+	q.execute(va("UPDATE users set admin='1' WHERE name='%s'",accountName));
+
+	G_Printf("Admin granted\n");
 	return;
 }
