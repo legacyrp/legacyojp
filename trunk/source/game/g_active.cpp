@@ -2697,7 +2697,7 @@ void ClientThink_real( gentity_t *ent ) {
 	{
 		if (ent->client->invulnerableTimer <= level.time)
 		{
-			ent->client->ps.eFlags &= ~EF_INVULNERABLE;
+			//ent->client->ps.eFlags &= ~EF_INVULNERABLE;
 		}
 	}
 

@@ -4806,7 +4806,7 @@ void ClientSpawn(gentity_t *ent) {
 		client->ps.stats[STAT_HOLDABLE_ITEM] = 0;
 
 		//[DualPistols]
-		if(client->skillLevel[SK_PISTOL] >= FORCE_LEVEL_3 && ent->client->ps.weapon == WP_BRYAR_PISTOL)
+		if(client->skillLevel[SK_PISTOL] >= FORCE_LEVEL_3  && ent->client->ps.weapon == WP_BRYAR_PISTOL)
 		{
 			ent->client->ps.eFlags |= EF_DUAL_WEAPONS;
 		}

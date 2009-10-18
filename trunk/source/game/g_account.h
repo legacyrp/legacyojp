@@ -22,6 +22,7 @@ void Cmd_ListFeats_F(gentity_t * targetplayer);
 void Cmd_Grenade_F(gentity_t * targetplayer);
 void Cmd_CharacterInfo_F(gentity_t * targetplayer);
 void Cmd_GrantAdmin_F( gentity_t * ent );
+void Cmd_SVGrantAdmin_F();
 //--Feat Functions--
 void AddFeat(int charID, int featID, int level);
 void InsertFeat(int charID, int featID);

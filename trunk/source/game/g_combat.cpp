@@ -5023,6 +5023,12 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	float		hamt = 0;
 	float		shieldAbsorbed = 0;
 
+
+	if (targ && targ->client && (targ->client->ps.eFlags & EF_INVULNERABLE))
+		{
+				return;
+		}
+
 	if((mod == MOD_REPEATER_ALT || mod == MOD_REPEATER_ALT_SPLASH) && targ && targ->client)
 	{//Don't really like putting this here, move it later
 		G_DodgeDrain(targ,attacker,Q_irand(2,5));
@@ -5535,19 +5541,6 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		// check for godmode
 		if ( (targ->flags & FL_GODMODE) && targ->s.eType != ET_NPC ) {
 			return;
-		}
-
-		if (targ && targ->client && (targ->client->ps.eFlags & EF_INVULNERABLE) &&
-			attacker && attacker->client && targ != attacker)
-		{
-			if (targ->client->invulnerableTimer <= level.time)
-			{
-				targ->client->ps.eFlags &= ~EF_INVULNERABLE;
-			}
-			else
-			{
-				return;
-			}
 		}
 	}
 

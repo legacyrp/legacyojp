@@ -1893,8 +1893,8 @@ void G_Say( gentity_t *ent, gentity_t *target, int mode, const char *chatText ) 
 	switch ( mode ) {
 	default:
 	case SAY_ALL:
-		G_LogPrintf( "say: {%s} %s: %s\n", OJPRankString[ent->client->playerRank], ent->client->pers.netname, chatText );
-		Com_sprintf (name, sizeof(name), "%s%c%c"EC" {%s}: ", ent->client->pers.netname, Q_COLOR_ESCAPE, COLOR_WHITE,OJPRankString[ent->client->playerRank] );
+		G_LogPrintf( "say: %s: %s\n", ent->client->pers.netname, chatText );
+		Com_sprintf (name, sizeof(name), "%s%c%c"EC": ", ent->client->pers.netname, Q_COLOR_ESCAPE, COLOR_WHITE );
 		color = COLOR_GREEN;
 		break;
 	case SAY_TEAM:
