@@ -8,7 +8,7 @@ const int FLECHETTE_DAMAGE = 60;
 const int FLECHETTE_VELOCITY = 3800;
 const int FLECHETTE_ALT_VELOCITY = 4800;
 const int FLECHETTE_SIZE = 1;
-const int FLECHETTE_ALT_DAMAGE = 80;
+const int FLECHETTE_ALT_DAMAGE = 30; //80
 
 void WP_T21MainFire( gentity_t *ent, vec3_t dir )
 {

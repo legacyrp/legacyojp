@@ -278,12 +278,12 @@ weaponData_t weaponData[WP_NUM_WEAPONS] =
 	{	// WP_FLECHETTE
 //		"Golan Arms Flechette",	//	char	classname[32];		// Spawning name
 		AMMO_METAL_BOLTS,		//	int		ammoIndex;			// Index to proper ammo slot
-		5,						//	int		ammoLow;			// Count when ammo is low
-		1,						//	int		energyPerShot;		// Amount of energy used per shot
-		150,					//	int		fireTime;			// Amount of time between firings -- was 100000
+		15,						//	int		ammoLow;			// Count when ammo is low
+		10,						//	int		energyPerShot;		// Amount of energy used per shot
+		500,					//	int		fireTime;			// Amount of time between firings -- was 100000
 		8192,					//	int		range;				// Range of weapon
-		5,						//	int		altEnergyPerShot;	// Amount of energy used for alt-fire
-		2000,					//	int		altFireTime;		// Amount of time between alt-firings
+		15,						//	int		altEnergyPerShot;	// Amount of energy used for alt-fire
+		200,					//	int		altFireTime;		// Amount of time between alt-firings
 		8192,					//	int		altRange;			// Range of alt-fire
 		0,						//	int		chargeSubTime;		// ms interval for subtracting ammo during charge
 		0,						//	int		altChargeSubTime;	// above for secondary
@@ -479,18 +479,18 @@ ammoData_t ammoData[AMMO_MAX] =
 	{	// AMMO_THERMAL
 //		"",				//	char	icon[32];	// Name of ammo icon file
 		//[WeaponSys]
-		1				//	int		max;		// Max amount player can hold of ammo -- 1.3
+		3				//	int		max;		// Max amount player can hold of ammo -- 1.3
 		//10				//	int		max;		// Max amount player can hold of ammo
 		//[/WeaponSys]
 	},
 	{	// AMMO_TRIPMINE
 //		"",				//	char	icon[32];	// Name of ammo icon file
-		1000				//	int		max;		// Max amount player can hold of ammo -- 1.3
+		3				//	int		max;		// Max amount player can hold of ammo -- 1.3
 	},
 	{	// AMMO_DETPACK
 //		"",				//	char	icon[32];	// Name of ammo icon file
 		//[WeaponSys]
-		1				//	int		max;		// Max amount player can hold of ammo
+		3				//	int		max;		// Max amount player can hold of ammo
 		//10				//	int		max;		// Max amount player can hold of ammo -- 1.3
 		//[/WeaponSys]
 	}

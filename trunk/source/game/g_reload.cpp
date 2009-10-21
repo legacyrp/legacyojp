@@ -140,6 +140,8 @@ int ReloadTime(gentity_t *ent)
 		return 500; //Orig: 3000
 	case WP_TUSKEN_RIFLE:
 		return 3000; //Orig: 10000
+	case WP_Rocket_Launcher:
+		return 6000;
 	}
 	/*
 	if(ent->client->ps.weapon == WP_FLECHETTE)
