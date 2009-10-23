@@ -140,31 +140,9 @@ int ReloadTime(gentity_t *ent)
 		return 500; //Orig: 3000
 	case WP_TUSKEN_RIFLE:
 		return 3000; //Orig: 10000
-	case WP_Rocket_Launcher:
+	case WP_ROCKET_LAUNCHER:
 		return 6000;
 	}
-	/*
-	if(ent->client->ps.weapon == WP_FLECHETTE)
-		return 1000;
-	else if(ent->client->ps.weapon == WP_ROCKET_LAUNCHER)
-	{
-		return 3000;
-	}
-	else
-	{
-		if(SkillLevelForWeap(ent,ent->client->ps.weapon) == 3)
-		{
-			return 100;
-		}
-		else if (SkillLevelForWeap(ent,ent->client->ps.weapon) == 2)
-		{
-			return 200;
-		}
-		else if (SkillLevelForWeap(ent,ent->client->ps.weapon) == 1)
-		{
-			return 300;
-		}
-	}*/
 	return -1;
 }
 
