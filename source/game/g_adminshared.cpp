@@ -685,6 +685,12 @@ int M_HandlePassThroughFuncs(gentity_t * ent, char * cmd)
 	for( i = 0; i < numPassThroughElements; i++ ){
 		
 		if ( Q_stricmp(cmd, passthroughfuncs[i].clientcommand) == 0 ){// Found Admin Command
+			
+			if( Q_stricmp(cmd, "amtele") == 0) 
+			{
+				trap_SendConsoleCommand( EXEC_APPEND, va("%s %s", passthroughfuncs[i].servercommand, ConcatArgs(1)) );
+				return 0;
+			}
 
 			// First check for user access:
 			if( !M_isAdmin(ent) && !M_isKnight(ent)){
@@ -693,6 +699,7 @@ int M_HandlePassThroughFuncs(gentity_t * ent, char * cmd)
 				trap_SendServerCommand( ent->client->ps.clientNum, va ( "print \"%s\"", NotAdminWithNewLines ) );
 				return 0;
 			}
+			
 
 			if (M_isAdmin(ent)){
 					// Check if any paramaters have been give. If not then print the usage:
