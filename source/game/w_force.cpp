@@ -1282,11 +1282,20 @@ qboolean OJP_CounterForce(gentity_t *attacker, gentity_t *defender, int attackPo
 		if( defender->client->ps.saberAttackChainCount >=MISHAPLEVEL_LIGHT ) //Holmes, added
 			return qfalse;
 		
-	}
-	else if(abilityDef == 1) //Holmes- was >= 1, which conflicts with if abilityDef >=2.
-	//defender is slightly weaker than their attacker
-		if(defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
+		if( defender->client->ps.saberAttackChainCount >= MISHAPLEVEL_LIGHT ) //Holmes, added
 			return qfalse;
+		
+		if (defender->client->ps.stats[STAT_DODGE] <= 75) //Holmes, added
+			return qfalse;
+		
+	}
+	else if(abilityDef == 1){ //Holmes- was >= 1, which conflicts with if abilityDef >=2.
+	//defender is slightly weaker than their attacker
+	if(defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
+			return qfalse;
+	
+	if(defender->client->ps.stats[STAT_DODGE] <= 50) //Holmes, added
+		return qfalse;
 
 
  	if(PM_SaberInBrokenParry(defender->client->ps.saberMove))
@@ -1316,6 +1325,15 @@ qboolean OJP_CounterForce(gentity_t *attacker, gentity_t *defender, int attackPo
 	}
 	
 	return qtrue;
+	}
+	
+	else if(abilityDef <= 0) //Holmes, added
+	{//Ability/Absorb of defender is equal to the ability of the attacker
+		if(defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
+			return qfalse;}
+	
+	return qtrue;
+
 }
 
 

@@ -3976,14 +3976,14 @@ int OJP_SaberCanBlock(gentity_t *self, gentity_t *atk, qboolean checkBBoxBlock, 
 		return 0;
 	}
 
-	if(atk && atk->s.weapon == WP_TUSKEN_RIFLE)
-		return 0;
+	/*(if(atk && atk->s.weapon == WP_TUSKEN_RIFLE)  //Holmes edit
+		return 0;*/
 	if(atk && atk->s.eType == ET_MISSILE //is a missile
 		&& (atk->s.weapon == WP_ROCKET_LAUNCHER ||
 			atk->s.weapon == WP_THERMAL ||
 			atk->s.weapon == WP_GRENADE ||
 			atk->s.weapon == WP_DET_PACK ||
-			atk->s.weapon == WP_TUSKEN_RIFLE ||
+			/*atk->s.weapon == WP_TUSKEN_RIFLE ||*/
 			atk->methodOfDeath == MOD_REPEATER_ALT ||
 			atk->methodOfDeath == MOD_FLECHETTE_ALT_SPLASH ||
 			atk->methodOfDeath == MOD_CONC ||
