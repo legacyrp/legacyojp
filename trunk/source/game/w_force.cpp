@@ -1271,14 +1271,19 @@ qboolean OJP_CounterForce(gentity_t *attacker, gentity_t *defender, int attackPo
 	//defender's absorb ability is stronger than their attackPower ability, use that instead.
 		abilityDef = attacker->client->ps.fd.forcePowerLevel[attackPower] - defender->client->ps.fd.forcePowerLevel[FP_ABSORB];
 	
-	if(abilityDef >= 2)
+	if(abilityDef >= 3) //Holmes, added
+		return qfalse;
+	
+	else if(abilityDef == 2) //Was >=2
 	{//defender is largely weaker than the attacker (2 levels)
 		if(!WalkCheck(defender) || defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
 		//can't block much stronger Force power while running or in mid-air
 			return qfalse;
+		if( defender->client->ps.saberAttackChainCount >=MISHAPLEVEL_LIGHT ) //Holmes, added
+			return qfalse;
 		
 	}
-	else if(abilityDef >= 1)
+	else if(abilityDef == 1) //Holmes- was >= 1, which conflicts with if abilityDef >=2.
 	//defender is slightly weaker than their attacker
 		if(defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
 			return qfalse;
