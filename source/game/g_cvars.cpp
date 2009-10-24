@@ -1,6 +1,6 @@
 #include "g_local.h"
 // Help Info
-vmCvar_t	g_mHelpInfo;
+//vmCvar_t	g_mHelpInfo;
 // Admin Gun
 vmCvar_t	g_mAdminGun;
 // Allows rcon to give admin to anyone without pass
@@ -13,14 +13,14 @@ vmCvar_t	g_mAllowAdminLogin;
 // Allow secondary admins to login via password at connection
 vmCvar_t	g_mAdminLoginControl;
 // Allow certain Admin/Knight Commands
-vmCvar_t	g_mAdminCommands;
-vmCvar_t	g_mKnightCommands;
+//vmCvar_t	g_mAdminCommands;
+//vmCvar_t	g_mKnightCommands;
 // Allow certain Emotes
-vmCvar_t	g_mEmotes;
+//vmCvar_t	g_mEmotes;
 // Logged in/Not Logged in Messages
-vmCvar_t	g_mLoggedInAdmin;
-vmCvar_t	g_mNotLoggedInAdmin;
-vmCvar_t	g_mLoggedInKnight;
+//vmCvar_t	g_mLoggedInAdmin;
+//vmCvar_t	g_mNotLoggedInAdmin;
+//vmCvar_t	g_mLoggedInKnight;
 // Duel Stats
 vmCvar_t	g_mDuelStats;
 // Duel Timer

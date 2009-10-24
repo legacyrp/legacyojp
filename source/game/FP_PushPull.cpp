@@ -730,13 +730,10 @@ void ForceThrow( gentity_t *self, qboolean pull )
 
 						if(!BG_IsUsingHeavyWeap(&push_list[x]->client->ps) && !WalkCheck(push_list[x]) && push_list[x]->client->ps.fd.forcePowerLevel[FP_ABSORB] == FORCE_LEVEL_0)
 						{//Using a light weapon,Running,Don't have absorb
-							if(!InFront(push_list[x]->r.currentOrigin,self->r.currentOrigin,self->client->ps.viewangles,0.3f))
+							if(InFront(push_list[x]->r.currentOrigin,self->r.currentOrigin,self->client->ps.viewangles,0.3f))
 									doKnockdown=qtrue;
 									//G_Knockdown(push_list[x], self, pushDir, 300, qtrue);
 						}
-						else
-								doKnockdown=qtrue;
-								//G_Knockdown(push_list[x], self, pushDir, 300, qtrue);
 					}
 					}
 					else if(pull)
@@ -770,11 +767,9 @@ void ForceThrow( gentity_t *self, qboolean pull )
 						pushPowerMod *= 1;
 						if(!BG_IsUsingHeavyWeap(&push_list[x]->client->ps) && !WalkCheck(push_list[x]) && push_list[x]->client->ps.fd.forcePowerLevel[FP_ABSORB] == FORCE_LEVEL_0)
 						{//Using a light weapon,Running,Don't have absorb
-							if(!InFront(push_list[x]->r.currentOrigin,self->r.currentOrigin,self->client->ps.viewangles,0.3f))
+							if(InFront(push_list[x]->r.currentOrigin,self->r.currentOrigin,self->client->ps.viewangles,0.3f))
 								G_Knockdown(push_list[x], self, pushDir, 300, qtrue);
 						}
-						else
-							G_Knockdown(push_list[x], self, pushDir, 300, qtrue);
 					}
 					}
 
