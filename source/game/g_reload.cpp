@@ -8,7 +8,7 @@ int ClipSize(int ammo,gentity_t *ent)
 	case AMMO_THERMAL:
 	case AMMO_DETPACK:
 		case AMMO_TRIPMINE:
-		return 1;
+		return 3;
 	case AMMO_TUSKEN_RIFLE:
 		{/*
 			int tuskenLevel = ent->client->skillLevel[SK_TUSKEN_RIFLE];
