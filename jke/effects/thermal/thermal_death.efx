@@ -1,0 +1,41 @@
+Particle
+{
+	flags				usePhysics
+
+	count				5 15
+
+	life				3000 5000
+
+	delay				1
+
+	bounce				1 5
+
+	wind				1 100
+
+	rotation			0 360
+
+	rgb
+	{
+		start			0.5804 0.5804 0.5804 0.9176 0.9176 0.9176
+		end				0.8784 0.8784 0.8784 1 1 1
+		flags			linear
+	}
+
+	alpha
+	{
+		end				0
+		flags			linear
+	}
+
+	size
+	{
+		start			500
+		parm			2 3
+		flags			random nonlinear
+	}
+
+	shaders
+	[
+		gfx/misc/steam
+	]
+}

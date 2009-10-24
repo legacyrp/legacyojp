@@ -1,102 +1,121 @@
-repeatDelay				300
-
-Sound
+Particle
 {
-	name				Boom
+	flags				expensivePhysics usePhysics impactKills impactFx deathFx
 
-	spawnFlags			lessAttenuation
+	count				1 3
 
-	count				1 2
+	life				2000 3000
 
-	delay				0 150
+	radius				500
 
-	sounds
-	[
-		sound/movers/objects/object_destroy5.mp3
-	]
-}
+	height				250
 
-Decal
-{
-	spawnFlags			orgOnCylinder
+	rotation			205
 
-	rotation			0 360
+	rotationDelta		200
+
+	rgb
+	{
+		start			0.2275 0.2275 0.2275 0.7059 0.1451 0.1451
+		end				0.8431 0.5569 0.1765 1 0 0
+		parm			0 4
+		flags			linear wave
+	}
 
 	alpha
 	{
-		start			1 0.6
+		start			0.8 1
+		end				0.1
+		flags			linear
 	}
 
 	size
 	{
-		start			1 1200
+		end				500
+		flags			linear
 	}
 
 	shaders
 	[
-		gfx/damage/burnmark1
-		gfx/damage/burnmark4
+		effects/fire
+		gfx/effects/gcircle
 	]
-}
 
-Flash
-{
-	rgb
-	{
-		start			1 1 0
-	}
-
-	size
-	{
-		start			500
-	}
-}
-
-Light
-{
-	life				1100 1300
-
-	size
-	{
-		start			250 256
-		end				23 25
-		flags			linear
-	}
-}
-
-FxRunner
-{
-	name				redthermaldome
-
-	playfx
+	impactfx
 	[
-		explosions/red thermal domemodulated
+		explosions/hugeexplosion3
+		sparks/bluesparks
+		sparks/spark
 	]
-}
 
-FxRunner
-{
-	name				splodesmoke
-
-	playfx
+	deathfx
 	[
-		smoke/splodesmoke
+		chunks/rockbreaklg
 	]
 }
 
 CameraShake
 {
-	intensity			12 5
+	life				5000
 
-	radius				16 19
+	delay				500 1000
+
+	radius				500
+}
+
+Light
+{
+	life				500 1000
+
+	size
+	{
+		end				300
+		parm			50
+		flags			clamp
+	}
+}
+
+Sound
+{
+}
+
+Emitter
+{
+	flags				useModel
+
+	life				2000
+
+	size
+	{
+		end				250
+		flags			linear
+	}
+
+	models
+	[
+		models/weapons2/thermal/spheredet.md3
+	]
+}
+
+Decal
+{
+	size
+	{
+		start			25 30
+	}
+
+	shaders
+	[
+		gfx/damage/burnmark4
+	]
 }
 
 FxRunner
 {
-	name				lingeringsmoke
+	delay				2000
 
 	playfx
 	[
-		smoke/lingeringsmoke
+		explosions/thermal_death
 	]
 }
