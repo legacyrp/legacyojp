@@ -23,7 +23,7 @@ int ClipSize(int ammo,gentity_t *ent)
 	case AMMO_BLASTER:
 		return 51; //Original: 21
 	case AMMO_ROCKETS:
-		return 1;
+		return 3;
 	case AMMO_POWERCELL:
 		if(ent->client->skillLevel[SK_BOWCASTER] >= ent->client->skillLevel[SK_DISRUPTOR])
 		{
