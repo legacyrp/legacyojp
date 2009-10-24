@@ -19,7 +19,7 @@
 // MJN - Cvars
 
 // Help Info
-extern vmCvar_t	g_mHelpInfo;
+//extern vmCvar_t	g_mHelpInfo;
 // Admin Gun
 extern vmCvar_t	g_mAdminGun;
 // Allows rcon to give admin to anyone without pass
@@ -29,14 +29,14 @@ extern vmCvar_t	g_mAllowAdminLogin;
 // Allow secondary admins to login via password at connection
 extern vmCvar_t	g_mAdminLoginControl;
 // Allow certain Admin/Knight Commands
-extern vmCvar_t	g_mAdminCommands;
-extern vmCvar_t	g_mKnightCommands;
+//extern vmCvar_t	g_mAdminCommands;
+//extern vmCvar_t	g_mKnightCommands;
 // Allow certain Emotes
 extern vmCvar_t	g_mEmotes;
 // Logged in/Not Logged in Messages
-extern vmCvar_t	g_mLoggedInAdmin;
-extern vmCvar_t	g_mNotLoggedInAdmin;
-extern vmCvar_t	g_mLoggedInKnight;
+//extern vmCvar_t	g_mLoggedInAdmin;
+//extern vmCvar_t	g_mNotLoggedInAdmin;
+//extern vmCvar_t	g_mLoggedInKnight;
 // Duel Stats
 extern vmCvar_t	g_mDuelStats;
 // Duel Timer
