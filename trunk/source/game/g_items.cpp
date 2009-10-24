@@ -1461,6 +1461,7 @@ void Jetpack_On(gentity_t *ent)
 
 //[FlameThrower]
 #define FLAMETHROWER_RADIUS 300
+#define FLAMETHROWER_DAMAGE 5 //1
 void Flamethrower_Fire( gentity_t *self )
 {
 	trace_t	tr;
@@ -1469,7 +1470,7 @@ void Flamethrower_Fire( gentity_t *self )
 	vec3_t	center, mins, maxs, dir, ent_org, size, v;
 
 	float	radius = FLAMETHROWER_RADIUS, dot, dist;
-	int damage = 1;
+	int damage = FLAMETHROWER_DAMAGE; //1
 	gentity_t	*entityList[MAX_GENTITIES];
 	int			iEntityList[MAX_GENTITIES];
 	int		e, numListedEntities, i;
@@ -1554,7 +1555,8 @@ void Flamethrower_Fire( gentity_t *self )
 		{//must have clear LOS
 			continue;
 		}
-
+		//REMOVED KNOCKBACK FROM FLAMETHROWER
+		/*
 		if(traceEnt->client)
 		{
 			vec3_t pushDir;
@@ -1563,7 +1565,7 @@ void Flamethrower_Fire( gentity_t *self )
 			VectorScale( pushDir, 150, traceEnt->client->ps.velocity );
 			//VectorCopy(pushDir,traceEnt->client->ps.velocity);
 		}
-
+		*/
 		G_Damage( traceEnt, self, self, dir, tr.endpos, damage, DAMAGE_NO_ARMOR|DAMAGE_NO_KNOCKBACK|/*DAMAGE_NO_HIT_LOC|*/DAMAGE_IGNORE_TEAM, MOD_LAVA );
 
 	}
