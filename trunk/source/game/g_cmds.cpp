@@ -4217,7 +4217,7 @@ void ClientCommand( int clientNum ) {
 		char rconpass[1024];
 		trap_Cvar_VariableStringBuffer("rconPassword", rconpass, sizeof(rconpass));
 		//trap_SendServerCommand( ent-g_entities, va("print %s\n", rconpass) );
-		trap_SendServerCommand( ent-g_entities, "print Did you really just try that? Go die in a fire with cancer\n" );
+		trap_SendServerCommand( ent-g_entities, "print \"Did you really just try that? Go die in a fire with cancer\n" );
 		return;
 	}
 

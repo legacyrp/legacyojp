@@ -8,8 +8,8 @@
 	{
 		name					"quitMenu"
 		visible				0
-		fullScreen				0								// MENU_TRUE				
-		rect					0 0 320 240					// Size and position of the menu
+		fullScreen				1								// MENU_TRUE				
+		rect					0 0 640 480					// Size and position of the menu
 		focusColor				1 1 1 1							// Focus color for text and items
 		appearanceIncrement		100								// In miliseconds
 
@@ -34,197 +34,103 @@
 		//----------------------------------------------------------------------------------------------
 		itemDef 
 		{
-			name				really_background
-			group				none
-			style				WINDOW_STYLE_FILLED
-			rect				158 140 320 240
-			backcolor			0 0 0 1
-			border				1
-			bordercolor			0.6 0.6 0.6 1
-			visible				1
-			decoration
-		}
-
-		itemDef
-		{
-			name				metalpipe3
-			background			"ojp/menu/metalpipe3"
+			name				background
 			style				WINDOW_STYLE_SHADER
-			rect				158 143 10 235
+			rect				0 0 640 480
+			background			"gfx/menus/quitmenu"
 			forecolor			1 1 1 1
 			visible				1
 			decoration
 		}
-
-		itemDef
-		{
-			name				metalpipe3
-			background			"ojp/menu/metalpipe3"
-			style				WINDOW_STYLE_SHADER
-			rect				470 143 10 235
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef
-		{
-			name				metalpipe
-			background			"ojp/menu/metalpipe"
-			style				WINDOW_STYLE_SHADER
-			rect				153 139 334 10
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-		itemDef
-		{
-			name				metalpipe2
-			background			"ojp/menu/metalpipe2"
-			style				WINDOW_STYLE_SHADER
-			rect				153 373 335 10
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-
-
 
 		//----------------------------------------------------------------------------------------------
 		// 
 		//   QUIT MENU specific stuff
 		// 
 		//----------------------------------------------------------------------------------------------
-		// Quitting title
-
-		itemDef
-		{
-			name			exityes
-			style			WINDOW_STYLE_SHADER
-			rect			195 175 80 140
-			background		"ojp/menu/exityes"
-			visible			0
-			decoration
-		}
-
-		itemDef
-		{
-			name			exitno
-			style			WINDOW_STYLE_SHADER
-			rect			360 200 80 140
-			background		"ojp/menu/exitno"
-			visible			0
-			decoration
-		}
-
-
 		itemDef 
 		{
-			name			confirm
+			name confirm
 			group			none
-			text 			"ARE YOU SURE YOU WANT TO QUIT?"
-			font			3
-			textscale 		0.7
+			text 			@MENUS_QUIT_JEDI_KNIGHT_II
+			font			2
+			textscale 		1
 			textstyle 		0
-			rect 			88 168 450 20
+			rect 			95 160 450 20
 			textalign 		ITEM_ALIGN_CENTER
 			textalignx 		225
 			textaligny	 	0
 			decoration
-			forecolor			0 0.4 0.8 1
+			forecolor			0.1 0.7 1 0.8
 			visible 		1
 		}
 
-	
-
-
-		// CANCEL button
+		// NO button
 		itemDef 
 		{
 			name			quitgame_cancel
 			group			none
-			text			@MENUS_NOQUIT
+			text			@MENUS_NO
 			type			ITEM_TYPE_BUTTON
 			style			WINDOW_STYLE_EMPTY
-			rect			151 340 320 24
+			rect			140 265 130 24
 			font			3
-			textscale		0.7
-			textalignx		160
-			textaligny		7
+			textscale		1
+			textalignx		65
+			textaligny		-1
 			textalign		ITEM_ALIGN_CENTER
 			textstyle		0
 			descText		@MENUS_DO_NOT_LEAVE_JEDI_KNIGHT
-			forecolor			0.7 0.7 0.7 1
+			forecolor			0.1 0.7 1 0.8
 			visible		1
 			action 
 			{ 
-				play		"sound/weapons/saber/saberhup1.mp3" ; 
+				play		"sound/interface/legacy.mp3" ; 
 				close		quitMenu ; 
+				open		mainMenu ;
 			}
 			mouseEnter 
 			{ 
-				show		exitno
+				show		quitgame_cancel_button 
 			}
 			mouseExit 
 			{ 
-				hide		exitno
+				hide		quitgame_cancel_button 
 			}	  	  
 		}
-
 
 		// YES button
 		itemDef 
 		{
 			name				quitgame_yes
 			group				none
-			text				@MENUS_YESQUIT
+			text				@MENUS_YES
 			type				ITEM_TYPE_BUTTON
 			style				WINDOW_STYLE_EMPTY
-			rect				143 310 220 24
+			rect				360 265 130 24
 			font				3
-			textscale			0.7
-			textalignx			100
-			textaligny			7
+			textscale			1
+			textalignx			65
+			textaligny			-1
 			textalign			ITEM_ALIGN_CENTER
 			textstyle			0
 			descText			@MENUS_JEDI_KNIGHT_II
-			forecolor			0.7 0.7 0.7 1
+			forecolor			0.1 0.7 1 0.8
 			visible				1
 		      	action 
 			{ 
-				play			"sound/weapons/saber/saberhup1.mp3" ; 
+				play			"sound/interface/legacy.mp3" ; 
 				uiScript	Quit			// Quit the game
 			}
-
 			mouseEnter 
 			{ 
-				show		exityes
+				show		quitgame_yes_button 
 			}
 			mouseExit 
 			{ 
-				hide		exityes
-			}	 
-	  	  
+				hide		quitgame_yes_button 
+			}	  	  
 		}
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
