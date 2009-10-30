@@ -40,255 +40,16 @@
 //	OJP MENU BACKGROUND
 //----------------------------------------------------------------------------------------------
 
-
-
-		itemDef
+		itemDef 
 		{
-			name				mainbackground
-			style				WINDOW_STYLE_FILLED
+			name				background
+			style				WINDOW_STYLE_SHADER
 			rect				0 0 640 480
-			backcolor			0 0 0 1
-			visible				1
-			decoration
-		}
-
-		itemDef
-		{
-			name				bgpic
-			style				WINDOW_STYLE_SHADER
-			rect				118 98 404 304
-			background			"ojp/menu/2"
+			background			"gfx/menus/multiplaymenu"
 			forecolor			1 1 1 1
 			visible				1
 			decoration
 		}
-
-
-		itemDef
-		{
-			name				mainbackground
-			style				WINDOW_STYLE_FILLED
-			rect				118 98 404 304
-			backcolor			0 0 0 0.8
-			visible				1
-			decoration
-		}
-
-
-		itemDef 
-		{
-			name				bluewire
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				115 -40 150 150
-			background			"ojp/menu/bluewire"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-
-		itemDef 
-		{
-			name				redwire
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				375 -40 150 150
-			background			"ojp/menu/redwire"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-		itemDef 
-		{
-			name				line1
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				103 104 26 300
-			background			"ojp/menu/boltblue"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				line2
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				511 104 26 300
-			background			"ojp/menu/boltred"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-
-		itemDef 
-		{
-			name				red_emitter
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				508 85 32 32
-			background			"ojp/menu/red_emitter"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				blue_emitter
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				100 85 32 32
-			background			"ojp/menu/blue_emitter"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-		itemDef 
-		{
-			name				emitter1
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				508 380 32 -32
-			background			"ojp/menu/blue_emitter"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				emitter2
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				100 380 32 -32
-			background			"ojp/menu/blue_emitter"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemdef
-		{
-			name				lowbar
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				0 391 640 18
-			background			"ojp/menu/lowbar"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemdef
-		{
-			name				topbar
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				0 85 640 18
-			background			"ojp/menu/topbar"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-
-		itemDef 
-		{
-			name				bluebeam
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				0 0 320 80
-			background			"ojp/menu/bluebeam"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				redbeam
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				320 1 320 72
-			background			"ojp/menu/redbeam"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				mpi_fboon
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				0 -5 80 80
-			background			"gfx/hud/mpi_fboon"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				redspin
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				560 -5 80 80
-			background			"ojp/menu/redspin"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				lightside
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				-1.5 -5 80 80
-			background			"ojp/menu/lightside"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-		itemDef 
-		{
-			name				darkside
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				560 -5 80 80
-			background			"ojp/menu/darkside"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
-		itemDef 
-		{
-			name				ojplogo
-			group				none
-			style				WINDOW_STYLE_SHADER
-			rect				220 0 200 90
-			background			"ojp/menu/ojplogo"
-			forecolor			1 1 1 1
-			visible				1
-			decoration
-		}
-
-
 
 
 //----------------------------------------------------------------------------------------------
@@ -304,7 +65,7 @@
 			group				main_button
 			style				WINDOW_STYLE_EMPTY
 			type				ITEM_TYPE_BUTTON
-			rect				-10 410 130 24
+			rect				0 440 130 24
 			text				@MENUS_PLAY					
 			font				3
 			textscale			1.1
@@ -333,7 +94,7 @@
 			text				@MENUS_CONTROLS2
 			type				ITEM_TYPE_BUTTON
 			style				WINDOW_STYLE_EMPTY
-			rect				240 410 160 24
+			rect				166 440 160 24
 			font				3
 			textscale			1.1
 			textaligny			0
@@ -363,7 +124,7 @@
 			text				@MENUS_SETUP
 			type				ITEM_TYPE_BUTTON
 			style				WINDOW_STYLE_EMPTY
-			rect				505 410 130 24
+			rect				333 440 130 24
 			font				3
 			textscale			1.1
 			textaligny			0
@@ -1704,13 +1465,13 @@
 			descText			@MENUS_LEAVE_JEDI_KNIGHT_II
 			type				ITEM_TYPE_BUTTON
 			style				WINDOW_STYLE_EMPTY
-			rect				550 449 111 21 
+			rect				500 440 130 24 
 			font				3
-			textscale			0.8
+			textscale			1.1
 			textalign			ITEM_ALIGN_CENTER
 			textstyle			0
 			textalignx			65
-			textaligny			5
+			textaligny			0
 			forecolor			0.7 0.7 0.7 1
 			visible				1
 
