@@ -1,16 +1,14 @@
 Particle
 {
-	flags				expensivePhysics usePhysics impactKills impactFx deathFx
+	flags				impactKills deathFx
 
 	count				1 3
 
-	life				2000 3000
+	life				2500
 
 	radius				500
 
 	height				250
-
-	rotation			205
 
 	rotationDelta		200
 
@@ -18,14 +16,14 @@ Particle
 	{
 		start			0.2275 0.2275 0.2275 0.7059 0.1451 0.1451
 		end				0.8431 0.5569 0.1765 1 0 0
-		parm			0 4
+		parm			1 4
 		flags			linear wave
 	}
 
 	alpha
 	{
 		start			0.8 1
-		end				0.1
+		end				0
 		flags			linear
 	}
 
@@ -37,15 +35,7 @@ Particle
 
 	shaders
 	[
-		effects/fire
 		gfx/effects/gcircle
-	]
-
-	impactfx
-	[
-		explosions/hugeexplosion3
-		sparks/bluesparks
-		sparks/spark
 	]
 
 	deathfx
@@ -56,11 +46,11 @@ Particle
 
 CameraShake
 {
-	life				5000
+	life				1500
 
 	delay				500 1000
 
-	radius				500
+	radius				1500
 }
 
 Light
@@ -77,13 +67,86 @@ Light
 
 Sound
 {
+	sounds
+	[
+		sound/weapons/thermal/explode.mp3
+	]
 }
 
-Emitter
+Decal
 {
-	flags				useModel
+	delay				250
 
-	life				2000
+	size
+	{
+		start			150 350
+	}
+
+	shaders
+	[
+		gfx/damage/burnmark1
+		gfx/damage/burnmark4
+	]
+}
+
+FxRunner
+{
+	delay				250
+
+	playfx
+	[
+		explosions/thermal_death
+	]
+}
+
+OrientedParticle
+{
+	spawnFlags			axisFromSphere
+
+	life				2500
+
+	radius				1000
+
+	rgb
+	{
+		start			0.7059 0.1451 0.1451 0.502 0 0
+		end				0.3373 0.1216 0.1216 0 0 0
+		flags			linear
+	}
+
+	alpha
+	{
+		end				0
+		flags			linear
+	}
+
+	size
+	{
+		end				500
+		flags			linear
+	}
+
+	shaders
+	[
+		gfx/effects/gcircle
+	]
+}
+
+Particle
+{
+	life				2500
+
+	rgb
+	{
+		start			0.7059 0.1451 0.1451 0.502 0 0
+		flags			linear
+	}
+
+	alpha
+	{
+		end				0
+		flags			linear
+	}
 
 	size
 	{
@@ -91,31 +154,132 @@ Emitter
 		flags			linear
 	}
 
-	models
+	shaders
 	[
-		models/weapons2/thermal/spheredet.md3
+		gfx/effects/whiteFlare
 	]
 }
 
-Decal
+Particle
 {
+	life				1000
+
+	rgb
+	{
+		start			0.502 0 0 0.7059 0.1451 0.1451
+		flags			linear
+	}
+
+	alpha
+	{
+		end				0
+		flags			linear
+	}
+
 	size
 	{
-		start			25 30
+		end				500
+		flags			linear
 	}
 
 	shaders
 	[
-		gfx/damage/burnmark4
+		gfx/misc/spikeb
 	]
 }
 
-FxRunner
+Particle
 {
-	delay				2000
+	life				2000
 
-	playfx
+	delay				200
+
+	rgb
+	{
+		end				0.6353 0.6353 0.6353 0.7059 0.7059 0.7059
+		flags			linear
+	}
+
+	alpha
+	{
+		start			0
+		flags			linear
+	}
+
+	size
+	{
+		end				1500
+		flags			linear
+	}
+
+	shaders
 	[
-		explosions/thermal_death
+		gfx/effects/Wcloud
+	]
+}
+
+Particle
+{
+	flags				usePhysics
+
+	spawnFlags			affectedByWind
+
+	life				1500
+
+	delay				2200
+
+	wind				90 100
+
+	rgb
+	{
+		start			0.5804 0.5804 0.5804
+		end				0.5804 0.5804 0.5804
+	}
+
+	size
+	{
+		start			1500
+		end				1500
+	}
+
+	shaders
+	[
+		gfx/effects/Wcloud
+	]
+}
+
+Particle
+{
+	flags				usePhysics
+
+	spawnFlags			affectedByWind
+
+	life				1500
+
+	delay				3700
+
+	wind				0 100
+
+	rgb
+	{
+		start			0.5804 0.5804 0.5804
+		flags			linear
+	}
+
+	alpha
+	{
+		end				0
+		flags			linear
+	}
+
+	size
+	{
+		start			1500
+		end				1500
+	}
+
+	shaders
+	[
+		gfx/effects/Wcloud
 	]
 }
