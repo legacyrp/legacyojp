@@ -29,7 +29,7 @@ Particle
 
 	size
 	{
-		start			500
+		start			1000
 		parm			2 3
 		flags			random nonlinear
 	}
