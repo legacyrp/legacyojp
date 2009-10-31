@@ -796,7 +796,7 @@ static cvarTable_t		gameCvarTable[] = {
 	//[SaberSys]
 	//Made sv_fps a archive / serverinfo cvar.  Note:  This cvar's default is controlled by the game engine, not this code.
 	//However, the archive flag does work after the cvar is set to something other than 20.
-	{ &g_svfps, "sv_fps", "60", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
+	{ &g_svfps, "sv_fps", "30", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	//{ &g_svfps, "sv_fps", "20", 0, 0, qtrue },
 	//[/SaberSys]
 	
