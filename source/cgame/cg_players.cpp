@@ -16187,8 +16187,8 @@ SkipTrueView:
 	}
 
 	if (cent->currentState.eFlags & EF_INVULNERABLE)
-	{
-		CG_DrawPlayerSphere(cent, cent->lerpOrigin, 1.0f, cgs.media.invulnerabilityShader );
+	{//Removed Bubble because it's annoying
+		//CG_DrawPlayerSphere(cent, cent->lerpOrigin, 1.0f, cgs.media.invulnerabilityShader );
 	}
 stillDoSaber:
 	if ((cent->currentState.eFlags & EF_DEAD) && cent->currentState.weapon == WP_SABER)
