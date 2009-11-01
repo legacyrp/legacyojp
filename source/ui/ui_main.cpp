@@ -659,6 +659,7 @@ int	uiHoldSkinColor=TEAM_FREE;	// Stores the skin color so that in non-team game
 static const serverFilter_t serverFilters[] = {
 	//[SERVERFILTERS]
 	//since OJP Enhanced only works with OJP Enhanced servers, only show them.
+	{"OJP_MENUS_OJP_JKE","jke"},
 	{"OJP_MENUS_OJP_ENHANCED", "ojpenhanced"},
 	//{"MENUS_ALL", "" },
 	//{"MENUS_JEDI_ACADEMY", "" },
