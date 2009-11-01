@@ -23,7 +23,7 @@ int ClipSize(int ammo,gentity_t *ent)
 	case AMMO_BLASTER:
 		return 51; //Original: 21
 	case AMMO_ROCKETS:
-		return 3;
+		return 1;
 	case AMMO_POWERCELL:
 		if(ent->client->skillLevel[SK_BOWCASTER] >= ent->client->skillLevel[SK_DISRUPTOR])
 		{
@@ -153,7 +153,7 @@ void SetupReload(gentity_t *ent)
 		return;
 
 	if(ent->client->ps.weapon == WP_MELEE || ent->client->ps.weapon == WP_SABER || ent->client->ps.weapon == WP_THERMAL ||
-		ent->client->ps.weapon == WP_DET_PACK || ent->client->ps.weapon == WP_ROCKET_LAUNCHER)
+		ent->client->ps.weapon == WP_DET_PACK)
 	{
 		ent->bulletsToReload = 0;
 		ent->reloadTime = -1;

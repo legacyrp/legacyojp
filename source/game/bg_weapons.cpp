@@ -248,7 +248,7 @@ weaponData_t weaponData[WP_NUM_WEAPONS] =
 //		100,					//	int		fireTime;			// Amount of time between firings
 		//[/WeaponSys]
 		8192,					//	int		range;				// Range of weapon
-		10,						//	int		altEnergyPerShot;	// Amount of energy used for alt-fire -- 1.3 was 100
+		100,						//	int		altEnergyPerShot;	// Amount of energy used for alt-fire -- 1.3 was 100
 		500,					//	int		altFireTime;		// Amount of time between alt-firings -- 1.3 was 800
 		8192,					//	int		altRange;			// Range of alt-fire
 		0,						//	int		chargeSubTime;		// ms interval for subtracting ammo during charge
@@ -295,7 +295,7 @@ weaponData_t weaponData[WP_NUM_WEAPONS] =
 	{	// WP_ROCKET_LAUNCHER
 //		"Merr-Sonn Missile System",	//	char	classname[32];		// Spawning name
 		AMMO_ROCKETS,			//	int		ammoIndex;			// Index to proper ammo slot
-		5,						//	int		ammoLow;			// Count when ammo is low
+		1,						//	int		ammoLow;			// Count when ammo is low
 		1,						//	int		energyPerShot;		// Amount of energy used per shot
 		//[WeaponSys]
 		3600,					//	int		fireTime;			// Amount of time between firings
@@ -500,23 +500,23 @@ ammoData_t ammoPool[NUM_FORCE_POWER_LEVELS][WP_NUM_WEAPONS] =
 {
 	{//FORCE_LEVEL_0
 		0,//WP_NONE
-		50,//WP_TUSKEN_RIFLE
+		0,//WP_TUSKEN_RIFLE
 		0,// WP_MELEE		
 		0,// WP_SABER
-		100,// WP_BRYAR_PISTOL
-		50,// WP_BLASTER	
-		50,// WP_DISRUPTOR	
-		50,// WP_BOWCASTER
-		50,// WP_REPEATER
-		50,// WP_DEMP2
-		50,// WP_FLECHETTE
+		0,// WP_BRYAR_PISTOL
+		0,// WP_BLASTER	
+		0,// WP_DISRUPTOR	
+		0,// WP_BOWCASTER
+		0,// WP_REPEATER
+		0,// WP_DEMP2
+		0,// WP_FLECHETTE
 		0,// WP_ROCKET_LAUNCHER
 		0,// WP_THERMAL
 		0,// WP_GRENADE
 		0,// WP_DET_PACK
-		50,// WP_CONCUSSION
+		0,// WP_CONCUSSION
 		0,// WP_BRYAR_OLD
-		50,// WP_EMPLACED_GUN
+		0,// WP_EMPLACED_GUN
 		0,// WP_TURRET
 	},
 	{//FORCE_LEVEL_1
@@ -531,7 +531,7 @@ ammoData_t ammoPool[NUM_FORCE_POWER_LEVELS][WP_NUM_WEAPONS] =
 		100,// WP_REPEATER
 		100,// WP_DEMP2
 		100,// WP_FLECHETTE
-		0,// WP_ROCKET_LAUNCHER
+		3,// WP_ROCKET_LAUNCHER
 		0,// WP_THERMAL
 		0,// WP_GRENADE
 		0,// WP_DET_PACK
@@ -552,7 +552,7 @@ ammoData_t ammoPool[NUM_FORCE_POWER_LEVELS][WP_NUM_WEAPONS] =
 		150,// WP_REPEATER
 		150,// WP_DEMP2
 		150,// WP_FLECHETTE
-		1,// WP_ROCKET_LAUNCHER
+		3,// WP_ROCKET_LAUNCHER
 		0,// WP_THERMAL
 		0,// WP_GRENADE
 		0,// WP_DET_PACK
@@ -573,7 +573,7 @@ ammoData_t ammoPool[NUM_FORCE_POWER_LEVELS][WP_NUM_WEAPONS] =
 		200,// WP_REPEATER
 		200,// WP_DEMP2
 		200,// WP_FLECHETTE
-		1,// WP_ROCKET_LAUNCHER
+		3,// WP_ROCKET_LAUNCHER
 		0,// WP_THERMAL
 		0,// WP_GRENADE
 		0,// WP_DET_PACK
