@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------------------------
+k//----------------------------------------------------------------------------------------------
 // Euka UI Plugin
 // By Nicolas "Scooper" Roblin, modified by Phred.
 //----------------------------------------------------------------------------------------------
@@ -109,9 +109,7 @@
 			{
 				play "sound/interface/button1.wav" 
 				uiScript "accountLogin"
-				//uiScript "closeingame"
 				close "ingame_login"
-				//open "euka_ingame_characters"
 			}
 			mouseenter 
 			{ 
