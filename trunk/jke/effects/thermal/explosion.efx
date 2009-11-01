@@ -29,7 +29,7 @@ Particle
 
 	size
 	{
-		end				500
+		end				750
 		flags			linear
 	}
 
@@ -59,9 +59,10 @@ Light
 
 	size
 	{
-		end				300
+		start			1000
+		end				0
 		parm			50
-		flags			clamp
+		flags			linear
 	}
 }
 
@@ -91,7 +92,9 @@ Decal
 
 FxRunner
 {
-	delay				250
+	count				1 3
+
+	delay				1500
 
 	playfx
 	[
@@ -122,7 +125,7 @@ OrientedParticle
 
 	size
 	{
-		end				500
+		end				750
 		flags			linear
 	}
 
@@ -150,7 +153,7 @@ Particle
 
 	size
 	{
-		end				250
+		end				350
 		flags			linear
 	}
 
@@ -162,7 +165,7 @@ Particle
 
 Particle
 {
-	life				1000
+	life				500
 
 	rgb
 	{
@@ -172,13 +175,13 @@ Particle
 
 	alpha
 	{
-		end				0
+		end				0.5
 		flags			linear
 	}
 
 	size
 	{
-		end				500
+		end				1000
 		flags			linear
 	}
 
@@ -190,79 +193,13 @@ Particle
 
 Particle
 {
-	life				2000
-
-	delay				200
-
-	rgb
-	{
-		end				0.6353 0.6353 0.6353 0.7059 0.7059 0.7059
-		flags			linear
-	}
-
-	alpha
-	{
-		start			0
-		flags			linear
-	}
-
-	size
-	{
-		end				1500
-		flags			linear
-	}
-
-	shaders
-	[
-		gfx/effects/Wcloud
-	]
-}
-
-Particle
-{
 	flags				usePhysics
 
-	spawnFlags			affectedByWind
-
-	life				1500
-
-	delay				2200
-
-	wind				90 100
+	life				1000
 
 	rgb
 	{
-		start			0.5804 0.5804 0.5804
-		end				0.5804 0.5804 0.5804
-	}
-
-	size
-	{
-		start			1500
-		end				1500
-	}
-
-	shaders
-	[
-		gfx/effects/Wcloud
-	]
-}
-
-Particle
-{
-	flags				usePhysics
-
-	spawnFlags			affectedByWind
-
-	life				1500
-
-	delay				3700
-
-	wind				0 100
-
-	rgb
-	{
-		start			0.5804 0.5804 0.5804
+		start			1 0 0
 		flags			linear
 	}
 
@@ -274,12 +211,52 @@ Particle
 
 	size
 	{
-		start			1500
-		end				1500
+		start			750
+		flags			linear
 	}
 
 	shaders
 	[
-		gfx/effects/Wcloud
+		gfx/effects/gcircle
+	]
+}
+
+OrientedParticle
+{
+	flags				usePhysics
+
+	life				1000
+
+	rgb
+	{
+		start			1 0 0
+		flags			linear
+	}
+
+	alpha
+	{
+		end				0
+		flags			linear
+	}
+
+	size
+	{
+		start			750
+		flags			linear
+	}
+
+	shaders
+	[
+		gfx/effects/gcircle
+	]
+}
+
+FxRunner
+{
+	delay				200
+
+	playfx
+	[
+		thermal/thermalsmoke
 	]
 }
