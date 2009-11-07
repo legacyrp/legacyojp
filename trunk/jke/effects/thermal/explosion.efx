@@ -48,19 +48,6 @@ CameraShake
 	radius				1500
 }
 
-Light
-{
-	life				500 1000
-
-	size
-	{
-		start			1000
-		end				0
-		parm			50
-		flags			linear
-	}
-}
-
 Sound
 {
 	sounds
@@ -250,8 +237,7 @@ FxRunner
 
 	playfx
 	[
-		chunks/explosionchunk
-		sparks/bluesparks
-		sparks/hugeexplosionsparks
+		thermal/thermalchunks
+		thermal/thermalsparks
 	]
 }
