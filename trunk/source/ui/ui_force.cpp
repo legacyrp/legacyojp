@@ -393,7 +393,7 @@ void UpdateForceUsed()
 		//bgForcePowerCost[FP_SABER_DEFENSE][FORCE_LEVEL_1] = 1;	
 
 		//Made Force Seeing Level 1 a pre-req to taking any additional force powers, except in the case of free sabers.
-		if(uiRank[FP_SEE].uiForcePowersRank <= FORCE_LEVEL_0)
+		/*if(uiRank[FP_SEE].uiForcePowersRank <= FORCE_LEVEL_0)
 		{//can't use a saber if we're not Force sensitive!
 			uiRank[FP_SABER_OFFENSE].uiForcePowersRank=0;
 			//[StanceSelection]
@@ -456,9 +456,9 @@ void UpdateForceUsed()
 				Menu_ShowItemByName(menu, "effectfield", qfalse);
 				Menu_ShowItemByName(menu, "nosaber", qtrue);
 			}
-		}
-		else
-		{
+		}*/
+		//else
+		//{
 			if (menu)
 			{
 				Menu_ShowItemByName(menu, "setfp_saberdefend", qtrue);
@@ -486,7 +486,7 @@ void UpdateForceUsed()
 				Menu_ShowItemByName(menu, "effectfield", qtrue);
 				Menu_ShowItemByName(menu, "nosaber", qfalse);
 			}
-		}
+		//}
 	}
 
 	for(i=0;i<NUM_FORCE_POWERS;i++)
@@ -737,7 +737,7 @@ void UpdateForceUsed()
 	//[ExpSys]
 	menu = Menus_FindByName("ingame_playerforce");
 	//Made Force Seeing Level 1 a pre-req to taking any additional force powers, except in the case of free sabers.
-	if(uiRank[FP_SEE].uiForcePowersRank <= FORCE_LEVEL_0)
+	/*if(uiRank[FP_SEE].uiForcePowersRank <= FORCE_LEVEL_0)
 	{//can't use the force if we aren't Force sensitive.
 		int i;
 		for(i = 0; i < FP_SEE; i++) //saber powers set above!
@@ -754,7 +754,7 @@ void UpdateForceUsed()
 		}
 	}
 	else
-	{
+	{*/
 		if(menu)
 		{
 			Menu_ShowItemByName(menu, "notforcesensitive", qfalse);
@@ -762,7 +762,7 @@ void UpdateForceUsed()
 			Menu_ShowItemByName(menu, "darkpowers", qtrue);
 			Menu_ShowItemByName(menu, "lightpowers", qtrue);
 		}
-	}
+	//}
 
 	/*
 	if(uiMaxRank <= 100 && uiRank[FP_SEE].uiForcePowersRank && (int)(trap_Cvar_VariableValue("ojp_trueBalance")) == 1)
@@ -1472,10 +1472,12 @@ qboolean UI_ForcePowerRank_HandleKey(int flags, float *special, int key, int num
 		//if (forcepower < NUM_FORCE_POWERS && forcepower != FP_SEE)
 		//[/StanceSelection]
 		{//force powers can't be bought without being force sensitive
+			/*
 			if (uiRank[FP_SEE].uiForcePowersRank < 1)
 			{
 				return qtrue;
 			}
+			*/
 		}
 		//[/ExpSys]
 
@@ -1502,10 +1504,11 @@ qboolean UI_ForcePowerRank_HandleKey(int flags, float *special, int key, int num
 		//[/StanceSelection]
 		//[/ForceSys]
 		{	// Saberdefend and saberthrow can't be bought if there is no saberattack
-			if (uiRank[FP_SABER_OFFENSE].uiForcePowersRank < 1)
+			/*if (uiRank[FP_SABER_OFFENSE].uiForcePowersRank < 1)
 			{
 				return qtrue;
 			}
+			*/
 		}
 
 		//[ExpSys]

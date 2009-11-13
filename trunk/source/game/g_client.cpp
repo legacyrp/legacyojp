@@ -4006,8 +4006,14 @@ void ClientSpawn(gentity_t *ent) {
 		//let's just make sure the styles we chose are cool
 		if ( !G_ValidSaberStyle(ent, ent->client->ps.fd.saberAnimLevel) )
 		{//had an illegal style, revert to default
-			ent->client->ps.fd.saberAnimLevel = SS_MEDIUM;
-			ent->client->saberCycleQueue = ent->client->ps.fd.saberAnimLevel;
+				for(int i = 1; i < SS_NUM_SABER_STYLES; i++)
+				{
+				if(G_ValidSaberStyle(ent, i))
+				{
+				ent->client->ps.fd.saberAnimLevel = i;
+				ent->client->saberCycleQueue = ent->client->ps.fd.saberAnimLevel;
+				}
+				}
 		}
 	}
 	//[/StanceSelection]
@@ -4471,7 +4477,13 @@ void ClientSpawn(gentity_t *ent) {
 		//[/ExpSys]
 		else
 		{
-			if (client->ps.fd.forcePowerLevel[FP_SABER_OFFENSE])
+			if (client->ps.fd.forcePowerLevel[FP_SABER_OFFENSE] 
+				|| client->skillLevel[SK_BLUESTYLE] 
+				|| client->skillLevel[SK_REDSTYLE]
+				|| client->skillLevel[SK_PURPLESTYLE]
+				|| client->skillLevel[SK_GREENSTYLE]
+				|| client->skillLevel[SK_DUALSTYLE]
+				|| client->skillLevel[SK_STAFFSTYLE])
 			{
 				//[/MOREWEAPOPTIONS]
 				if (!wDisable || !(wDisable & (1 << WP_SABER)))
