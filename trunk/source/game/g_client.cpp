@@ -4508,6 +4508,13 @@ void ClientSpawn(gentity_t *ent) {
 			}
 			//[/CoOp]
 			*/
+			
+			//Optic Feat
+			if(client->featLevel[FT_SIGHT])
+			{
+				client->ps.fd.forcePowersKnown |= (1 << FP_SEE);
+				client->ps.fd.forcePowerLevel[FP_SEE] = client->featLevel[FT_SIGHT];
+			}
 
 			if(client->skillLevel[SK_PISTOL])
 			{//player has blaster

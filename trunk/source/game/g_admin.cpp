@@ -683,7 +683,7 @@ void M_Svcmd_Teleport_f( gentity_t * targetplayer )
 	clientid2 = M_G_ClientNumberFromName( name2 );
 	destinationplayer = &g_entities[clientid2];
 
-	if( clientid == -1 || clientid2 == -1){
+	if( clientid == -1 || (clientid2 == -1 && Q_stricmp(name2,"POD") != 0 || Q_stricmp(name2,"pod") != 0 )){
 		G_Printf( "No client connected with that identifier\n" );
 		return;
 	}
@@ -703,6 +703,17 @@ void M_Svcmd_Teleport_f( gentity_t * targetplayer )
 		return;
 	}
 	if( targetplayer->client && targetplayer->client->pers.connected ){
+	
+	
+	//Place of death
+	if(Q_stricmp(name2,"POD") == 0 || Q_stricmp(name2,"pod") == 0 )
+	{
+	VectorCopy(targetplayer->client->sess.placeOfDeath, origin);
+	angles[YAW] = 0;
+	TeleportPlayer(targetplayer, origin, angles );
+	G_LogPrintf( "mlog_teleport: %s\n", targetplayer->client->pers.netname );
+	return;
+	}
 
 		VectorCopy(destinationplayer->client->ps.origin, origin);
 		angles[YAW] = 0;
@@ -713,7 +724,7 @@ void M_Svcmd_Teleport_f( gentity_t * targetplayer )
 		trap_Cvar_VariableStringBuffer( "g_mMessageTeleBroadcast", broadcastString, MAX_TOKEN_CHARS);
 		trap_Cvar_VariableStringBuffer( "g_mMessageTeleEveryone", everyoneString, MAX_TOKEN_CHARS);
 
-		//G_LogPrintf( "mlog_teleport: %s\n", targetplayer->client->pers.netname );
+		G_LogPrintf( "mlog_teleport: %s\n", targetplayer->client->pers.netname );
 	}
 }
 /*
