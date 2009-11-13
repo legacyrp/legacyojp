@@ -1273,7 +1273,6 @@ qboolean OJP_CounterForce(gentity_t *attacker, gentity_t *defender, int attackPo
 	
 	if(abilityDef >= 3) //Holmes, added
 		return qfalse;
-	
 	else if(abilityDef == 2) //Was >=2
 	{//defender is largely weaker than the attacker (2 levels)
 		if(!WalkCheck(defender) || defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
@@ -1281,50 +1280,48 @@ qboolean OJP_CounterForce(gentity_t *attacker, gentity_t *defender, int attackPo
 			return qfalse;
 		if( defender->client->ps.saberAttackChainCount >=MISHAPLEVEL_LIGHT ) //Holmes, added
 			return qfalse;
-		
-		if( defender->client->ps.saberAttackChainCount >= MISHAPLEVEL_LIGHT ) //Holmes, added
+
+		if (defender->client->ps.stats[STAT_DODGE] <= DODGE_CRITICALLEVEL) //Holmes, added
 			return qfalse;
-		
-		if (defender->client->ps.stats[STAT_DODGE] <= 75) //Holmes, added
+		// 1% chance of failing due to readiness
+		if(!Q_irand( 0, 100 ))
 			return qfalse;
-		
 	}
 	else if(abilityDef == 1){ //Holmes- was >= 1, which conflicts with if abilityDef >=2.
 	//defender is slightly weaker than their attacker
-	if(defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
+		if(defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
 			return qfalse;
 	
-	if(defender->client->ps.stats[STAT_DODGE] <= 50) //Holmes, added
-		return qfalse;
+		if(defender->client->ps.stats[STAT_DODGE] <= DODGE_CRITICALLEVEL) //Holmes, added
+			return qfalse;
 
 
- 	if(PM_SaberInBrokenParry(defender->client->ps.saberMove))
-		return qfalse;
+ 		if(PM_SaberInBrokenParry(defender->client->ps.saberMove))
+			return qfalse;
 
 
-	if(BG_InSlowBounce(&defender->client->ps) && defender->client->ps.userInt3 & (1 << FLAG_OLDSLOWBOUNCE))
-	//can't block lightning while in the heavier slow bounces.
-		return qfalse;
+		if(BG_InSlowBounce(&defender->client->ps) && defender->client->ps.userInt3 & (1 << FLAG_OLDSLOWBOUNCE))
+		//can't block lightning while in the heavier slow bounces.
+			return qfalse;
 
 
-	if( defender->client->ps.saberAttackChainCount >= MISHAPLEVEL_HEAVY )
-		return qfalse;
+		if( defender->client->ps.saberAttackChainCount >= MISHAPLEVEL_HEAVY )
+			return qfalse;
 	
-	if( defender->client->ps.saberAttackChainCount >= MISHAPLEVEL_LIGHT
+		if( defender->client->ps.saberAttackChainCount >= MISHAPLEVEL_LIGHT
 		&& attacker->client->ps.fd.saberAnimLevel == SS_DESANN)
-		return qfalse;
+			return qfalse;
 
-	if (defender->client->ps.forceHandExtend != HANDEXTEND_NONE)
+		if (defender->client->ps.forceHandExtend != HANDEXTEND_NONE)
+			return qtrue;
 
-		return qtrue;
-
-	if(IsHybrid(defender))
-	{
-		defender->client->ps.userInt3 |= (1<<FLAG_BLOCKING);
-		defender->client->blockTime = level.time + 1000;
-	}
+		if(IsHybrid(defender))
+		{
+			defender->client->ps.userInt3 |= (1<<FLAG_BLOCKING);
+			defender->client->blockTime = level.time + 1000;
+		}
 	
-	return qtrue;
+	//return qtrue;
 	}
 	
 	else if(abilityDef <= 0) //Holmes, added

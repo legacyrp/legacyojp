@@ -13,7 +13,7 @@ qboolean OJP_BlockLightning(gentity_t *attacker, gentity_t *defender, vec3_t imp
 		return qfalse;
 
 
-	if(!OJP_CounterForce(attacker, defender, FP_LIGHTNING))
+	if(!OJP_CounterForce(attacker, defender, FP_LIGHTNING))		
 		return qfalse;
 
 
@@ -136,6 +136,10 @@ void ForceLightningDamage( gentity_t *self, gentity_t *traceEnt, vec3_t dir, vec
 			{
 				//[ForceSys]
 				int	dmg = 1;
+				if(self->client->ps.fd.forcePowerLevel[FP_LIGHTNING] == FORCE_LEVEL_2)
+					dmg = 2;
+				if(self->client->ps.fd.forcePowerLevel[FP_LIGHTNING] == FORCE_LEVEL_3)
+					dmg = 3;
 
 				if ( self->client->ps.weapon == WP_MELEE
 					&& self->client->ps.fd.forcePowerLevel[FP_LIGHTNING] > FORCE_LEVEL_2

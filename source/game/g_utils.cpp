@@ -825,7 +825,13 @@ gentity_t *FindRemoveAbleGent(void)
 			return e;
 		}
 	}
-
+	//Weapon or forcefield entities
+	e = &g_entities[MAX_CLIENTS];
+	for( i = MAX_CLIENTS; i < level.num_entities; i++, e++)
+	{
+		if(e->s.eType == ET_ITEM || e->s.eType == ET_SPECIAL)
+			return e;
+	}
 	//light entities?
 	e = &g_entities[MAX_CLIENTS];
 	for ( i = MAX_CLIENTS ; i<level.num_entities ; i++, e++) 

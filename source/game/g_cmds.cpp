@@ -1537,8 +1537,14 @@ qboolean G_SetSaber(gentity_t *ent, int saberNum, char *saberName, qboolean sieg
 	//[StanceSelection]
 	if ( !G_ValidSaberStyle(ent, ent->client->ps.fd.saberAnimLevel) )
 	{//had an illegal style, revert to default
-		ent->client->ps.fd.saberAnimLevel = SS_MEDIUM;
-		ent->client->saberCycleQueue = ent->client->ps.fd.saberAnimLevel;
+				for(int i = 1; i < SS_NUM_SABER_STYLES; i++)
+				{
+				if(G_ValidSaberStyle(ent, i))
+				{
+				ent->client->ps.fd.saberAnimLevel = i;
+				ent->client->saberCycleQueue = ent->client->ps.fd.saberAnimLevel;
+				}
+				}
 	}
 	//[/StanceSelection]
 
@@ -3134,7 +3140,7 @@ void Cmd_ToggleSaber_f(gentity_t *ent)
 
 qboolean G_ValidSaberStyle(gentity_t *ent, int saberStyle)
 {	
-	if(saberStyle == SS_MEDIUM)
+	if(saberStyle == SS_MEDIUM && ent->client->ps.fd.forcePowerLevel[FP_SABER_OFFENSE] > 0)
 	{//SS_YELLOW is the default and always valid
 		return qtrue;
 	}
@@ -3148,11 +3154,38 @@ qboolean G_ValidSaberStyle(gentity_t *ent, int saberStyle)
 				return qtrue;
 			}
 			break;
-		default:
-			if(ent->client->skillLevel[saberStyle+SK_REDSTYLE-SS_STRONG] > 0)
-			{//valid style
+		case SS_STRONG:
+			if(ent->client->skillLevel[SK_REDSTYLE] > 0)
+			{
 				return qtrue;
 			}
+			break;
+		case SS_DESANN:
+			if(ent->client->skillLevel[SK_PURPLESTYLE] > 0)
+			{
+				return qtrue;
+			}
+			break;
+		case SS_TAVION:
+			if(ent->client->skillLevel[SK_GREENSTYLE] > 0)
+			{
+				return qtrue;
+			}
+			break;
+		case SS_DUAL:
+			if(ent->client->skillLevel[SK_DUALSTYLE] > 0)
+			{
+				return qtrue;
+			}
+			break;
+		case SS_STAFF:
+			if(ent->client->skillLevel[SK_STAFFSTYLE] > 0)
+			{
+				return qtrue;
+			}
+			break;
+		default:
+			return qfalse;
 			break;
 	};
 

@@ -2316,6 +2316,7 @@ void UpdateForceStatus()
 
 		//[ExpSys]
 		//Made Force Seeing Level 1 a pre-req to taking any additional force powers, except in the case of free sabers.
+		/*
 		if(uiRank[FP_SEE].uiForcePowersRank <= FORCE_LEVEL_0)
 		{//player isn't force sensitive
 			Menu_ShowItemByName(menu, "notforcesensitive", qtrue);
@@ -2327,23 +2328,23 @@ void UpdateForceStatus()
 			Menu_ShowItemByName(menu, "yessaber", qfalse);
 		}
 		else
-		{
+		{*/
 			Menu_ShowItemByName(menu, "notforcesensitive", qfalse);
 			Menu_ShowItemByName(menu, "neutralpowers", qtrue);
 			Menu_ShowItemByName(menu, "darkpowers", qtrue);
 			Menu_ShowItemByName(menu, "lightpowers", qtrue);
 
-			if(uiRank[FP_SABER_OFFENSE].uiForcePowersRank > 0 || ui_freeSaber.integer)
-			{	// Show lightsaber stuff.
+			//if(uiRank[FP_SABER_OFFENSE].uiForcePowersRank > 0 || ui_freeSaber.integer)
+				// Show lightsaber stuff.
 				Menu_ShowItemByName(menu, "nosaber", qfalse);
 				Menu_ShowItemByName(menu, "yessaber", qtrue);
-			}
-			else
+			//}
+			/*else
 			{
 				Menu_ShowItemByName(menu, "nosaber", qtrue);
 				Menu_ShowItemByName(menu, "yessaber", qfalse);
-			}
-		}
+			}*/
+		//}
 		//[/ExpSys]
 
 		// The leftmost button should be "apply" unless you are in spectator, where you can join any team.

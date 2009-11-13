@@ -2550,9 +2550,15 @@ void ClientThink_real( gentity_t *ent ) {
 		else
 		{//check to see if we got a valid saber style and holster setting.
 			if ( !G_ValidSaberStyle(ent, ent->client->ps.fd.saberAnimLevel) )
-			{//had an illegal style, revert to default
-				ent->client->ps.fd.saberAnimLevel = SS_MEDIUM;
+			{//had an illegal style, revert to a valid one
+				for(int i = 1; i < SS_NUM_SABER_STYLES; i++)
+				{
+				if(G_ValidSaberStyle(ent, i))
+				{
+				ent->client->ps.fd.saberAnimLevel = i;
 				ent->client->saberCycleQueue = ent->client->ps.fd.saberAnimLevel;
+				}
+				}
 			}
 			
 			if(!ent->client->ps.saberInFlight)

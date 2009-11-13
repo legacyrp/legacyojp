@@ -928,6 +928,7 @@ qboolean BG_LegalizedForcePowers(char *powerOut, int maxRank, qboolean freeSaber
 
 	//[ExpSys]
 	//Made Force Seeing Level 1 a pre-req to taking any additional force powers, except in the case of free sabers.
+	/*
 	if (final_Powers[FP_SEE] < 1)
 	{//can't use force powers if the player isn't Force Sensitive
 		for(i = 0; i < NUM_FORCE_POWERS; i++)
@@ -962,6 +963,7 @@ qboolean BG_LegalizedForcePowers(char *powerOut, int maxRank, qboolean freeSaber
 		final_Powers[FP_SABER_DEFENSE] = 0;
 		final_Powers[FP_SABERTHROW] = 0;
 	}
+	*/
 
 	//We finally have all the force powers legalized and stored locally.
 	//Put them all into the string and return the result. We already have
