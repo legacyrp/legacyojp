@@ -188,9 +188,9 @@ void DetermineDodgeMax(gentity_t *ent)
 		}
 	}
 
-	if(ent->client->ps.fd.forcePowerLevel[FP_SEE]>=FORCE_LEVEL_2)
+	if(ent->client->ps.fd.forcePowerLevel[FP_SEE]>=FORCE_LEVEL_2 && ent->client->featLevel[FT_SIGHT] == 0)
 		dodgeMax+=10;
-	if(ent->client->ps.fd.forcePowerLevel[FP_SEE]>=FORCE_LEVEL_3)
+	if(ent->client->ps.fd.forcePowerLevel[FP_SEE]>=FORCE_LEVEL_3 && ent->client->featLevel[FT_SIGHT] == 0)
 		dodgeMax+=15;
 	ent->client->ps.stats[STAT_MAX_DODGE] = (int) dodgeMax;
 }

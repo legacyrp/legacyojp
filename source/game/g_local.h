@@ -836,6 +836,7 @@ typedef struct {
 	unsigned char ip[4];			// MJN - For SavedIPs
 	int	 chatIgnoreClients[2];		// MJN - Clients which are ignoring this client. [0] = (0-31)  [1] = (32-63)
 	int warnLevel;					// MJN - Keeps track of how many warnings are issued to the client.
+	vec3_t placeOfDeath;
 
 } clientSession_t;
 

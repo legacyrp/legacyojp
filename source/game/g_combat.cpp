@@ -2113,6 +2113,9 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	qboolean	tempInflictor = qfalse;
 	int			actualMOD = meansOfDeath;
 	//[/Asteroids]
+	
+	//Copy this position to POD
+	VectorCopy(self->client->ps.origin, self->client->sess.placeOfDeath);
 	if(MOD==MOD_THERMAL_SPLASH||MOD==MOD_THERMAL)
 	{
 		self->s.eFlags|=EF_DISINTEGRATION;
