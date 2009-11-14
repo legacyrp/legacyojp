@@ -87,7 +87,7 @@ int forcePowerNeeded[NUM_FORCE_POWER_LEVELS][NUM_FORCE_POWERS] =
 		//NUM_FORCE_POWERS
 	},
 	{
-		65,//FP_HEAL,//instant //was 25, but that was way too little
+		30,//FP_HEAL,//instant //was 25, but that was way too little //65
 		10,//FP_LEVITATION,//hold/duration
 		//[ForceSys]
 		3,//FP_SPEED,//hold/duration
@@ -118,7 +118,7 @@ int forcePowerNeeded[NUM_FORCE_POWER_LEVELS][NUM_FORCE_POWERS] =
 		//NUM_FORCE_POWERS
 	},
 	{
-		60,//FP_HEAL,//instant
+		30,//FP_HEAL,//instant //60
 		10,//FP_LEVITATION,//hold/duration
 		//[ForceSys]
 		2,//FP_SPEED,//hold/duration
@@ -152,7 +152,7 @@ int forcePowerNeeded[NUM_FORCE_POWER_LEVELS][NUM_FORCE_POWERS] =
 		//NUM_FORCE_POWERS
 	},
 	{
-		50,//FP_HEAL,//instant //You get 5 points of health.. for 50 force points!
+		30,//FP_HEAL,//instant //You get 5 points of health.. for 50 force points! //50
 		10,//FP_LEVITATION,//hold/duration
 		//[ForceSys]
 		1,//FP_SPEED,//duration -- 1.3 was 2
