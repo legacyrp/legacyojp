@@ -842,6 +842,12 @@ gentity_t *FindRemoveAbleGent(void)
 			return e;
 		}
 	}
+	e = &g_entities[MAX_CLIENTS];
+	for( i = MAX_CLIENTS; i < level.num_entities; i++, e++)
+	{
+		if(Q_stricmp(e->classname,"tempEntity") == 0)
+			return e;
+	}
 
 
 	//crap!  we couldn't find anything.  Ideally, this function should have enough things

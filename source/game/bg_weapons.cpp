@@ -209,7 +209,7 @@ weaponData_t weaponData[WP_NUM_WEAPONS] =
 		0,						//	int		chargeSubTime;		// ms interval for subtracting ammo during charge
 		200,					//	int		altChargeSubTime;	// above for secondary
 		0,						//	int		chargeSub;			// amount to subtract during charge on each interval
-		3,						//int		altChargeSub;		// above for secondary
+		1,						//int		altChargeSub;		// above for secondary
 		0,						//	int		maxCharge;			// stop subtracting once charged for this many ms
 		1700					//	int		altMaxCharge;		// above for secondary
 	},
