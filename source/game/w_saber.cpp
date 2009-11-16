@@ -6009,7 +6009,7 @@ qboolean G_DoDodge( gentity_t *self, gentity_t *shooter, vec3_t dmgOrigin, int h
 
 	if(shooter && shooter->client && shooter->client->ps.weapon == WP_TUSKEN_RIFLE) return qfalse;
 
-	if(self->client && self->client->ps.fd.forcePowerLevel[FP_SEE] == FORCE_LEVEL_0)
+	if(self->client && self->client->ps.fd.forcePowerLevel[FP_SEE] == FORCE_LEVEL_0 && self->client->featLevel[FT_SIGHT] >= 1)
 		return qfalse;
 
 	if(self->client && self->client->ps.groundEntityNum == ENTITYNUM_NONE)
