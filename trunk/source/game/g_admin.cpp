@@ -683,7 +683,7 @@ void M_Svcmd_Teleport_f( gentity_t * targetplayer )
 	clientid2 = M_G_ClientNumberFromName( name2 );
 	destinationplayer = &g_entities[clientid2];
 
-	if( clientid == -1 || (clientid2 == -1 && Q_stricmp(name2,"POD") != 0 || Q_stricmp(name2,"pod") != 0 )){
+	if( clientid == -1 || (clientid2 == -1 && Q_stricmp(name2,"POD") != 0 && Q_stricmp(name2,"pod") != 0 )){
 		G_Printf( "No client connected with that identifier\n" );
 		return;
 	}
