@@ -1,5 +1,6 @@
 #include "w_force.h"
 #include "g_emote.h"
+#include <string>
 
 #define METROID_JUMP 1
 
@@ -320,7 +321,7 @@ void WP_InitForcePowers( gentity_t *ent )
 	//racc - actually all the NPC should have dumped out of here earlier than this.
 	if (ent->s.eType == ET_NPC && ent->s.number >= MAX_CLIENTS)
 	{ //rwwFIXMEFIXME: Temp
-		strcpy(userinfo, "forcepowers\\7-1-333003000313003120");
+		strcpy(userinfo, DEFAULT_FORCEPOWERS);
 	}
 	else
 	{
@@ -332,6 +333,16 @@ void WP_InitForcePowers( gentity_t *ent )
 	if ( (ent->r.svFlags & SVF_BOT) && botstates[ent->s.number] )
 	{ //if it's a bot just copy the info directly from its personality
 		Com_sprintf(forcePowers, sizeof(forcePowers), "%s", botstates[ent->s.number]->forceinfo);
+	}
+	
+	std::string powers = forcePowers;
+	int SIZE = powers.size();
+	if(SIZE != 69)
+	{
+		Q_strncpyz(forcePowers,DEFAULT_FORCEPOWERS, sizeof( forcePowers ));
+		Info_SetValueForKey(userinfo,"forcepowers",forcePowers);
+		trap_SetUserinfo( ent->s.number, userinfo);
+		trap_SendServerCommand( ent->client->ps.clientNum, va("forcechanged x %s\n", DEFAULT_FORCEPOWERS));
 	}
 
 	//rww - parse through the string manually and eat out all the appropriate data
@@ -606,13 +617,13 @@ void WP_SpawnInitForcePowers( gentity_t *ent )
 
 	ent->client->ps.holocronBits = 0;
 
-	if(ent->client->ps.fd.forcePowerLevel[FP_SEE] >= FORCE_LEVEL_2)
+	if(ent->client->ps.fd.forcePowerLevel[FP_SEE] == FORCE_LEVEL_2)
 	{
 		ent->client->ps.fd.forcePower+=10;
 		ent->client->ps.fd.forcePowerMax+=10;
 	}
 
-	if(ent->client->ps.fd.forcePowerLevel[FP_SEE] >= FORCE_LEVEL_3)
+	if(ent->client->ps.fd.forcePowerLevel[FP_SEE] == FORCE_LEVEL_3)
 	{
 		ent->client->ps.fd.forcePower+=15;
 		ent->client->ps.fd.forcePowerMax+=15;

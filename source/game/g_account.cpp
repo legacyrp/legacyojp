@@ -68,6 +68,8 @@ void Cmd_AccountLogin_F( gentity_t * targetplayer )
 	targetplayer->client->sess.loggedinAccount = qtrue;
 	LoadUser(targetplayer);
 	trap_SendServerCommand( targetplayer->client->ps.clientNum, va("print \"^1Success: ^7You are now logged in as %s!\n\"",userName));
+	//Update the ui
+	trap_SendServerCommand( targetplayer->client->ps.clientNum, va("lui_login"));
 	return;
 }
 
@@ -121,6 +123,8 @@ void Cmd_AccountLogout_F(gentity_t * targetplayer)
 	targetplayer->flags &= ~FL_GODMODE;
 	targetplayer->client->ps.stats[STAT_HEALTH] = targetplayer->health = -999;
 	SetTeam(targetplayer,"s");
+	//Update the ui
+	trap_SendServerCommand( targetplayer->client->ps.clientNum, va("lui_logout"));
 	return;
 }
 

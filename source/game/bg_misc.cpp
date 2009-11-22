@@ -815,11 +815,11 @@ qboolean BG_LegalizedForcePowers(char *powerOut, int maxRank, qboolean freeSaber
 								}
 							}
 
-							if(stillHaveForce)
-							{//don't remove FP_SEE!
-								c++;
-								continue;
-							}
+							//if(stillHaveForce)
+							//{//don't remove FP_SEE!
+							//	c++;
+							//	continue;
+							//}
 						}
 						//[/ExpSys]
 						while (final_Powers[c] > 0 && usedPoints > allowedPoints)

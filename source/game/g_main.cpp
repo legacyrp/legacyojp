@@ -1058,11 +1058,11 @@ static cvarTable_t		gameCvarTable[] = {
 	//[BotTweaks]
 	// MJN
 	// Min Humans Allowed on server before removal of Bot:
-	{ &g_minHumans, "g_minHumans", "2", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qfalse },
+	//{ &g_minHumans, "g_minHumans", "2", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qfalse },
 	// Max Bots Allowed on server before removal of Bot and addition of Human:
-	{ &g_maxBots, "g_maxBots", "1", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qfalse },
+	//{ &g_maxBots, "g_maxBots", "1", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qfalse },
 	// Enable/Disable Allow Bot Limit:
-	{ &g_allowBotLimit, "g_allowBotLimit", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
+	//{ &g_allowBotLimit, "g_allowBotLimit", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	//[/BotTweaks]
 
 	//[mapURLs]

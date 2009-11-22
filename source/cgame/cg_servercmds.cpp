@@ -1419,7 +1419,14 @@ static void CG_ServerCommand( void ) {
 		trap_OpenUIMenu(UIMENU_LOGIN); //UIMENU_CLASSSEL
 		return;
 	}
-
+	if ( !strcmp( cmd, "lui_login") )
+	{
+		trap_Cvar_Set("ui_account_loggedIn", "true");
+	}
+	if ( !strcmp( cmd, "lui_logout") )
+	{
+		trap_Cvar_Set("ui_account_loggedIn", "false");
+	}
 	if(!strcmp(cmd, "addtext"))
 	{
 		if (trap_Argc() < 1)
