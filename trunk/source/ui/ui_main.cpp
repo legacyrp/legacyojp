@@ -11183,6 +11183,7 @@ vmCvar_t	ui_sab2_b;
 //Account System
 vmCvar_t	ui_account_username;
 vmCvar_t	ui_account_password;
+vmCvar_t	ui_account_loggedin;
 
 
 // bk001129 - made static to avoid aliasing
@@ -11314,6 +11315,7 @@ static cvarTable_t		cvarTable[] = {
 //[/RGBSabers]
 	{ &ui_account_username,			"ui_acc_username", "", CVAR_INTERNAL},
 	{ &ui_account_password,			"ui_acc_password", "", CVAR_INTERNAL},
+	{ &ui_account_loggedin,			"ui_acc_loggedin", "false", CVAR_INTERNAL},
 };
 
 // bk001129 - made static to avoid aliasing

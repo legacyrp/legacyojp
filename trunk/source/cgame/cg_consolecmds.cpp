@@ -382,6 +382,9 @@ void CG_InitConsoleCommands( void ) {
 	// the game server will interpret these commands, which will be automatically
 	// forwarded to the server after they are not recognized locally
 	//
+	trap_AddCommand ("lui");
+	trap_AddCommand ("lui_login");
+	trap_AddCommand ("lui_logout");
 	trap_AddCommand ("forcechanged");
 	trap_AddCommand ("sv_invnext");
 	trap_AddCommand ("sv_invprev");

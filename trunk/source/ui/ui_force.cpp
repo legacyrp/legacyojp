@@ -526,6 +526,15 @@ void UpdateForceUsed()
 		else
 			Menu_ShowItemByName(menu, "setsk_jetpack", qfalse);
 	}
+	//Account System
+	char loggedIn[256];
+	trap_Cvar_VariableStringBuffer("ui_account_loggedin",loggedIn,sizeof(loggedIn));
+	
+	if(strcmp(loggedIn,"false") == 0 || strcmp(loggedIn,"") == 0 )
+	{
+		for(int l = 0; l < NUM_TOTAL_SKILLS; l++)
+			uiRank[l].uiForcePowersRank = 0;
+	}
 
 	//Feats
 	for(int i = 0; i < NUM_FEATS; i++)
@@ -1375,11 +1384,11 @@ qboolean UI_JediNonJedi_HandleKey(int flags, float *special, int key, int num, i
 		{//a jedi, set the minimums, hopefuly they know to set the rest!
 			if ( uiRank[FP_LEVITATION].uiForcePowersRank < FORCE_LEVEL_1 )
 			{//force jump 1 minimum
-				uiRank[FP_LEVITATION].uiForcePowersRank = FORCE_LEVEL_1;
+				//uiRank[FP_LEVITATION].uiForcePowersRank = FORCE_LEVEL_1;
 			}
 			if ( uiRank[FP_SABER_OFFENSE].uiForcePowersRank < FORCE_LEVEL_1 )
 			{//saber attack 1, minimum
-				uiRank[FP_SABER_OFFENSE].uiForcePowersRank = FORCE_LEVEL_1;
+				//uiRank[FP_SABER_OFFENSE].uiForcePowersRank = FORCE_LEVEL_1;
 			}
 		}
 
