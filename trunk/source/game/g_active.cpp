@@ -4020,11 +4020,46 @@ void ClientThink_real( gentity_t *ent ) {
 	}
 
 	SendPendingPredictableEvents( &ent->client->ps );
-
-	if ( !( ent->client->ps.eFlags & EF_FIRING ) ) {
+	//[Grapple]
+	if ( !( ent->client->ps.eFlags & EF_SPOTLIGHT ) ) {
 		client->fireHeld = qfalse;		// for grapple
 	}
+	
+	if (mod_grapple.integer)
+	{
+		if (mod_grapple.integer==2 || (g_trueJedi.integer && client->ps.trueNonJedi == qtrue))
+		{
+			if ( (pm.cmd.buttons & BUTTON_FORCE_DRAIN)  &&
+				ent->client->ps.pm_type != PM_DEAD &&
+				!ent->client->hookhasbeenfired)	{
+				Weapon_GrapplingHook_Fire( ent );
+				ent->client->hookhasbeenfired = qtrue;
+			}
+			else if ( client->hook && (client->fireHeld == qfalse || !(pm.cmd.buttons & BUTTON_FORCE_DRAIN)) )
+			{
+				Weapon_HookFree(client->hook);
+			}
+			if ( !(pm.cmd.buttons & BUTTON_FORCE_DRAIN)  &&
+				ent->client->ps.pm_type != PM_DEAD &&
+				ent->client->hookhasbeenfired &&
+				ent->client->fireHeld)	{
+				ent->client->fireHeld = qfalse;
+				ent->client->hookhasbeenfired = qfalse; 
+			}
+		}
+		
+	}
+	else
+	{
+		if ( client->hook && (client->fireHeld == qfalse || !(pm.cmd.buttons & BUTTON_FORCE_DRAIN) ))
+		{
+			Weapon_HookFree(client->hook);
+		}
 
+		if ( !( ent->client->ps.eFlags & EF_SPOTLIGHT ) ) {
+			client->fireHeld = qfalse;		// for grapple
+		}
+	}
 	// use the snapped origin for linking so it matches client predicted versions
 	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
 

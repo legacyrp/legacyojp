@@ -503,6 +503,9 @@ extern int bgForcePowerCost[NUM_TOTAL_SKILLS][NUM_FORCE_POWER_LEVELS];
 #define PMF_FOLLOW			4096	// spectate following another player
 #define PMF_SCOREBOARD		8192	// spectate as a scoreboard
 #define PMF_STUCK_TO_WALL	16384	// grabbing a wall
+//[Grapple]
+#define PMF_GRAPPLE_PULL	32768   //Grapple
+//[/Grapple]
 
 #define	PMF_ALL_TIMES	(PMF_TIME_WATERJUMP|PMF_TIME_LAND|PMF_TIME_KNOCKBACK)
 
@@ -1384,6 +1387,9 @@ typedef enum {
 	ET_PUSH_TRIGGER,
 	ET_TELEPORT_TRIGGER,
 	ET_INVISIBLE,
+	//[Grapple]
+	ET_GRAPPLE,
+	ET_REALGRAPPLE,
 	ET_NPC,					// ghoul2 player-like entity
 	ET_TEAM,
 	ET_BODY,

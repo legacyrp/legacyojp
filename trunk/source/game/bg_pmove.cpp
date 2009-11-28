@@ -4095,7 +4095,31 @@ static void PM_AirMove( void ) {
 		PM_StepSlideMove( qtrue );
 	}
 }
+/* [Grapple]
+===================
+PM_GrappleMove
 
+===================
+*/
+static void PM_GrappleMove( void ) {
+	vec3_t vel, v;
+	float vlen;
+
+	VectorScale(pml.forward, -16, v);
+	VectorAdd(pm->ps->lastHitLoc, v, v);
+	VectorSubtract(v, pm->ps->origin, vel);
+	vlen = VectorLength(vel);
+	VectorNormalize( vel );
+
+	if (vlen <= 100)
+		VectorScale(vel, 10 * vlen, vel);
+	else
+		VectorScale(vel, 800, vel);
+
+	VectorCopy(vel, pm->ps->velocity);
+
+	pml.groundPlane = qfalse;
+}
 /*
 ===================
 PM_WalkMove
@@ -13019,6 +13043,14 @@ void PmoveSingle (pmove_t *pmove) {
 		pm->ps->eFlags &= ~EF_TALK;
 		pm->ps->eFlags &= ~EF_INVULNERABLE;
 	}
+	// [Grapple]
+	if (pm->cmd.buttons & BUTTON_FORCE_DRAIN )
+	{
+		pm->ps->eFlags |= EF_SPOTLIGHT;
+	} else
+	{
+		pm->ps->eFlags &= EF_SPOTLIGHT;
+	}
 
 	pm_cancelOutZoom = qfalse;
 	if ((pm->ps->weapon == WP_DISRUPTOR || WP_TUSKEN_RIFLE) &&
@@ -13597,7 +13629,12 @@ void PmoveSingle (pmove_t *pmove) {
 		{
 			if (pm->ps->pm_flags & PMF_TIME_WATERJUMP) {
 				PM_WaterJumpMove();
-			} else if ( pm->waterlevel > 1 ) {
+			}//[Grapple]
+			else if (pm->ps->pm_flags & PMF_GRAPPLE_PULL) {
+			PM_GrappleMove();
+			// We can wiggle a bit
+			PM_AirMove();
+			}else if ( pm->waterlevel > 1 ) {
 				// swimming
 				PM_WaterMove();
 			} else if ( pml.walking ) {
