@@ -323,6 +323,9 @@ extern	vmCvar_t	g_siegeTeam2;
 
 extern	vmCvar_t	g_austrian;
 
+//[Grapple]
+extern	vmCvar_t	mod_grapple;
+
 extern	vmCvar_t	g_powerDuelStartHealth;
 extern	vmCvar_t	g_powerDuelEndHealth;
 
@@ -745,6 +748,8 @@ struct gentity_s {
 	int			reloadCooldown;
 	//[/Reload]
 	int			cooldownTime;
+	//[Grapple]
+	gentity_t	*hook;
 };
 
 #define DAMAGEREDIRECT_HEAD		1
@@ -1058,7 +1063,8 @@ struct gclient_s {
 
 	qboolean	fireHeld;			// used for hook
 	gentity_t	*hook;				// grapple hook if out
-
+	//[Grapple]
+	qboolean	hookhasbeenfired;
 	int			switchTeamTime;		// time the player switched teams
 
 	int			switchDuelTeamTime;		// time the player switched duel teams
@@ -1778,7 +1784,8 @@ void G_BounceProjectile( vec3_t start, vec3_t impact, vec3_t dir, vec3_t endout 
 void G_ExplodeMissile( gentity_t *ent );
 
 void WP_FireBlasterMissile( gentity_t *ent, vec3_t start, vec3_t dir, qboolean altFire );
-
+//[Grapple]
+gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir);
 
 //
 // g_mover.c
@@ -1856,7 +1863,10 @@ qboolean CheckGauntletAttack( gentity_t *ent );
 #define BRYAR_MAX_CHARGE					5
 //[/BryarSecondary]
 //[/DodgeSys]
-
+//[Grapple]
+void Weapon_HookThink (gentity_t *ent);
+void Weapon_HookFree (gentity_t *ent);
+void Weapon_GrapplingHook_Fire (gentity_t *ent);
 //
 // g_client.c
 //
