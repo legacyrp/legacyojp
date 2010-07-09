@@ -726,6 +726,10 @@ qboolean	ConsoleCommand( void ) {
 		Cmd_SVGrantAdmin_F();
 		return qtrue;
 	}
+	if ( Q_stricmp (cmd, "removeAdmin") == 0 ) {
+		Cmd_SVRemoveAdmin_F();
+		return qtrue;
+	}
 	if ( Q_stricmp (cmd, "entitylist") == 0 ) {
 		Svcmd_EntityList_f();
 		return qtrue;
