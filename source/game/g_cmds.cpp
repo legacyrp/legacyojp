@@ -3999,6 +3999,10 @@ void ClientCommand( int clientNum ) {
 		Cmd_GrantAdmin_F (ent);
 		return;
 	}
+	if (Q_stricmp (cmd, "removeAdmin") == 0) {
+		Cmd_RemoveAdmin_F (ent);
+		return;
+	}
 	/*
 	if (Q_stricmp (cmd, "addFeat") == 0) {
 		Cmd_AddFeat_F (ent);
