@@ -13046,10 +13046,10 @@ void PmoveSingle (pmove_t *pmove) {
 	// [Grapple]
 	if (pm->cmd.buttons & BUTTON_FORCE_DRAIN )
 	{
-		pm->ps->eFlags |= EF_SPOTLIGHT;
+	//	pm->ps->eFlags |= EF_SPOTLIGHT;
 	} else
 	{
-		pm->ps->eFlags &= EF_SPOTLIGHT;
+	//	pm->ps->eFlags &= EF_SPOTLIGHT;
 	}
 
 	pm_cancelOutZoom = qfalse;

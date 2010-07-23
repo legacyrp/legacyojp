@@ -3388,10 +3388,10 @@ static void CG_TeamBase( centity_t *cent ) {
 		{ //do not do this for g2animents
 			trap_R_AddRefEntityToScene( &model );
 		}
-		if (cent->currentState.eType != ET_GRAPPLE)
+		/*if (cent->currentState.eType != ET_GRAPPLE)
 		{ //do not do this for g2animents
 			trap_R_AddRefEntityToScene( &model );
-		}
+		}*/
 	}
 }
 
