@@ -5156,12 +5156,12 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 						}
 					}
 					//[Grapple]
-					else if (crossEnt->currentState.eType == ET_GRAPPLE)
+					/*else if (crossEnt->currentState.eType == ET_GRAPPLE)
 					{
 					ecolor[0] = 1.0;//R
 					ecolor[1] = 0.0;//G
 					ecolor[2] = 0.0;//B
-					}
+					}*/
 					else if ( crossEnt->currentState.teamowner != plTeam )
 					{// on enemy team
 						ecolor[0] = 1.0;//R
