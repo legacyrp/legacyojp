@@ -19,9 +19,9 @@ ECHO ===========
 
 ECHO Y | DEL %PK3DLL%
 ECHO Y | DEL %PK3Stuff%
-7za.exe a -tzip %PK3ASSETS%.pk3 .\%ASSETSFOLDER%\* -xr!.screenshots\ -xr!.svn\ -x!*.dll -x!*.so -x!.\%ASSETSFOLDER%\*.* -xr!*.nav -mx9
+7za.exe a -tzip %ASSETSFOLDER%\%PK3ASSETS%.pk3 .\%ASSETSFOLDER%\* -xr!.screenshots\ -xr!.svn\ -x!*.dll -x!*.so -x!.\%ASSETSFOLDER%\*.* -xr!*.nav -mx9
 IF ERRORLEVEL 1 GOTO ERROR
-7za.exe a -tzip %PK3DLL%.pk3 .\%ASSETSFOLDER%\*.dll -mx9
+7za.exe a -tzip %ASSETSFOLDER%\%PK3DLL%.pk3 .\%ASSETSFOLDER%\*.dll -mx9
 
 IF ERRORLEVEL 1 GOTO ERROR
 ECHO.
