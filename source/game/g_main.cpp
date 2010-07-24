@@ -1111,7 +1111,7 @@ static cvarTable_t		gameCvarTable[] = {
 	//[/FFARespawnTimer]
 	{ &ojp_truebalance, "ojp_trueBalance","1",CVAR_ARCHIVE|CVAR_LATCH,0,qtrue},  //[TrueBalance]
 
-	{ &ojp_modelscaleEnabled, "ojp_modelscaleenabled","0", CVAR_ARCHIVE ,0,qtrue},//[ModelScale]
+	{ &ojp_modelscaleEnabled, "ojp_modelscaleenabled","1", CVAR_ARCHIVE ,0,qtrue},//[ModelScale]
 
 	//*************************MJN***********************************************************************
 	// Allow certain Admin Commands

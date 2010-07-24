@@ -836,6 +836,7 @@ typedef struct {
 	int			userID;     // Account ID
 	qboolean    characterChosen;    // Character chosen
 	int			characterID;	// Character Name
+	int			modelScale; // model scale
 	qboolean	loggedinadmin;		// MJN - Logged in Admin.
 	qboolean	loggedinknight;		// MJN - Logged in Knight.
 	unsigned char ip[4];			// MJN - For SavedIPs
