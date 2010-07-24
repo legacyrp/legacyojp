@@ -3789,6 +3789,8 @@ void ClientSpawn(gentity_t *ent) {
 	}
 	//[/ExpSys]]
 
+	
+
 	//first we want the userinfo so we can see if we should update this client's saber -rww
 	trap_GetUserinfo( index, userinfo, sizeof(userinfo) );
 
@@ -5199,6 +5201,10 @@ void ClientSpawn(gentity_t *ent) {
 	}
 	//[/CoOp]
 	CalculateAndSetRank(ent);
+
+	//Keep Modelscale persistent
+	if(ent->client->sess.modelScale != 100)
+		ent->client->ps.iModelScale= ent->client->sess.modelScale;
 }
 
 

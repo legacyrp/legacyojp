@@ -3959,6 +3959,7 @@ void ClientCommand( int clientNum ) {
 			size = 100;
 
 		ent->client->ps.iModelScale=size;
+		ent->client->sess.modelScale=size;
 		//ent->client->ps.viewheight = (size/2.7f);
 		//ent->client->ps.viewheight *= 0.1f;
 		//ent->client->ps.stats[STAT_MAX_DODGE] = ((100-size)*(ent->client->ps.stats[STAT_DODGE]/100))/2;
