@@ -90,7 +90,7 @@ int forcePowerNeeded[NUM_FORCE_POWER_LEVELS][NUM_FORCE_POWERS] =
 		30,//FP_HEAL,//instant //was 25, but that was way too little //65
 		10,//FP_LEVITATION,//hold/duration
 		//[ForceSys]
-		3,//FP_SPEED,//hold/duration
+		1.5,//FP_SPEED,//hold/duration
 		//50,//FP_SPEED,//duration
 		//[/ForceSys]
 		20,//FP_PUSH,//hold/duration
@@ -121,7 +121,7 @@ int forcePowerNeeded[NUM_FORCE_POWER_LEVELS][NUM_FORCE_POWERS] =
 		30,//FP_HEAL,//instant //60
 		10,//FP_LEVITATION,//hold/duration
 		//[ForceSys]
-		2,//FP_SPEED,//hold/duration
+		1.3,//FP_SPEED,//hold/duration
 		//reduced the FP cost for pull/push
 		15,//FP_PUSH,//hold/duration
 		15,//FP_PULL,//hold/duration

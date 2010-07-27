@@ -6161,15 +6161,15 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 			{//damage is greated than target's health, only give experience for damage used to kill victim
 				float skill = (float) targ->health / SKILL_HP_PER_SKILL * (targ->client->sess.skillPoints / attacker->client->sess.skillPoints);
 				skill/=2;
-				if(skill != attacker->client->sess.skillPoints)
-					AddSkill(attacker,skill );
+				//if(skill != attacker->client->sess.skillPoints)
+					//AddSkill(attacker,skill );
 			}
 			else
 			{
 				float skill =(float) take / SKILL_HP_PER_SKILL * (targ->client->sess.skillPoints / attacker->client->sess.skillPoints);
 				skill/=2;
-				if(skill != attacker->client->sess.skillPoints)
-					AddSkill(attacker, skill );
+				//if(skill != attacker->client->sess.skillPoints)
+					//AddSkill(attacker, skill );
 			}
 			//[/SkillChange]
 		}
@@ -6695,8 +6695,8 @@ void G_DodgeDrain(gentity_t *victim, gentity_t *attacker, int amount)
 		//assert(!attacker->client->sess.skillPoints);
 
 		//scale skill points based on the ratio between skills
-		AddSkill(attacker, 
-			(float) amount / SKILL_DP_PER_SKILL * (victim->client->sess.skillPoints / attacker->client->sess.skillPoints)); 
+		//AddSkill(attacker, 
+		//	(float) amount / SKILL_DP_PER_SKILL * (victim->client->sess.skillPoints / attacker->client->sess.skillPoints)); 
 	}
 
 	//G_Printf("%i: %i: %i Points of Dodge Drained\n", level.time, victim->s.number, amount);

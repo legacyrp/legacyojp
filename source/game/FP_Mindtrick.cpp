@@ -8,9 +8,9 @@ extern void Jedi_Decloak( gentity_t *self );
 const int mindTrickTime[NUM_FORCE_POWER_LEVELS] =
 {
 	0,//none
-	5000,
-	10000,
-	15000
+	15000,
+	20000,
+	30000
 };
 
 void WP_AddAsMindtricked(forcedata_t *fd, int entNum)
