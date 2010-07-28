@@ -7,11 +7,11 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{ED6EB11A-DF89-4CB8-A02F-B6FCAD9955FD}
 AppName=Legacy OJP(JKE)
-AppVerName=JKE rev52
+AppVerName=JKE rev53
 DefaultDirName=C:\Program Files\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData
 DefaultGroupName=JKE
 AllowNoIcons=yes
-OutputBaseFilename=JKE Setup(rev52)
+OutputBaseFilename=JKE Setup(rev53)
 Compression=lzma
 SolidCompression=yes
 ;IconFilename: "{app}myicon.ico"

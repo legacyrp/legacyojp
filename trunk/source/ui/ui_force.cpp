@@ -663,7 +663,7 @@ void UpdateForceUsed()
 				uiRank[NUM_FORCE_POWERS+SK_CRYOBAN].uiForcePowersRank=0;//Just bought flash
 		}
 	}
-
+	/*
 	if(spentInForce >= 25)
 	{
 		for(i=NUM_FORCE_POWERS;i<NUM_FORCE_POWERS+SK_DISRUPTOR+1;i++)
@@ -704,7 +704,7 @@ void UpdateForceUsed()
 		}
 		
 	}
-
+	*/
 	/*
 	if(uiRank[NUM_FORCE_POWERS+SK_JETPACK].uiForcePowersRank >= FORCE_LEVEL_1)
 	{

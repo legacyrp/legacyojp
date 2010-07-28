@@ -1098,7 +1098,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &ojp_clientMOTD, "ojp_clientMOTD", "", CVAR_ARCHIVE, 0, qfalse },
 	//This message of the day is printed in the center of a player's screen when they first join a server if they AREN'T
 	//running the right version of OJP.
-	{ &ojp_MOTD, "ojp_MOTD", "This server is running OJP Enhanced.  Your game WILL CRASH unless you run the mod. You can get it from ojp.jediknight.net", CVAR_ARCHIVE, 0, qfalse },
+	{ &ojp_MOTD, "ojp_MOTD", "Please download the latest version of Legacy mod at legacyrp.com", CVAR_ARCHIVE, 0, qfalse },
 	//[/ExpandedMOTD]	
 
 	//[DodgeSys]
