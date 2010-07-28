@@ -1047,7 +1047,7 @@ void UI_ReadLegalForce(void)
 			uiForceUsed += bgForcePowerCost[c][currank];
 			uiForceAvailable -= bgForcePowerCost[c][currank];
 
-			uiRank[c].uiForcePowersRank++;
+		//	uiRank[c].uiForcePowersRank++;
 		}
 	}
 

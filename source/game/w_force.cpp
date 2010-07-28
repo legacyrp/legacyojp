@@ -508,8 +508,8 @@ void WP_InitForcePowers( gentity_t *ent )
 						ent->client->sess.spectatorState = SPECTATOR_FREE;
 						ent->client->sess.spectatorClient = 0;
 
-						//ent->client->pers.teamState.state = TEAM_BEGIN;
-						trap_SendServerCommand ( ent->client->ps.clientNum, va("print \"^1OLD/CORRUPT CLIENT VERSION: PLEASE DOWNLOAD VERSION %i AT LEGACYRP.COM\n\"",MOD_VERSION));
+						ent->client->pers.teamState.state = TEAM_BEGIN;
+						trap_SendServerCommand ( ent-g_entities, va("print \"^1OLD/CORRUPT CLIENT VERSION: PLEASE DOWNLOAD VERSION %i AT LEGACYRP.COM\n\"",MOD_VERSION));
 
 					}
 					if (ent->client->sess.loggedinAccount == qfalse)
