@@ -502,14 +502,13 @@ void WP_InitForcePowers( gentity_t *ent )
 				//[/BotTweaks]
 				{//[Account System]
 					//!g_teamAutoJoin.integer && 
-					if(!ent->client->pers.ojpClientPlugIn && ent->client->pers.connected == CON_CONNECTED)
+					if(ent->client->pers.ojpClientPlugIn == qfalse && ent->client->pers.connected == CON_CONNECTED)
 					{
 						ent->client->sess.sessionTeam = TEAM_SPECTATOR;
 						ent->client->sess.spectatorState = SPECTATOR_FREE;
-						ent->client->sess.spectatorClient = 0;
+						ent->client->sess.spectatorClient = ent->client->ps.clientNum;
 
 						ent->client->pers.teamState.state = TEAM_BEGIN;
-						trap_SendServerCommand ( ent-g_entities, va("print \"^1OLD/CORRUPT CLIENT VERSION: PLEASE DOWNLOAD VERSION %i AT LEGACYRP.COM\n\"",MOD_VERSION));
 
 					}
 					if (ent->client->sess.loggedinAccount == qfalse)
