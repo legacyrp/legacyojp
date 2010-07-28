@@ -23,7 +23,8 @@
 //This is the current keyword used to denote the current OJP Basic and Enhanced client plugins.  
 //These values should be changed whenever something is changed that would make the new clients 
 //incompatiable with previous versions of OJP Basic or Enhanced (on individual basis).
-#define CURRENT_OJPENHANCED_CLIENTVERSION		"OJP Enhanced v1.3"
+#define MOD_VERSION 53
+#define CURRENT_OJPENHANCED_CLIENTVERSION		"OJP Enhanced v1.3 Legacy Mod 53"
 //[/ClientPlugInDetect]
 
 #define	STEPSIZE		18
