@@ -1422,10 +1422,12 @@ static void CG_ServerCommand( void ) {
 	if ( !strcmp( cmd, "lui_login") )
 	{
 		trap_Cvar_Set("ui_account_loggedIn", "true");
+		return;
 	}
 	if ( !strcmp( cmd, "lui_logout") )
 	{
 		trap_Cvar_Set("ui_account_loggedIn", "false");
+		return;
 	}
 	if(!strcmp(cmd, "addtext"))
 	{
@@ -1859,7 +1861,7 @@ static void CG_ServerCommand( void ) {
 		return;
 	}
 	//[/LastManStanding]
-
+	if ( strcmp( cmd, "forcechanged" ) )
 	CG_Printf( "Unknown client game command: %s\n", cmd );
 }
 
