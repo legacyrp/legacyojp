@@ -337,7 +337,7 @@ void WP_InitForcePowers( gentity_t *ent )
 	
 	std::string powers = forcePowers;
 	int SIZE = powers.size();
-	if(SIZE != 69)
+	if(SIZE != NUM_TOTAL_SKILLS+6)
 	{
 		Q_strncpyz(forcePowers,DEFAULT_FORCEPOWERS, sizeof( forcePowers ));
 		Info_SetValueForKey(userinfo,"forcepowers",forcePowers);

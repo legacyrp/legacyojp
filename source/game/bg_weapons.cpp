@@ -262,7 +262,7 @@ weaponData_t weaponData[WP_NUM_WEAPONS] =
 //		"DEMP2",				//	char	classname[32];		// Spawning name
 		AMMO_POWERCELL,			//	int		ammoIndex;			// Index to proper ammo slot
 		5,						//	int		ammoLow;			// Count when ammo is low
-		8,						//	int		energyPerShot;		// Amount of energy used per shot
+		1,						//	int		energyPerShot;		// Amount of energy used per shot
 		500,					//	int		fireTime;			// Amount of time between firings
 		8192,					//	int		range;				// Range of weapon
 		6,						//	int		altEnergyPerShot;	// Amount of energy used for alt-fire
@@ -373,11 +373,11 @@ weaponData_t weaponData[WP_NUM_WEAPONS] =
 	{	// WP_CONCUSSION
 //		"Concussion Rifle",		//	char	classname[32];		// Spawning name
 		AMMO_METAL_BOLTS,		//	int		ammoIndex;			// Index to proper ammo slot
-		40,						//	int		ammoLow;			// Count when ammo is low
-		40,						//	int		energyPerShot;		// Amount of energy used per shot
+		5,						//	int		ammoLow;			// Count when ammo is low
+		1,						//	int		energyPerShot;		// Amount of energy used per shot
 		800,					//	int		fireTime;			// Amount of time between firings
 		8192,					//	int		range;				// Range of weapon
-		50,						//	int		altEnergyPerShot;	// Amount of energy used for alt-fire
+		1,						//	int		altEnergyPerShot;	// Amount of energy used for alt-fire
 		1200,					//	int		altFireTime;		// Amount of time between alt-firings
 		8192,					//	int		altRange;			// Range of alt-fire
 		0,						//	int		chargeSubTime;		// ms interval for subtracting ammo during charge

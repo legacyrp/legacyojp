@@ -215,12 +215,13 @@ int bgForcePowerCost[NUM_TOTAL_SKILLS][NUM_FORCE_POWER_LEVELS] = //0 == neutral
 	{	0,	10,	0,	0	},	//SK_BLASTERRATEOFFIREUPGRADE
 	{	0,	10,	8,	8	},//SK_TUSKEN_RIFLE
 	{	0,	5,	7,	9	},//SK_SHIELD
-	{	0,	5,	5,	5	},//SK_MELEE
 	{	0,	5,	7,	9	},//SK_GRENADE
 	{	0,	1,	0,	0	},//SK_SMOKEGRENADE
 	{	0,	1,	0,	0	},//SK_FLASHGRENADE
 	{	0,	1,	0,	0	},//SK_CRYOBAN
 	{	0,	1,	0,	0	},//SK_EMP
+	{   0,  1,  2,  3   },//SK_DEMP
+	{   0,  1,  2,  3   },//SK_CONC
 	{   0,  1,  2,  3   },//FT_BLASTERS
 	{   0,  1,  2,  3   },//FT_RIFLES
 	{   0,  1,  2,  3   },//FT_HEAVY_WEAPONS
@@ -234,6 +235,7 @@ int bgForcePowerCost[NUM_TOTAL_SKILLS][NUM_FORCE_POWER_LEVELS] = //0 == neutral
 	{   0,  1,  2,  3   },//FT_JETPACK
 	{   0,  1,  2,  3   },//FT_CLOAK
 	{   0,  1,  2,  3   },//FT_SHIELDS
+	{   0,  1,  2,  3   },//FT_ENERGY
 	//[/ExpSys]
 };
 

@@ -856,5 +856,60 @@
 				setitemcolor	setsk_shields forecolor .2 1 .2 1
 			}
 		}
+		//Energy Title
+		itemDef
+		{
+			name					setft_energy
+			group					feats
+			style					0
+			text					"Energy Weapons"
+			rect					20 285 110 15
+			textalight				ITEM_ALIGN_LEFT
+			textalignx				0
+			textaligny				0
+			font					4
+			textscale				1
+			forecolor				.2 1 .2 1
+			outlinecolor			1 .5 .5 .5
+			backcolor				0 0 0 0
+			border					0
+			bordercolor				0 0 0 0
+			visible					1 
+			decoration
+		}
+
+		//Energy Assign
+		itemDef
+		{
+			name					setft_energy
+			group					feats
+			style					0
+			ownerdraw				UI_FORCE_RANK_FEAT_ENERGY
+			rect					35 285 175 15
+			textalign				ITEM_ALIGN_LEFT
+			textalignx				115
+			textaligny				-5
+			textscale				.25
+			forecolor				.2 1 .2 1
+			backcolor				0 0 0 0
+			forecolor				1 0.2 0.2 1
+			border					0
+			bordercolor				0 0 0 0
+			descText				"Grants usage of Concussion and DEMP2"
+			visible					1
+			action
+			{
+				play				"sound/interface/button1.wav" ;
+			}
+			
+			mouseenter 
+			{ 
+				setitemcolor	setsk_energy forecolor .7 1 2. 1
+			}
+			mouseexit 
+			{ 
+				setitemcolor	setsk_energy forecolor .2 1 .2 1
+			}
+		}
 
 		}
