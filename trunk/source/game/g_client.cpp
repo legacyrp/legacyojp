@@ -4607,6 +4607,20 @@ void ClientSpawn(gentity_t *ent) {
 					client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_FLECHETTE );
 				}
 			}
+			if(client->skillLevel[SK_DEMP])
+			{
+				if (!wDisable || !(wDisable & (1 << WP_DEMP2)))
+				{
+					client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_DEMP2 );
+				}
+			}
+			if(client->skillLevel[SK_CONC])
+			{
+				if (!wDisable || !(wDisable & (1 << WP_CONCUSSION)))
+				{
+					client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_CONCUSSION );
+				}
+			}
 			//[/ExpSys]
 		}
 

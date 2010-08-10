@@ -1922,5 +1922,9 @@ void setMenuSkill(int feat, int level)
 	case FT_SHIELDS:
 		uiRank[NUM_FORCE_POWERS+SK_SHIELD].numRanks = level;
 		return;
+	case FT_ENERGY:
+		uiRank[NUM_FORCE_POWERS+SK_DEMP].numRanks = level;
+		uiRank[NUM_FORCE_POWERS+SK_CONC].numRanks = level;
+		return;
 	}
 }

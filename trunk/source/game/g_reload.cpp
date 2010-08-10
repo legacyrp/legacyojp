@@ -55,6 +55,18 @@ int ClipSize(int ammo,gentity_t *ent)
 				break;
 			}
 		}
+		switch(ent->client->skillLevel[SK_DEMP])
+			{
+			case FORCE_LEVEL_3:
+				return 30;
+				break;
+			case FORCE_LEVEL_2:
+				return 20;
+				break;
+			case FORCE_LEVEL_1:
+				return 10;
+				break;
+			}
 		break;
 	case AMMO_METAL_BOLTS:
 		if(ent->client->skillLevel[SK_REPEATER] >= ent->client->skillLevel[SK_FLECHETTE])
@@ -87,6 +99,18 @@ int ClipSize(int ammo,gentity_t *ent)
 				break;
 			}
 		}
+		switch(ent->client->skillLevel[SK_CONC])
+			{
+			case FORCE_LEVEL_3:
+				return 10;
+				break;
+			case FORCE_LEVEL_2:
+				return 5;
+				break;
+			case FORCE_LEVEL_1:
+				return 3;
+				break;
+			}
 		break;
 
 	//case WP_BRYAR_PISTOL:
@@ -119,6 +143,10 @@ int SkillLevelForWeap(gentity_t *ent,int weap)
 		return ent->client->skillLevel[SK_DISRUPTOR];
 	case WP_FLECHETTE:
 		return ent->client->skillLevel[SK_FLECHETTE];
+	case WP_CONCUSSION:
+		return ent->client->skillLevel[SK_CONC];
+	case WP_DEMP2:
+		return ent->client->skillLevel[SK_DEMP];
 	default:
 		return -1;
 	}
@@ -128,6 +156,8 @@ int ReloadTime(gentity_t *ent)
 {
 	switch(ent->client->ps.weapon)
 	{
+	case WP_CONCUSSION:
+	case WP_DEMP2:
 	case WP_DISRUPTOR:
 	case WP_REPEATER:
 	case WP_FLECHETTE:

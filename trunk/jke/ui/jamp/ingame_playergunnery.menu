@@ -1623,7 +1623,7 @@
 			forecolor				1 0.2 0.2 1
 			border					0
 			bordercolor				0 0 0 0
-			descText				"SHIELDZ LOL"
+			descText				"Increases Shield Strength"
 			visible					1 
 			action 
 			{ 
@@ -1645,7 +1645,7 @@
 			name				forceranktitle
 			group				"playersettingforcegroup"
 			style				0	
-			text				"Attribute Upgrades"
+			text				"Energy Weapons"
 			rect				270 240 0 0
 			//rect				100 100 0 0
 			textalign			ITEM_ALIGN_LEFT		
@@ -1662,26 +1662,116 @@
 			decoration
 		}
 
+		// demp title
 		itemDef 
 		{
-			name				forceranktitle2
-			group				"playersettingforcegroup"
-			style				0	
-			text				@MENUS_1_2_3
-			rect				270 240 0 0
-			textalign			ITEM_ALIGN_LEFT
-			textalignx			115
-			textaligny			0
-			outlinecolor		1 .5 .5 .5
-			backcolor			0.3 0.3 0.3 1
-			font				4
-			textscale		    1
-			forecolor			0 0.8 0.4 1
-			border				0
-			bordercolor			0 0 0 0
-			visible				1 
+			name					setsk_demp
+			group					gunpowers
+			style					0	
+			text					"DEMP2:"
+			rect					270 255 110 15
+			textalign				ITEM_ALIGN_LEFT												
+			textalignx				0
+			textaligny				0
+			font					4
+			textscale				1
+			forecolor				.2 1 .2 1
+			outlinecolor			1 .5 .5 .5
+			backcolor				0 0 0 0
+			border					0
+			bordercolor				0 0 0 0
+			visible					1 
 			decoration
-		}	
+		}
+	
+		// demp assign
+		itemDef 
+		{
+			name					setsk_demp
+			group					gunpowers
+			style					0	
+			ownerdraw				UI_FORCE_RANK_DEMP
+			rect					270 255 175 15
+			textalign				ITEM_ALIGN_LEFT		
+			textalignx				115
+			textaligny				-5
+			textscale				.25        
+			forecolor				.2 1 .2 1
+			backcolor				0 0 0 0
+			forecolor				1 0.2 0.2 1
+			border					0
+			bordercolor				0 0 0 0
+			descText				"Allows usage of DEMP2"
+			visible					1 
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+			}
+
+			mouseenter 
+			{ 
+				setitemcolor	setsk_demp forecolor .7 1 2. 1
+			}
+			mouseexit 
+			{ 
+				setitemcolor	setsk_demp forecolor .2 1 .2 1
+			}
+		}
+		// conc title
+		itemDef 
+		{
+			name					setsk_conc
+			group					gunpowers
+			style					0	
+			text					"Concussion Rifle:"
+			rect					270 270 110 15
+			textalign				ITEM_ALIGN_LEFT												
+			textalignx				0
+			textaligny				0
+			font					4
+			textscale				1
+			forecolor				.2 1 .2 1
+			outlinecolor			1 .5 .5 .5
+			backcolor				0 0 0 0
+			border					0
+			bordercolor				0 0 0 0
+			visible					1 
+			decoration
+		}
+	
+		// conc assign
+		itemDef 
+		{
+			name					setsk_conc
+			group					gunpowers
+			style					0	
+			ownerdraw				UI_FORCE_RANK_CONC
+			rect					270 270 175 15
+			textalign				ITEM_ALIGN_LEFT		
+			textalignx				115
+			textaligny				-5
+			textscale				.25        
+			forecolor				.2 1 .2 1
+			backcolor				0 0 0 0
+			forecolor				1 0.2 0.2 1
+			border					0
+			bordercolor				0 0 0 0
+			descText				"Allows usage of Concussion Rifle"
+			visible					1 
+			action 
+			{ 
+				play			"sound/interface/button1.wav" ;
+			}
+
+			mouseenter 
+			{ 
+				setitemcolor	setsk_conc forecolor .7 1 2. 1
+			}
+			mouseexit 
+			{ 
+				setitemcolor	setsk_conc forecolor .2 1 .2 1
+			}
+		}
 	}
 }
 //[/NewMenus]

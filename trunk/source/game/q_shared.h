@@ -663,7 +663,9 @@ typedef enum
 	SK_FLASHGRENADE,
 	SK_CRYOBAN,
 	SK_EMP,
-	SK_MELEE,//[Melee]
+	//SK_MELEE,//[Melee]
+	SK_DEMP,
+	SK_CONC,
 	NUM_SKILLS
 } skills_t;
 
@@ -682,6 +684,7 @@ typedef enum
 	FT_JETPACK,
 	FT_CLOAK,
 	FT_SHIELDS,
+	FT_ENERGY,
 
 
 	NUM_FEATS
