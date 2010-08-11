@@ -94,8 +94,7 @@ void ForceLift( gentity_t *self )
 		ForcePowerUsableOn(self, &g_entities[tr.entityNum], FP_LIFT) &&
 		//[ForceSys]
 		!OJP_CounterForce(self, &g_entities[tr.entityNum], FP_LIFT) &&
-		g_entities[tr.entityNum].client->ps.groundEntityNum == ENTITYNUM_NONE &&
-		//[/ForceSys]
+				//[/ForceSys]
 		(g_friendlyFire.integer || !OnSameTeam(self, &g_entities[tr.entityNum])) ) 
 	{
 		gentity_t*ent = &g_entities[tr.entityNum];
