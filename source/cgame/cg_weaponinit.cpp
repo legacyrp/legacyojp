@@ -5,9 +5,9 @@
 
 static qboolean didItAlready = qfalse;
 
-void RunScript(const char* file);
+//void RunScript(const char* file);
 
-void RunFunction(const char* func);
+//void RunFunction(const char* func);
 
 /*
 =================
