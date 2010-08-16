@@ -465,10 +465,10 @@ void WP_FireDisruptor( gentity_t *ent, qboolean altFire )
 		altFire = qfalse;
 	}
 
-	if (count < DISRUPTOR_MIN_CHARGE)
+/*	if (count < DISRUPTOR_MIN_CHARGE)
 	{ //Do not fire until count is at a minimum --HOLMSTN
 		altFire = qfalse;
-	}
+	}*/
 
 	if (ent && ent->s.eType == ET_NPC && !ent->client)
 	{ //special case for animents
