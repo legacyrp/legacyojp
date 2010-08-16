@@ -460,15 +460,18 @@ void WP_DisruptorAltFire( gentity_t *ent )
 void WP_FireDisruptor( gentity_t *ent, qboolean altFire )
 //---------------------------------------------------------
 {
+	int count;
+	count = DetermineDisruptorCharge(ent);
+
 	if (!ent || !ent->client || ent->client->ps.zoomMode != 1)
 	{ //do not ever let it do the alt fire when not zoomed
 		altFire = qfalse;
 	}
 
-/*	if (count < DISRUPTOR_MIN_CHARGE)
+	if (count <= DISRUPTOR_MIN_CHARGE)
 	{ //Do not fire until count is at a minimum --HOLMSTN
 		altFire = qfalse;
-	}*/
+	}
 
 	if (ent && ent->s.eType == ET_NPC && !ent->client)
 	{ //special case for animents

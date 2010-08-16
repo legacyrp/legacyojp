@@ -1854,7 +1854,7 @@ qboolean CheckGauntletAttack( gentity_t *ent );
 
 //[DodgeSys]
 #define DISRUPTOR_MAX_CHARGE (g_gametype.integer == GT_SIEGE ? 200 : 60) //max charge on disruptor's alt fire.
-#define DISRUPTOR_MIN_CHARGE (g_gametype.integer == GT_SIEGE ? 0 : 45) //min charge on disruptor alt fire. --HOLMSTN
+#define DISRUPTOR_MIN_CHARGE (g_gametype.integer == GT_SIEGE ? 0 : 45) //min charge on disruptor alt fire. --HOLMSTN 
 
 #define DODGE_BOLTBLOCK			4	//standard DP cost to block a missile bolt -- 1.3 was 2.5
 #define DODGE_BOWCASTERBLOCK	3
