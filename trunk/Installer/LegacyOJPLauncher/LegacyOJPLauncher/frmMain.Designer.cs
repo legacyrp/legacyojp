@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtNews = new System.Windows.Forms.TextBox();
             this.grpNews = new System.Windows.Forms.GroupBox();
             this.prgTotal = new System.Windows.Forms.ProgressBar();
             this.prgCurrent = new System.Windows.Forms.ProgressBar();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.tmrStart = new System.Windows.Forms.Timer(this.components);
             this.grpNews.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +45,7 @@
             this.txtNews.Location = new System.Drawing.Point(7, 19);
             this.txtNews.Multiline = true;
             this.txtNews.Name = "txtNews";
+            this.txtNews.ReadOnly = true;
             this.txtNews.Size = new System.Drawing.Size(619, 178);
             this.txtNews.TabIndex = 0;
             // 
@@ -87,19 +91,26 @@
             this.lblTotal.TabIndex = 5;
             this.lblTotal.Text = "Total Progress";
             // 
+            // tmrStart
+            // 
+            this.tmrStart.Tick += new System.EventHandler(this.tmrStart_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(643, 335);
+            this.ControlBox = false;
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblCurrent);
             this.Controls.Add(this.prgCurrent);
             this.Controls.Add(this.prgTotal);
             this.Controls.Add(this.grpNews);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Legacy OJP Launcher";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.grpNews.ResumeLayout(false);
@@ -117,6 +128,7 @@
         private System.Windows.Forms.ProgressBar prgCurrent;
         private System.Windows.Forms.Label lblCurrent;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Timer tmrStart;
     }
 }
 
