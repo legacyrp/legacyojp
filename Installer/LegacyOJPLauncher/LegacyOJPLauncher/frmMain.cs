@@ -70,7 +70,7 @@ namespace LegacyOJPLauncher
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-           // getNews();
+            getNews();
             getFileList();
             tmrStart.Interval = 5000;
             tmrStart.Start();
@@ -205,6 +205,8 @@ namespace LegacyOJPLauncher
                     for (int j = 0; j < xmlnode[i].ChildNodes.Count; j++)
                     {
                         XmlAttributeCollection fileInfo = xmlnode[i].ChildNodes[j].Attributes;
+                        if (fileInfo[0].Value == "news")
+                            continue;
                         file newFile = new file();
                         newFile.setFileName(fileInfo[0].Value); //Set file name
                         newFile.setLocation(fileInfo[1].Value); //Set file location
@@ -237,13 +239,21 @@ namespace LegacyOJPLauncher
                 xmlFileList = new XmlDocument();
                 xmlFileList.Load(strm);
 
-                XmlNodeList xmlnode = xmlFileList.GetElementsByTagName("News");
+                XmlNodeList xmlnode = xmlFileList.GetElementsByTagName("Category");
                 for (int i = 0; i < xmlnode.Count; i++)
                 {
                     for (int j = 0; j < xmlnode[i].ChildNodes.Count; j++)
                     {
                         XmlAttributeCollection newsInfo = xmlnode[i].ChildNodes[j].Attributes;
-                        txtNews.AppendText(newsInfo[0].Value);
+                        if (newsInfo[0].Value == "news")
+                        {
+                            for (int k = 0; k < xmlnode[i].ChildNodes[j].ChildNodes.Count; k++)
+                            {
+                                XmlAttributeCollection lineInfo = xmlnode[i].ChildNodes[j].ChildNodes[k].Attributes;
+                                txtNews.AppendText(lineInfo[0].Value);
+                                txtNews.Text = txtNews.Text + Environment.NewLine;
+                            }
+                        }
                     }
                 }
             }
