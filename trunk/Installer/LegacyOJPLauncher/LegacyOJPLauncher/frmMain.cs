@@ -185,7 +185,7 @@ namespace LegacyOJPLauncher
             // Make progress on the progress bar
             prgCurrent.Value = PercentProgress;
             // Display the current progress on the form
-            lblCurrent.Text = "Current File: (" + this.filename + ") - " + "Downloaded " + BytesRead + " out of " + TotalBytes + " (" + PercentProgress + "%)";
+            lblCurrent.Text = "Current File: (" + this.filename + ") - " + "Downloaded " + BytesRead / 1048576 + " mb out of " + TotalBytes / 1048576 + " mb (" + PercentProgress + "%)";
         }
         //Gets the latest list of files and information
         public void getFileList()
