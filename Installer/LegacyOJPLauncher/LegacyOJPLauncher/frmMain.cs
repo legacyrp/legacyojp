@@ -130,7 +130,7 @@ namespace LegacyOJPLauncher
                     byte[] downBuffer = new byte[2048];
 
                     strResponse = wcDownload.OpenRead(this.url);
-                    strLocal = new FileStream((this.filename + ".incomplete"), FileMode.Create, FileAccess.Write, FileShare.None);
+                    strLocal = new FileStream((this.filename + ".incomplete"), FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
 
 
                     // Loop through the buffer until the buffer is empty
@@ -144,7 +144,7 @@ namespace LegacyOJPLauncher
                 }
                 catch (WebException)
                 {
-                    MessageBox.Show("Error: Unable to access file source");
+                    Application.Exit();
                 }
                 finally
                 {
@@ -155,10 +155,11 @@ namespace LegacyOJPLauncher
                         strResponse.Close();
                         temp = strLocal.Length;
                         strLocal.Close();
+                        webResponse.Close();
                     }
                     catch (SystemException)
                     {
-                        //  Application.Exit();
+                        Application.Exit();
                     }
                     //Rename the file to the correct name
                     if (size.CompareTo(temp) == 0 && size != 0)
@@ -304,12 +305,14 @@ namespace LegacyOJPLauncher
                 }
                 //Open a thread for processing the download
                 thrDownload = new Thread(Download);
+                thrDownload.Name = this.filename + "Download";
 
                 // Start the thread, and thus call Download()
                 thrDownload.Start();
                 //Wait until the file is downloaded
                 while (!fileDownloaded) { Application.DoEvents(); }
                 MoveToCorrectFolder(pathToFile);
+              //  System.Threading.Thread.Sleep(5000);
             }
             //Reset everything
             prgTotal.Value = 0;
