@@ -11,6 +11,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace LegacyOJPLauncher
 {
@@ -18,9 +19,10 @@ namespace LegacyOJPLauncher
     {
         //Variables
         private XmlDocument xmlFileList;
-        string path = "http://legacyrp.com/test.xml";
+        string path = "http://legacyrp.com/LegacyOJP.xml";
         public bool gamePathSet = false;
         public string gamePath = "";
+        public List<file> fileList = new List<file>();
 
         #region Download required variables
 
@@ -53,9 +55,10 @@ namespace LegacyOJPLauncher
         //Constructor if we are configured
         public frmMain(bool gamePathSet, string gamepath)
         {
-            InitializeComponent();
             this.gamePath = gamepath;
             this.gamePathSet = gamePathSet;
+            InitializeComponent();
+            tmrStart.Enabled = true;
         }
         ~frmMain()
         {
@@ -67,10 +70,43 @@ namespace LegacyOJPLauncher
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+           // getNews();
+            getFileList();
+            tmrStart.Interval = 5000;
+            tmrStart.Start();
         }
+        public void MoveToCorrectFolder(string destination)
+        {
+            string filepath = "";
+            try
+            {
+                if (this.folder == "Gamedata")
+                {
+                    filepath = gamePath;
+                }
+                else
+                {
+                    filepath = gamePath + "/" + this.folder;
+                }
+                if (!Directory.Exists(filepath))
+                {
+                    Directory.CreateDirectory(filepath);
+                }
+                File.Move(filename, destination);
+            }
+            catch (SystemException) { }
+        }
+        private int getDownloadTotal()
+        {
+            int total = 0;
 
+            for (int i = 0; i < fileList.Count; i++)
+            {
+                    total++;
+            }
 
+            return total;
+        }
         private void Download()
         {
             Int64 size = 0;
@@ -151,5 +187,162 @@ namespace LegacyOJPLauncher
             // Display the current progress on the form
             lblCurrent.Text = "Current File: (" + this.filename + ") - " + "Downloaded " + BytesRead + " out of " + TotalBytes + " (" + PercentProgress + "%)";
         }
+        //Gets the latest list of files and information
+        public void getFileList()
+        {
+            try
+            {
+
+                WebClient Client = new WebClient();
+                Stream strm = Client.OpenRead(path);
+                xmlFileList = new XmlDocument();
+                xmlFileList.Load(strm);
+
+                //Create root Category node
+                XmlNodeList xmlnode = xmlFileList.GetElementsByTagName("Category");
+                for (int i = 0; i < xmlnode.Count; i++)
+                {
+                    for (int j = 0; j < xmlnode[i].ChildNodes.Count; j++)
+                    {
+                        XmlAttributeCollection fileInfo = xmlnode[i].ChildNodes[j].Attributes;
+                        file newFile = new file();
+                        newFile.setFileName(fileInfo[0].Value); //Set file name
+                        newFile.setLocation(fileInfo[1].Value); //Set file location
+                        newFile.setFolder(fileInfo[2].Value); //Set destination folder
+                        newFile.setDescription(fileInfo[3].Value); //Set file description
+                        newFile.setMd5sum(fileInfo[4].Value); //Set file md5sum
+
+                        string pathToFile = "";
+                        if (newFile.getFolder() == "Gamedata")
+                        {
+                            pathToFile = gamePath + "/" + newFile.getFileName(); ;
+                        }
+                        else
+                        {
+                            pathToFile = gamePath + "/" + newFile.getFolder() + "/" + newFile.getFileName();
+                        }
+                        this.fileList.Add(newFile);
+                    }
+                }
+            }
+            catch (SystemException) { }
+        }
+        public void getNews()
+        {
+            try
+            {
+
+                WebClient Client = new WebClient();
+                Stream strm = Client.OpenRead(path);
+                xmlFileList = new XmlDocument();
+                xmlFileList.Load(strm);
+
+                XmlNodeList xmlnode = xmlFileList.GetElementsByTagName("News");
+                for (int i = 0; i < xmlnode.Count; i++)
+                {
+                    for (int j = 0; j < xmlnode[i].ChildNodes.Count; j++)
+                    {
+                        XmlAttributeCollection newsInfo = xmlnode[i].ChildNodes[j].Attributes;
+                        txtNews.AppendText(newsInfo[0].Value);
+                    }
+                }
+            }
+            catch (SystemException) { }
+        }
+
+        private void tmrStart_Tick(object sender, EventArgs e)
+        {
+            tmrStart.Stop();
+            //Loop through the files
+            int count = 0;
+            for (int j = 0; j < fileList.Count(); j++)
+            {
+                //Update total progress
+                count++;
+                prgTotal.Value = ((count * 100) / getDownloadTotal());
+                lblTotal.Text = "Total Progress: " + ((count * 100) / getDownloadTotal()) + "%";
+                Application.DoEvents();
+                //If the node is checked, we're going to download it
+                this.url = fileList[j].getLocation();
+                this.filename = fileList[j].getFileName();
+                this.folder = fileList[j].getFolder();
+                string pathToFile = "";
+                if (this.folder == "Gamedata")
+                {
+                    pathToFile = gamePath + "/" + this.filename;
+                }
+                else
+                {
+                    pathToFile = gamePath + "/" + this.folder + "/" + this.filename;
+                }
+                fileDownloaded = false;
+                //If this file already exists don't download it again
+                lblCurrent.Text = "Current File: (" + this.filename + ") Checking to server";
+                Application.DoEvents();
+                if (File.Exists(pathToFile))
+                {
+                    //Check if the file is the same as the one on the server
+                    if (MD5SUM(File.ReadAllBytes(pathToFile)) == fileList[j].getMd5sum())
+                    {//Ok, we have the right file, move along
+                        continue;
+                    }
+                    //Get rid of the old/bad file so it can be updated
+                    else
+                    {
+                        File.Delete(pathToFile);
+                    }
+                }
+                //Open a thread for processing the download
+                thrDownload = new Thread(Download);
+
+                // Start the thread, and thus call Download()
+                thrDownload.Start();
+                //Wait until the file is downloaded
+                while (!fileDownloaded) { Application.DoEvents(); }
+                MoveToCorrectFolder(pathToFile);
+            }
+            //Reset everything
+            prgTotal.Value = 0;
+            prgCurrent.Value = 0;
+            lblTotal.Text = "Total Progress";
+            lblCurrent.Text = "Current File: Done";
+
+            //Start game
+            Process p= new Process();
+            p.StartInfo.WorkingDirectory = this.gamePath+@"\jke\";
+            p.StartInfo.FileName = @"Play_JKE.bat";
+            p.Start();
+            this.Close();
+        }
     }
+    public class file
+    {
+        private string fileName;
+        private string location;
+        private string description;
+        private string md5sum;
+        private string destinationFolder;
+
+        public file()
+        {
+            this.fileName = "";
+            this.location = "";
+            this.description = "";
+            this.md5sum = "";
+            this.destinationFolder = "";
+        }
+
+        public string getFileName() { return this.fileName; }
+        public string getLocation() { return this.location; }
+        public string getDescription() { return this.description; }
+        public string getMd5sum() { return this.md5sum; }
+        public string getFolder() { return this.destinationFolder; }
+
+        public void setFileName(string str) { this.fileName = str; }
+        public void setLocation(string str) { this.location = str; }
+        public void setDescription(string str) { this.description = str; }
+        public void setMd5sum(string str) { this.md5sum = str; }
+        public void setFolder(string str) { this.destinationFolder = str; }
+
+    };
 }
