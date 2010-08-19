@@ -209,11 +209,12 @@ namespace LegacyOJPLauncher
                         if (fileInfo[0].Value == "news")
                             continue;
                         file newFile = new file();
-                        newFile.setFileName(fileInfo[0].Value); //Set file name
-                        newFile.setLocation(fileInfo[1].Value); //Set file location
-                        newFile.setFolder(fileInfo[2].Value); //Set destination folder
-                        newFile.setDescription(fileInfo[3].Value); //Set file description
-                        newFile.setMd5sum(fileInfo[4].Value); //Set file md5sum
+                        newFile.setSkin(fileInfo[0].Value); // is this file a skin?
+                        newFile.setFileName(fileInfo[1].Value); //Set file name
+                        newFile.setLocation(fileInfo[2].Value); //Set file location
+                        newFile.setFolder(fileInfo[3].Value); //Set destination folder
+                        newFile.setDescription(fileInfo[4].Value); //Set file description
+                        newFile.setMd5sum(fileInfo[5].Value); //Set file md5sum
 
                         string pathToFile = "";
                         if (newFile.getFolder() == "Gamedata")
@@ -264,16 +265,42 @@ namespace LegacyOJPLauncher
         private void tmrStart_Tick(object sender, EventArgs e)
         {
             tmrStart.Stop();
+            UpdateDownload();
+
+            //Check for skins
+            DialogResult dr = MessageBox.Show("Would you like to check for new skins now?",
+                      "Skin Download", MessageBoxButtons.YesNo);
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    checkNewSkins();
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+
+            //Start game
+            Process p= new Process();
+            p.StartInfo.WorkingDirectory = this.gamePath+@"\jke\";
+            p.StartInfo.FileName = @"Play_JKE.bat";
+            p.Start();
+            this.Close();
+        }
+
+        public void checkNewSkins()
+        {
             //Loop through the files
             int count = 0;
             for (int j = 0; j < fileList.Count(); j++)
             {
+                //get skins here
+                if (!fileList[j].isSkin())
+                    continue;
                 //Update total progress
                 count++;
                 prgTotal.Value = ((count * 100) / getDownloadTotal());
                 lblTotal.Text = "Total Progress: " + ((count * 100) / getDownloadTotal()) + "%";
                 Application.DoEvents();
-                //If the node is checked, we're going to download it
                 this.url = fileList[j].getLocation();
                 this.filename = fileList[j].getFileName();
                 this.folder = fileList[j].getFolder();
@@ -312,20 +339,72 @@ namespace LegacyOJPLauncher
                 //Wait until the file is downloaded
                 while (!fileDownloaded) { Application.DoEvents(); }
                 MoveToCorrectFolder(pathToFile);
-              //  System.Threading.Thread.Sleep(5000);
             }
             //Reset everything
             prgTotal.Value = 0;
             prgCurrent.Value = 0;
             lblTotal.Text = "Total Progress";
             lblCurrent.Text = "Current File: Done";
+        }
 
-            //Start game
-            Process p= new Process();
-            p.StartInfo.WorkingDirectory = this.gamePath+@"\jke\";
-            p.StartInfo.FileName = @"Play_JKE.bat";
-            p.Start();
-            this.Close();
+        public void UpdateDownload()
+        {
+            //Loop through the files
+            int count = 0;
+            for (int j = 0; j < fileList.Count(); j++)
+            {
+                //Don't get skins here
+                if (fileList[j].isSkin())
+                    continue;
+                //Update total progress
+                count++;
+                prgTotal.Value = ((count * 100) / getDownloadTotal());
+                lblTotal.Text = "Total Progress: " + ((count * 100) / getDownloadTotal()) + "%";
+                Application.DoEvents();
+                this.url = fileList[j].getLocation();
+                this.filename = fileList[j].getFileName();
+                this.folder = fileList[j].getFolder();
+                string pathToFile = "";
+                if (this.folder == "Gamedata")
+                {
+                    pathToFile = gamePath + "/" + this.filename;
+                }
+                else
+                {
+                    pathToFile = gamePath + "/" + this.folder + "/" + this.filename;
+                }
+                fileDownloaded = false;
+                //If this file already exists don't download it again
+                lblCurrent.Text = "Current File: (" + this.filename + ") Checking to server";
+                Application.DoEvents();
+                if (File.Exists(pathToFile))
+                {
+                    //Check if the file is the same as the one on the server
+                    if (MD5SUM(File.ReadAllBytes(pathToFile)) == fileList[j].getMd5sum())
+                    {//Ok, we have the right file, move along
+                        continue;
+                    }
+                    //Get rid of the old/bad file so it can be updated
+                    else
+                    {
+                        File.Delete(pathToFile);
+                    }
+                }
+                //Open a thread for processing the download
+                thrDownload = new Thread(Download);
+                thrDownload.Name = this.filename + "Download";
+
+                // Start the thread, and thus call Download()
+                thrDownload.Start();
+                //Wait until the file is downloaded
+                while (!fileDownloaded) { Application.DoEvents(); }
+                MoveToCorrectFolder(pathToFile);
+            }
+            //Reset everything
+            prgTotal.Value = 0;
+            prgCurrent.Value = 0;
+            lblTotal.Text = "Total Progress";
+            lblCurrent.Text = "Current File: Done";
         }
     }
     public class file
@@ -335,6 +414,7 @@ namespace LegacyOJPLauncher
         private string description;
         private string md5sum;
         private string destinationFolder;
+        private bool skin;
 
         public file()
         {
@@ -343,6 +423,7 @@ namespace LegacyOJPLauncher
             this.description = "";
             this.md5sum = "";
             this.destinationFolder = "";
+            this.skin = false;
         }
 
         public string getFileName() { return this.fileName; }
@@ -350,12 +431,19 @@ namespace LegacyOJPLauncher
         public string getDescription() { return this.description; }
         public string getMd5sum() { return this.md5sum; }
         public string getFolder() { return this.destinationFolder; }
+        public bool isSkin() { return this.skin; }
 
         public void setFileName(string str) { this.fileName = str; }
         public void setLocation(string str) { this.location = str; }
         public void setDescription(string str) { this.description = str; }
         public void setMd5sum(string str) { this.md5sum = str; }
         public void setFolder(string str) { this.destinationFolder = str; }
-
+        public void setSkin(string str) 
+        {
+            if (str == "true")
+                this.skin = true;
+            else
+                this.skin = false;
+        }
     };
 }
