@@ -35,7 +35,7 @@ void FX_DisruptorMainShot( vec3_t start, vec3_t end )
 	trap_FX_AddLine( start, end, 0.1f, 6.0f, 0.0f, 
 							1.0f, 0.0f, 0.0f,
 							WHITE, WHITE, 0.0f,
-							150, trap_R_RegisterShader( "gfx/effects/redLine" ), 
+							150, trap_R_RegisterShader( "gfx/effects/deadline" ), 
 							FX_SIZE_LINEAR | FX_ALPHA_LINEAR );
 
 //	VectorSubtract( end, start, dir );
