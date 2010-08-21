@@ -24,9 +24,13 @@ namespace LegacyOJPLauncher
             {
                 FileStream file = new FileStream("config.dat", FileMode.Open, FileAccess.Read);
                 StreamReader sr = new StreamReader(file);
-                string s = sr.ReadToEnd();
+                string gamePath = sr.ReadLine();
+                string autoLaunch = sr.ReadLine();
+                bool auto = false;
+                if (autoLaunch == "1")
+                    auto = true;
                 sr.Close();
-                Application.Run(new frmMain(true, s));
+                Application.Run(new frmMain(true, gamePath,auto));
             }
         }
     }

@@ -35,7 +35,7 @@ namespace LegacyOJPLauncher
             sw.Write(txtGamePath.Text);
             sw.Close();
             file.Close();
-            Form newMain = new frmMain(true, txtGamePath.Text);
+            Form newMain = new frmMain(true, txtGamePath.Text,false);
             newMain.Show();
             this.Hide();
         }

@@ -37,6 +37,8 @@
             this.lblCurrent = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.tmrStart = new System.Windows.Forms.Timer(this.components);
+            this.btnLaunch = new System.Windows.Forms.Button();
+            this.chkAuto = new System.Windows.Forms.CheckBox();
             this.grpNews.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,6 +97,29 @@
             // 
             this.tmrStart.Tick += new System.EventHandler(this.tmrStart_Tick);
             // 
+            // btnLaunch
+            // 
+            this.btnLaunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLaunch.Location = new System.Drawing.Point(160, 211);
+            this.btnLaunch.Name = "btnLaunch";
+            this.btnLaunch.Size = new System.Drawing.Size(306, 112);
+            this.btnLaunch.TabIndex = 6;
+            this.btnLaunch.Text = "Launch Legacy OJP";
+            this.btnLaunch.UseVisualStyleBackColor = true;
+            this.btnLaunch.Visible = false;
+            this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
+            // 
+            // chkAuto
+            // 
+            this.chkAuto.AutoSize = true;
+            this.chkAuto.Location = new System.Drawing.Point(7, 316);
+            this.chkAuto.Name = "chkAuto";
+            this.chkAuto.Size = new System.Drawing.Size(147, 17);
+            this.chkAuto.TabIndex = 7;
+            this.chkAuto.Text = "Auto-Launch after update";
+            this.chkAuto.UseVisualStyleBackColor = true;
+            this.chkAuto.CheckedChanged += new System.EventHandler(this.chkAuto_CheckedChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -102,6 +127,8 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(643, 335);
             this.ControlBox = false;
+            this.Controls.Add(this.chkAuto);
+            this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblCurrent);
             this.Controls.Add(this.prgCurrent);
@@ -129,6 +156,8 @@
         private System.Windows.Forms.Label lblCurrent;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Timer tmrStart;
+        private System.Windows.Forms.Button btnLaunch;
+        private System.Windows.Forms.CheckBox chkAuto;
     }
 }
 

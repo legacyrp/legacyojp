@@ -99,7 +99,7 @@
             this.Controls.Add(this.lblDesc);
             this.Name = "frmFirst";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmFirst";
+            this.Text = "First Run";
             this.ResumeLayout(false);
             this.PerformLayout();
 
