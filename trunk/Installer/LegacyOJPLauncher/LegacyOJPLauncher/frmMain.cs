@@ -53,12 +53,14 @@ namespace LegacyOJPLauncher
             InitializeComponent();
         }
         //Constructor if we are configured
-        public frmMain(bool gamePathSet, string gamepath)
+        public frmMain(bool gamePathSet, string gamepath, bool auto)
         {
             this.gamePath = gamepath;
             this.gamePathSet = gamePathSet;
             InitializeComponent();
             tmrStart.Enabled = true;
+            if (auto)
+                chkAuto.Checked = true;
         }
         ~frmMain()
         {
@@ -279,12 +281,24 @@ namespace LegacyOJPLauncher
                     break;
             }
 
-            //Start game
-            Process p= new Process();
-            p.StartInfo.WorkingDirectory = this.gamePath+@"\jke\";
-            p.StartInfo.FileName = @"Play_JKE.bat";
-            p.Start();
-            this.Close();
+            prgCurrent.Visible = false;
+            prgTotal.Visible = false;
+            lblCurrent.Visible = false;
+            lblTotal.Visible = false;
+            if (chkAuto.Checked == true)
+            {
+                btnLaunch.Visible = true;
+                btnLaunch.Text = "Launching Legacy OJP...";
+                btnLaunch.Enabled = false;
+
+                //Start game
+                Process p = new Process();
+                p.StartInfo.WorkingDirectory = this.gamePath + @"\jke\";
+                p.StartInfo.FileName = @"Play_JKE.bat";
+                p.Start();
+                this.Close();
+            }
+            btnLaunch.Visible = true;
         }
 
         public void checkNewSkins()
@@ -405,6 +419,38 @@ namespace LegacyOJPLauncher
             prgCurrent.Value = 0;
             lblTotal.Text = "Total Progress";
             lblCurrent.Text = "Current File: Done";
+        }
+
+        private void chkAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAuto.Checked == true)
+            {
+                FileStream file = new FileStream("config.dat", FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(file);
+                sw.WriteLine(gamePath);
+                sw.WriteLine("1");
+                sw.Close();
+                file.Close();
+            }
+            else
+            {
+                FileStream file = new FileStream("config.dat", FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(file);
+                sw.WriteLine(gamePath);
+                sw.WriteLine("1");
+                sw.Close();
+                file.Close();
+            }
+        }
+
+        private void btnLaunch_Click(object sender, EventArgs e)
+        {
+            //Start game
+            Process p = new Process();
+            p.StartInfo.WorkingDirectory = this.gamePath + @"\jke\";
+            p.StartInfo.FileName = @"Play_JKE.bat";
+            p.Start();
+            this.Close();
         }
     }
     public class file
