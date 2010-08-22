@@ -39,6 +39,7 @@
             this.tmrStart = new System.Windows.Forms.Timer(this.components);
             this.btnLaunch = new System.Windows.Forms.Button();
             this.chkAuto = new System.Windows.Forms.CheckBox();
+            this.Settings = new System.Windows.Forms.Button();
             this.grpNews.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,13 +121,24 @@
             this.chkAuto.UseVisualStyleBackColor = true;
             this.chkAuto.CheckedChanged += new System.EventHandler(this.chkAuto_CheckedChanged);
             // 
+            // Settings
+            // 
+            this.Settings.AccessibleName = "Settings";
+            this.Settings.Location = new System.Drawing.Point(553, 211);
+            this.Settings.Name = "Settings";
+            this.Settings.Size = new System.Drawing.Size(75, 23);
+            this.Settings.TabIndex = 8;
+            this.Settings.Text = "Settings";
+            this.Settings.UseVisualStyleBackColor = true;
+            this.Settings.Click += new System.EventHandler(this.Settings_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(643, 335);
-            this.ControlBox = false;
+            this.Controls.Add(this.Settings);
             this.Controls.Add(this.chkAuto);
             this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.lblTotal);
@@ -158,6 +170,7 @@
         private System.Windows.Forms.Timer tmrStart;
         private System.Windows.Forms.Button btnLaunch;
         private System.Windows.Forms.CheckBox chkAuto;
+        private System.Windows.Forms.Button Settings;
     }
 }
 
