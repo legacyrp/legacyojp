@@ -446,7 +446,7 @@ namespace LegacyOJPLauncher
                 FileStream file = new FileStream("config.dat", FileMode.OpenOrCreate, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(file);
                 sw.WriteLine(gamePath);
-                sw.WriteLine("1");
+                sw.WriteLine("0");
                 sw.Close();
                 file.Close();
             }
