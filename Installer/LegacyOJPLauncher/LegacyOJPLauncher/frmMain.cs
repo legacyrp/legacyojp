@@ -23,8 +23,6 @@ namespace LegacyOJPLauncher
         public bool gamePathSet = false;
         public string gamePath = "";
         public List<file> fileList = new List<file>();
-        
-        public Form gamedataChange = new frmFirst();
 
         #region Download required variables
 
@@ -142,28 +140,10 @@ namespace LegacyOJPLauncher
                     // Loop through the buffer until the buffer is empty
                     while ((bytesSize = strResponse.Read(downBuffer, 0, downBuffer.Length)) > 0)
                     {
-                        if (gamedataChange.Visible == true)
-                        {
-                            break;
-                        }
-
-                        else
-                        {
                             // Write the data from the buffer to the local hard drive
                             strLocal.Write(downBuffer, 0, bytesSize);
                             // Invoke the method that updates the form's label and progress bar
                             this.Invoke(new UpdateProgessCallback(this.UpdateProgress), new object[] { strLocal.Length, fileSize });
-                        }
-
-                        /*while ((bytesSize = strResponse.Read(downBuffer, 0, downBuffer.Length)) > 0)
-                        {
-                            // Write the data from the buffer to the local hard drive
-                            strLocal.Write(downBuffer, 0, bytesSize);
-                            // Invoke the method that updates the form's label and progress bar
-                            this.Invoke(new UpdateProgessCallback(this.UpdateProgress), new object[] { strLocal.Length, fileSize });
-                        }*/
-
-
                     }
                 }
                 catch (WebException)
@@ -289,6 +269,12 @@ namespace LegacyOJPLauncher
         private void tmrStart_Tick(object sender, EventArgs e)
         {
             tmrStart.Stop();
+            if (this.Visible == false)
+            {
+                return;
+            }
+            else
+                btnSettings.Enabled = false;
             UpdateDownload();
 
             //Check for skins
@@ -321,6 +307,7 @@ namespace LegacyOJPLauncher
                 this.Close();
             }
             btnLaunch.Visible = true;
+            btnSettings.Enabled = true;
         }
 
         public void checkNewSkins()
@@ -475,9 +462,12 @@ namespace LegacyOJPLauncher
             this.Close();
         }
 
-        private void Settings_Click(object sender, EventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-            gamedataChange.Show();
+            Form newFirst = new frmFirst();
+            newFirst.Show();
+           // this.Close();
+            this.Hide();
         }
 
 
