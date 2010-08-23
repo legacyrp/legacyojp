@@ -2876,8 +2876,8 @@ void ClientBegin( int clientNum, qboolean allowTeamReset ) {
 	}
 	else
 	{//send this client the MOTD for clients aren't running OJP or just not the right version.
-		trap_SendServerCommand ( clientNum, va("print \"^1OLD/CORRUPT CLIENT VERSION: PLEASE DOWNLOAD VERSION %i AT LEGACYRP.COM\n\"",MOD_VERSION));
-		TextWrapCenterPrint( va("print \"^1OLD/CORRUPT CLIENT VERSION: PLEASE DOWNLOAD VERSION %i AT LEGACYRP.COM\n\"",MOD_VERSION), motd);
+		//trap_SendServerCommand ( clientNum, va("print \"^1OLD/CORRUPT CLIENT VERSION: PLEASE DOWNLOAD VERSION %i AT LEGACYRP.COM\n\"",MOD_VERSION));
+		TextWrapCenterPrint( va("^1OLD/CORRUPT CLIENT VERSION: PLEASE DOWNLOAD VERSION %i AT LEGACYRP.COM\n\"",MOD_VERSION), motd);
 		/*char	userinfo[MAX_INFO_STRING];
 		char *s ="";
 		trap_GetUserinfo( clientNum, userinfo, sizeof( userinfo ) );
