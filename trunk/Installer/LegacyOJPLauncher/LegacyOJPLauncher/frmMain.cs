@@ -46,15 +46,19 @@ namespace LegacyOJPLauncher
         public bool fileDownloaded = false;
         #endregion
 
-        //Constructor if we aren't configured
+        //Constructor if we aren't configured.
         public frmMain()
         {
             thrDownload = new Thread(Download);
             InitializeComponent();
         }
+
+
         //Constructor if we are configured
         public frmMain(bool gamePathSet, string gamepath, bool auto)
         {
+            //this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
             this.gamePath = gamepath;
             this.gamePathSet = gamePathSet;
             InitializeComponent();
@@ -446,7 +450,7 @@ namespace LegacyOJPLauncher
                 FileStream file = new FileStream("config.dat", FileMode.OpenOrCreate, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(file);
                 sw.WriteLine(gamePath);
-                sw.WriteLine("0");
+                sw.WriteLine("1");
                 sw.Close();
                 file.Close();
             }
@@ -468,6 +472,11 @@ namespace LegacyOJPLauncher
             newFirst.Show();
            // this.Close();
             this.Hide();
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
 
