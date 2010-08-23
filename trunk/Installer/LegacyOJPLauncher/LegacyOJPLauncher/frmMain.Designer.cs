@@ -39,7 +39,7 @@
             this.tmrStart = new System.Windows.Forms.Timer(this.components);
             this.btnLaunch = new System.Windows.Forms.Button();
             this.chkAuto = new System.Windows.Forms.CheckBox();
-            this.Settings = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.grpNews.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,16 +121,16 @@
             this.chkAuto.UseVisualStyleBackColor = true;
             this.chkAuto.CheckedChanged += new System.EventHandler(this.chkAuto_CheckedChanged);
             // 
-            // Settings
+            // btnSettings
             // 
-            this.Settings.AccessibleName = "Settings";
-            this.Settings.Location = new System.Drawing.Point(553, 211);
-            this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(75, 23);
-            this.Settings.TabIndex = 8;
-            this.Settings.Text = "Settings";
-            this.Settings.UseVisualStyleBackColor = true;
-            this.Settings.Click += new System.EventHandler(this.Settings_Click);
+            this.btnSettings.AccessibleName = "Settings";
+            this.btnSettings.Location = new System.Drawing.Point(553, 211);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(75, 23);
+            this.btnSettings.TabIndex = 8;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // frmMain
             // 
@@ -138,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(643, 335);
-            this.Controls.Add(this.Settings);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.chkAuto);
             this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.lblTotal);
@@ -148,6 +148,9 @@
             this.Controls.Add(this.grpNews);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(649, 363);
+            this.MinimumSize = new System.Drawing.Size(649, 363);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Legacy OJP Launcher";
@@ -170,7 +173,7 @@
         private System.Windows.Forms.Timer tmrStart;
         private System.Windows.Forms.Button btnLaunch;
         private System.Windows.Forms.CheckBox chkAuto;
-        private System.Windows.Forms.Button Settings;
+        private System.Windows.Forms.Button btnSettings;
     }
 }
 
