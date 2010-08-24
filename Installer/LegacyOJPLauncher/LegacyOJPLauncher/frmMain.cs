@@ -57,7 +57,9 @@ namespace LegacyOJPLauncher
         //Constructor if we are configured
         public frmMain(bool gamePathSet, string gamepath, bool auto)
         {
-            //this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.BackColor = Color.Transparent;
+            InitializeComponent();
 
             this.gamePath = gamepath;
             this.gamePathSet = gamePathSet;
