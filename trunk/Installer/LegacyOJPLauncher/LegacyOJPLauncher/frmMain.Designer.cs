@@ -45,7 +45,7 @@
             // txtNews
             // 
             this.txtNews.BackColor = System.Drawing.SystemColors.Control;
-            this.txtNews.Location = new System.Drawing.Point(67, 177);
+            this.txtNews.Location = new System.Drawing.Point(66, 169);
             this.txtNews.Multiline = true;
             this.txtNews.Name = "txtNews";
             this.txtNews.ReadOnly = true;
@@ -150,10 +150,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(721, 530);
+            this.ClientSize = new System.Drawing.Size(721, 513);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.txtNews);
             this.Controls.Add(this.btnSettings);
@@ -167,12 +167,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(721, 530);
-            this.MinimumSize = new System.Drawing.Size(721, 530);
+            this.MaximumSize = new System.Drawing.Size(721, 513);
+            this.MinimumSize = new System.Drawing.Size(721, 513);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Legacy OJP Launcher";
-            this.TransparencyKey = System.Drawing.Color.White;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
