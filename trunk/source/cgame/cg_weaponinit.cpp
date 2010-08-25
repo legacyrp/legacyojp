@@ -284,7 +284,7 @@ void CG_RegisterWeapon( int weaponNum) {
 		cgs.effects.disruptorAltMissEffect		= trap_FX_RegisterEffect( "disruptor/alt_miss" );
 		cgs.effects.disruptorAltHitEffect		= trap_FX_RegisterEffect( "disruptor/alt_hit" );
 
-		trap_R_RegisterShader( "gfx/effects/deadline");
+		//trap_R_RegisterShader( "gfx/effects/deadline" ); // New disruptor primary - HolmstN
 		trap_R_RegisterShader( "gfx/effects/redLine" );
 		trap_R_RegisterShader( "gfx/misc/whiteline2" );
 		trap_R_RegisterShader( "gfx/effects/smokeTrail" );
