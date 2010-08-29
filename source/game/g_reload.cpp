@@ -157,7 +157,9 @@ int ReloadTime(gentity_t *ent)
 	switch(ent->client->ps.weapon)
 	{
 	case WP_CONCUSSION:
+		return 5500;
 	case WP_DEMP2:
+		return 500;
 	case WP_DISRUPTOR:
 	case WP_REPEATER:
 	case WP_FLECHETTE:

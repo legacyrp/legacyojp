@@ -3367,6 +3367,8 @@ int OJP_SaberBlockCost(gentity_t *defender, gentity_t *attacker, vec3_t hitLoc)
 {//returns the DP cost to block this attack for this attacker/defender combo.
 	float saberBlockCost = 0;
 
+	
+
 	//===========================
 	// Determine Base Block Cost
 	//===========================
@@ -3382,10 +3384,19 @@ int OJP_SaberBlockCost(gentity_t *defender, gentity_t *attacker, vec3_t hitLoc)
 
 		if(defender->client->ps.weapon == WP_SABER)
 		{
+			if(PM_RunningAnim(defender->client->ps.legsAnim))
+				{
+					runningForTime = level.time + 1500;
+				}
+
 			if(defender->client->ps.fd.forcePowersActive & (1 << FP_SPEED))
 				saberBlockCost+=10;//Using force speed
-			else if(PM_RunningAnim(defender->client->ps.legsAnim))
-				saberBlockCost+=5;//Running
+			
+			else if(level.time < runningForTime)
+			{
+				saberBlockCost+=5;//Running + 1.5 seconds
+			}
+
 			else if(WalkCheck(defender) && IsMoving(defender))
 				saberBlockCost++;//Walking
 			if(defender->client->ps.groundEntityNum == ENTITYNUM_NONE)
