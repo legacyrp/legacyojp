@@ -24,6 +24,7 @@ extern int gPainMOD;
 extern int gPainHitLoc;
 extern vec3_t gPainPoint;
 
+
 void CancelReload(gentity_t *ent);
 //==================================================================
 

@@ -79,3 +79,5 @@ extern float forceJumpHeight[NUM_FORCE_POWER_LEVELS];
 extern float forceJumpStrength[NUM_FORCE_POWER_LEVELS];
 extern float forcePushPullRadius[NUM_FORCE_POWER_LEVELS];
 #include "../namespace_end.h"
+
+static int runningForTime;
