@@ -416,6 +416,7 @@ void LoadCharacter(gentity_t * targetplayer)
 	LoadSkills(targetplayer);
 	LoadForcePowers(targetplayer);
 	LoadFeats(targetplayer);
+	LoadAttributes(targetplayer);
 
 	
 	//Create new power string
@@ -1360,11 +1361,12 @@ void SaveCharacter(gentity_t * targetplayer)
         }
       
       //Update feats in database
-		q.execute(va("UPDATE characters set feats='%s' WHERE ID='%i'",featString.c_str(),targetplayer->client->sess.characterID));
+	  q.execute(va("UPDATE characters set feats='%s' WHERE ID='%i'",featString.c_str(),targetplayer->client->sess.characterID));
       //Update skills in database
       q.execute(va("UPDATE characters set skills='%s' WHERE ID='%i'",skillString.c_str(),targetplayer->client->sess.characterID));
       //Update force in database
       q.execute(va("UPDATE characters set force='%s' WHERE ID='%i'",forceString.c_str(),targetplayer->client->sess.characterID));
+	  SaveAttributes(targetplayer);
 
         return;
 }
@@ -1476,5 +1478,61 @@ void Cmd_SVRemoveAdmin_F()
 	q.execute(va("UPDATE users set admin='0' WHERE name='%s'",accountName));
 
 	G_Printf("Admin removed\n");
+	return;
+}
+void LoadAttributes(gentity_t * targetplayer)
+{
+	Database db(DATABASE_PATH);
+
+	if (!db.Connected())
+	{
+		G_Printf("Database not connected, %s\n",DATABASE_PATH);
+		return;
+	}
+	Query q(db);
+	
+	char userinfo[MAX_INFO_STRING];
+	trap_GetUserinfo( targetplayer->client->ps.clientNum, userinfo, MAX_INFO_STRING );
+
+
+	//Name
+	std::string name = q.get_string(va("SELECT igname FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
+	Info_SetValueForKey( userinfo, "name", name.c_str() );
+    //Model
+	std::string model = q.get_string(va("SELECT model FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
+	Info_SetValueForKey( userinfo, "model", model.c_str() );
+	trap_SetUserinfo( targetplayer->client->ps.clientNum, userinfo );
+	ClientUserinfoChanged( targetplayer->client->ps.clientNum );
+
+	//Model scale
+	int modelScale = q.getval(va("SELECT modelscale FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
+	targetplayer->client->ps.iModelScale= modelScale;
+	targetplayer->client->sess.modelScale= modelScale;
+	return;
+}
+
+void SaveAttributes(gentity_t * targetplayer)
+{
+	Database db(DATABASE_PATH);
+
+	if (!db.Connected())
+	{
+		G_Printf("Database not connected, %s\n",DATABASE_PATH);
+		return;
+	}
+	Query q(db);
+	
+	char userinfo[MAX_INFO_STRING];
+	trap_GetUserinfo( targetplayer->client->ps.clientNum, userinfo, MAX_INFO_STRING );
+
+
+	//Name
+	std::string name = Info_ValueForKey( userinfo, "name");
+	q.execute(va("UPDATE characters set igname='%s' WHERE ID='%i'",name.c_str(),targetplayer->client->sess.characterID));
+    //Model
+	std::string model = Info_ValueForKey( userinfo, "model");
+	q.execute(va("UPDATE characters set model='%s' WHERE ID='%i'",model.c_str(),targetplayer->client->sess.characterID));
+	//Model scale
+	q.execute(va("UPDATE characters set modelscale='%i' WHERE ID='%i'",targetplayer->client->sess.modelScale,targetplayer->client->sess.characterID));
 	return;
 }
