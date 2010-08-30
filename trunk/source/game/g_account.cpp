@@ -1505,7 +1505,7 @@ void LoadAttributes(gentity_t * targetplayer)
 	ClientUserinfoChanged( targetplayer->client->ps.clientNum );
 
 	//Model scale
-	int modelScale = q.getval(va("SELECT modelscale FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
+	int modelScale = q.get_num(va("SELECT modelscale FROM characters WHERE ID='%i'",targetplayer->client->sess.characterID));
 	targetplayer->client->ps.iModelScale= modelScale;
 	targetplayer->client->sess.modelScale= modelScale;
 	return;
