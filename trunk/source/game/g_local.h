@@ -1280,7 +1280,6 @@ struct gclient_s {
 	qboolean leftPistol;//[DualPistols]
 	qboolean attackNeedRelease;
 	int			forceAttacker;
-	OJPRank		playerRank;
 	int			frozenTime;
 	qboolean	weaponbuttonNeedRelease;
 
