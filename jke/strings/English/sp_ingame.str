@@ -694,7 +694,7 @@ REFERENCE           ITEM_DATAPAD
 LANG_ENGLISH        "Datapad"
 
 REFERENCE           PROTECT2
-LANG_ENGLISH        "Protect"
+LANG_ENGLISH        "Manipulate"
 
 REFERENCE           ABSORB2
 LANG_ENGLISH        "Absorb"
@@ -709,7 +709,7 @@ REFERENCE           DRAIN2
 LANG_ENGLISH        "Drain"
 
 REFERENCE           TEAM_REPLENISH2
-LANG_ENGLISH        "Team Energize"
+LANG_ENGLISH        "Lift"
 
 REFERENCE           DOOR_OPENED_ELSEWHERE
 LANG_ENGLISH        "This door is opened elsewhere."
