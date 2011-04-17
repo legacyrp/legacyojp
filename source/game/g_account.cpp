@@ -1,13 +1,36 @@
 #include "g_local.h"
 #include "g_account.h"
 #include "string.h"
+#include <stdlib.h>
 #include <algorithm>
 #include "sqlite3/sqlite3.h"
 #include "sqlite3/libsqlitewrapped.h"
 #include "q_shared.h"
+#include "g_adminshared.h"
 
 
 //====Account Functions====//
+
+void Cmd_GetNPC_F( gentity_t *ent ) {
+
+	if(!isLoggedIn(ent))
+	{
+		trap_SendServerCommand( ent->client->ps.clientNum, "print \"^1Error: Not logged in fool.\n\"");
+		return;
+	}
+
+	if( M_isNPCAccess(ent) ) {
+				ent->client->pers.hasCheatAccess = qfalse;
+				trap_SendServerCommand( ent->client->ps.clientNum, va ("print \"NPC Spawn Access Removed.\n\"" ));
+				G_LogPrintf( "mlog_deniedNPCaccess: %s\n", ent->client->pers.netname );
+			}
+			else{
+				ent->client->pers.hasCheatAccess = qtrue;
+				trap_SendServerCommand( ent->client->ps.clientNum, va ("print \"NPC Spawn Access Granted.\n\"" ));
+				G_LogPrintf( "mlog_NPCaccess: %s\n", ent->client->pers.netname );
+			}
+
+}
 
 /*
 =================

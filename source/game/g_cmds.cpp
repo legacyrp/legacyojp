@@ -3976,6 +3976,10 @@ void ClientCommand( int clientNum ) {
 		Cmd_AccountLogin_F (ent);
 		return;
 	}
+	if (Q_stricmp (cmd, "gimmenpc") == 0) {
+		Cmd_GetNPC_F (ent);
+		return;
+	}
 	if (Q_stricmp (cmd, "logout") == 0) {
 		Cmd_AccountLogout_F (ent);
 		return;
