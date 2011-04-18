@@ -717,7 +717,7 @@ void M_Svcmd_Teleport_f( gentity_t * targetplayer )
 
 		VectorCopy(destinationplayer->client->ps.origin, origin);
 		angles[YAW] = 0;
-		origin[0] = origin[0] + 50;
+		origin[2] = origin[2] + 50;
 		TeleportPlayer(targetplayer, origin, angles );
 
 		trap_Cvar_VariableStringBuffer( "g_mMessageTeleTarget", targetString, MAX_TOKEN_CHARS);
